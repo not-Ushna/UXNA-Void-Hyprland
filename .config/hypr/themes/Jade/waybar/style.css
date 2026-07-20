@@ -1,0 +1,167 @@
+/* ============================================================
+   Jade Theme — Waybar Style (colours and font only)
+   Sharp, boxy, zero rounding. Dark jade aesthetic.
+   ============================================================ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #111C18;
+    color: #C1C497;
+    border-bottom: 2px solid #23372B;
+}
+
+tooltip {
+    background-color: #23372B;
+    color: #C1C497;
+    border: 1px solid #509475;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: #C1C497;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    all: initial;
+    padding: 0 8px;
+    margin: 0 2px;
+    color: #53685B;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.empty {
+    color: #23372B;
+}
+
+#workspaces button.active {
+    color: #509475;
+    border-bottom: 2px solid #509475;
+}
+
+#workspaces button.urgent {
+    color: #FF5345;
+    border-bottom: 2px solid #FF5345;
+}
+
+#workspaces button:hover {
+    color: #6BCB77;
+    border-bottom: 2px solid #6BCB77;
+}
+
+/* Module styling */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#tray,
+#custom-powermenu,
+#custom-weather {
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #C1C497;
+    transition: all 0.2s ease;
+}
+
+#clock {
+    color: #D7C995;
+    font-weight: bold;
+}
+
+#battery {
+    color: #549E6A;
+}
+
+#battery.warning {
+    color: #E5C736;
+}
+
+#battery.critical {
+    color: #FF5345;
+    animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+    color: #2DD5B7;
+}
+
+#cpu {
+    color: #75BBB3;
+}
+
+#memory {
+    color: #ACD4CF;
+}
+
+#network {
+    color: #509475;
+}
+
+#network.disconnected {
+    color: #53685B;
+}
+
+#pulseaudio {
+    color: #D2689C;
+}
+
+#pulseaudio.muted {
+    color: #53685B;
+}
+
+#bluetooth {
+    color: #8CD3CB;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #53685B;
+}
+
+#backlight {
+    color: #E5C736;
+}
+
+#tray {
+    margin-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#custom-powermenu {
+    color: #FF5345;
+    padding: 0 12px;
+}
+
+/* Separator styling */
+#custom-separator {
+    color: #23372B;
+    padding: 0 4px;
+}
+
+@keyframes blink {
+    to {
+        color: #F6F5DD;
+    }
+}

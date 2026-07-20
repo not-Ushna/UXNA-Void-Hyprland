@@ -1,0 +1,137 @@
+/* ============================================================
+   Lumon Theme — Waybar Style (Retro Dark Corporate)
+   Strict Macrodata Refinement aesthetic. Deep Slate & Pale Cyan.
+   ============================================================ */
+
+* {
+    border: none;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #9FDDF2;
+}
+
+tooltip {
+    background-color: #0B1924;
+    color: #9FDDF2;
+    border: 1px solid #9FDDF2;
+    border-radius: 4px;
+}
+
+tooltip label {
+    color: #9FDDF2;
+}
+
+#workspaces {
+    background-color: #0B1924;
+    margin: 5px 10px;
+    padding: 0 5px;
+    border: 1px solid #9FDDF2;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(159, 221, 242, 0.2);
+}
+
+#workspaces button {
+    all: initial;
+    padding: 0 10px;
+    margin: 4px 2px;
+    color: #5A8A9E; /* Muted cyan */
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.empty {
+    color: #2A4858;
+}
+
+#workspaces button.active {
+    color: #0B1924;
+    background-color: #9FDDF2; /* Solid Pale Cyan */
+}
+
+#workspaces button.urgent {
+    color: #0B1924;
+    background-color: #FF3B30;
+}
+
+#workspaces button:hover {
+    color: #0B1924;
+    background-color: #9FDDF2;
+}
+
+/* Module styling */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#tray {
+    background-color: #0B1924;
+    padding: 0 15px;
+    margin: 5px 2px;
+    color: #9FDDF2;
+    border: 1px solid #9FDDF2;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(159, 221, 242, 0.2);
+}
+
+#clock {
+    color: #9FDDF2;
+    font-weight: 800;
+}
+
+#battery.warning {
+    color: #FF9500;
+}
+
+#battery.critical {
+    color: #0B1924;
+    background-color: #FF3B30;
+    animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+    color: #34C759;
+}
+
+#network.disconnected {
+    color: #5A8A9E;
+}
+
+#pulseaudio.muted {
+    color: #5A8A9E;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #5A8A9E;
+}
+
+#tray {
+    margin-right: 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+@keyframes blink {
+    to {
+        background-color: #0B1924;
+        color: #FF3B30;
+    }
+}

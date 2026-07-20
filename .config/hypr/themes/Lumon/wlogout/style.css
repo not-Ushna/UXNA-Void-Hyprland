@@ -1,0 +1,56 @@
+/* ============================================================
+   Lumon Theme — Wlogout Style (Retro Dark Corporate)
+   Using strict palette: Deep Slate (#0B1924) & Pale Cyan (#9FDDF2)
+   ============================================================ */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono", "Inter", "Sans";
+}
+
+window {
+    background-color: rgba(11, 25, 36, 0.95); /* Deep Slate */
+}
+
+button {
+    background-color: transparent; 
+    border: 2px solid #9FDDF2; /* Pale Cyan */
+    border-radius: 4px; /* Crisp retro corners */
+    color: #9FDDF2;
+    margin: 15px 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-size: 25%;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.2s ease;
+}
+
+button:hover, button:focus {
+    background-color: #9FDDF2; /* Solid Pale Cyan on hover */
+    border: 2px solid #9FDDF2;
+    color: #0B1924; /* Deep Slate text */
+    box-shadow: 0 0 20px rgba(159, 221, 242, 0.4); /* Cyan glow */
+    background-size: 28%;
+    outline: none;
+}
+
+/* Default State: Use custom generated Pale Cyan SVGs */
+#lock { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/lock.svg")); }
+#logout { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/logout.svg")); }
+#suspend { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/suspend.svg")); }
+#shutdown { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/shutdown.svg")); }
+#hibernate { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/hibernate.svg")); }
+#reboot { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/reboot.svg")); }
+
+/* Hover State: Swap to custom generated Deep Slate SVGs */
+#lock:hover, #lock:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/lock-hover.svg")); }
+#logout:hover, #logout:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/logout-hover.svg")); }
+#suspend:hover, #suspend:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/suspend-hover.svg")); }
+#shutdown:hover, #shutdown:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/shutdown-hover.svg")); }
+#hibernate:hover, #hibernate:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/hibernate-hover.svg")); }
+#reboot:hover, #reboot:focus { background-image: image(url("/home/uxna/.config/hypr/themes/Lumon/wlogout/icons/reboot-hover.svg")); }

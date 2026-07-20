@@ -1,0 +1,94 @@
+/* Chameleon Theme — Ultra Minimal Rofi Launcher (auto-generated) */
+configuration {
+    modi:                "drun,run";
+    show-icons:          true;
+    display-drun:        "  ";
+    display-run:         "  ";
+    drun-display-format: "{name}";
+}
+
+* {
+    font:             "JetBrains Mono Nerd Font 11";
+    background:       #0c0708E6;
+    background-alt:   #7f2c3a66;
+    foreground:       #b1a8ab;
+    selected:         #c61288;
+    active:           #c64912;
+    urgent:           #c40d2d;
+}
+
+window {
+    width:            500px;
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    border:           2px solid;
+    border-color:     @selected;
+    border-radius:    16px;
+    background-color: @background;
+    padding:          12px;
+}
+
+mainbox {
+    spacing:          12px;
+    background-color: transparent;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:          8px;
+    padding:          12px;
+    border-radius:    12px;
+    background-color: @background-alt;
+    text-color:       @foreground;
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @selected;
+    vertical-align:   0.5;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @foreground;
+    placeholder:      "Search...";
+    placeholder-color: #888888;
+    vertical-align:   0.5;
+}
+
+listview {
+    lines:            6;
+    columns:          1;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    spacing:          4px;
+    background-color: transparent;
+}
+
+element {
+    padding:          10px 14px;
+    border-radius:    10px;
+    background-color: transparent;
+    text-color:       @foreground;
+    spacing:          12px;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color:       @background;
+}
+
+element-icon {
+    size:             24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

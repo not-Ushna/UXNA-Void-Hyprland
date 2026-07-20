@@ -1,0 +1,76 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": " // ",
+    "color": {
+      "separator": "yellow"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[31m=======================================\u001b[0m"
+    },
+    {
+      "type": "title",
+      "color": {
+        "user": "red",
+        "at": "white",
+        "host": "red"
+      },
+      "format": "AUTHORIZATION: {1}@{2}"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[31m=======================================\u001b[0m"
+    },
+    {
+      "type": "os",
+      "key": "[ SYSTEM    ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "kernel",
+      "key": "[ KERNEL    ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "uptime",
+      "key": "[ UPTIME    ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "packages",
+      "key": "[ PACKAGES  ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "wm",
+      "key": "[ INTERFACE ]",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "terminal",
+      "key": "[ TERMINAL  ]",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "cpu",
+      "key": "[ PROCESSOR ]",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "memory",
+      "key": "[ MEMORY    ]",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[31m=======================================\u001b[0m"
+    },
+    {
+      "type": "colors",
+      "symbol": "square"
+    }
+  ]
+}

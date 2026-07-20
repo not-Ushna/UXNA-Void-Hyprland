@@ -1,0 +1,52 @@
+// ============================================================
+// Waybar Layout: Minimal
+// Distraction-free — just workspaces and clock.
+// ============================================================
+{
+    "reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "height": 26,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [],
+
+    "modules-right": [
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A %d %B}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    }
+}

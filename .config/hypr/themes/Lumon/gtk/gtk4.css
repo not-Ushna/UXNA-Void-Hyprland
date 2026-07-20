@@ -1,0 +1,37 @@
+@define-color window_bg_color #0B1924;
+@define-color window_fg_color #9FDDF2;
+@define-color view_bg_color #0B1924;
+@define-color view_fg_color #9FDDF2;
+@define-color headerbar_bg_color #0B1924;
+@define-color headerbar_fg_color #9FDDF2;
+@define-color sidebar_bg_color #070F16;
+@define-color sidebar_fg_color #9FDDF2;
+@define-color popover_bg_color #0B1924;
+@define-color popover_fg_color #9FDDF2;
+@define-color accent_bg_color #9FDDF2;
+@define-color accent_fg_color #0B1924;
+@define-color accent_color #9FDDF2;
+@define-color borders #172A3B;
+
+/* Additional tweaks for Retro Corporate aesthetic */
+window {
+    background-color: @window_bg_color;
+}
+
+headerbar {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+    border-bottom: 1px solid @borders;
+}
+
+/* Force folder icons to be pale cyan instead of grey */
+.nautilus-window row,
+.nautilus-window gridview > child,
+.nautilus-window .view {
+    color: @view_fg_color;
+}
+
+/* Make icons monochrome */
+image {
+    -gtk-icon-theme: Adwaita;
+}

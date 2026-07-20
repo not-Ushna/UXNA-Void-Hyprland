@@ -1,0 +1,125 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/hypr/themes/Lumon/fastfetch/droplet.txt",
+    "padding": {
+      "top": 1,
+      "left": 1,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[90m╭──────────\u001b[34mHardware\u001b[90m──────────╮\u001b[0m"
+    },
+    {
+      "type": "host",
+      "key": "\u001b[90m│ \u001b[30m󰌢 PC:",
+      "keyColor": "black"
+    },
+    {
+      "type": "cpu",
+      "key": "\u001b[90m│ \u001b[34m├󰻠:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "key": "\u001b[90m│ \u001b[34m├󰍛:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "display",
+      "key": "\u001b[90m│ \u001b[34m├󰍹:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "disk",
+      "key": "\u001b[90m│ \u001b[34m├󰋊:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "memory",
+      "key": "\u001b[90m│ \u001b[34m├󰊚:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "swap",
+      "key": "\u001b[90m│ \u001b[34m╰󰓡:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m╭──────────\u001b[34mSoftware\u001b[90m──────────╮\u001b[0m"
+    },
+    {
+      "type": "os",
+      "key": "\u001b[90m│ \u001b[30m󰣇 OS:",
+      "keyColor": "black"
+    },
+    {
+      "type": "kernel",
+      "key": "\u001b[90m│ \u001b[34m├:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "\u001b[90m│ \u001b[34m├󰨇:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminal",
+      "key": "\u001b[90m│ \u001b[34m├:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "packages",
+      "key": "\u001b[90m│ \u001b[34m├󰏖:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminalfont",
+      "key": "\u001b[90m│ \u001b[34m╰A:",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m╭───\u001b[34mAge / Uptime / Colors\u001b[90m────╮\u001b[0m"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[90m│ \u001b[30m󰔠 OS Age:",
+      "keyColor": "black",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    {
+      "type": "uptime",
+      "key": "\u001b[90m│ \u001b[30m󰅐 Uptime:",
+      "keyColor": "black"
+    },
+    {
+      "type": "colors",
+      "key": "\u001b[90m│ \u001b[34m󰏘 Colors:",
+      "symbol": "circle",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
+    }
+  ]
+}

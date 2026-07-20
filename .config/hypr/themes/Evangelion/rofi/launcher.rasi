@@ -1,0 +1,104 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "[ {name} ]";
+    display-drun: "MAGI";
+    display-run: "EXEC";
+}
+
+* {
+    bg: #000000;
+    bg-alt: #1A0808;
+    fg: #FFFFFF;
+    fg-alt: #E0E0E0;
+    primary: #D32F2F;
+    secondary: #FFB300;
+    
+    background-color: transparent;
+    text-color: @fg;
+    font: "Hack Bold 14";
+}
+
+window {
+    width: 60%;
+    height: 50%;
+    background-color: #000000F2;
+    border: 4px;
+    border-color: @primary;
+    border-radius: 0px;
+    padding: 0;
+}
+
+mainbox {
+    children: [ inputbar, message, listview ];
+    background-color: transparent;
+    border: 2px;
+    border-color: @secondary;
+    margin: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @primary;
+    padding: 15px;
+}
+
+prompt {
+    text-color: #000000;
+    padding: 0 15px 0 0;
+    font: "Hack Bold 16";
+}
+
+entry {
+    placeholder: "[ MAGI SYSTEM // AWAITING QUERY ]";
+    placeholder-color: #000000AA;
+    text-color: #000000;
+}
+
+listview {
+    padding: 15px;
+    columns: 2;
+    lines: 10;
+    scrollbar: true;
+    background-color: transparent;
+}
+
+scrollbar {
+    width: 8px;
+    border: 0;
+    handle-width: 8px;
+    handle-color: @secondary;
+    background-color: @bg-alt;
+}
+
+element {
+    padding: 12px;
+    border: 1px;
+    border-color: @bg-alt;
+    border-radius: 0px;
+    background-color: transparent;
+    text-color: @fg;
+    margin: 2px;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 15px 0 0;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @primary;
+    border: 1px;
+    border-color: @secondary;
+    text-color: #FFFFFF;
+}
+
+element alternate {
+    background-color: transparent;
+}

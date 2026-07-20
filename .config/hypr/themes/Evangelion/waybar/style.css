@@ -1,0 +1,112 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Hack", "JetBrains Mono Nerd Font", monospace;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #000000;
+    color: #FFFFFF;
+    border-bottom: 2px solid #D32F2F;
+}
+
+/* Modules */
+#workspaces button {
+    background: #1A0808;
+    color: #D32F2F;
+    padding: 0 15px;
+    border-radius: 0;
+    border-right: 2px solid #000000;
+}
+
+#workspaces button.active {
+    background: #FFB300;
+    color: #000000;
+}
+
+#workspaces button.urgent {
+    background: repeating-linear-gradient(
+        -45deg,
+        #D32F2F,
+        #D32F2F 10px,
+        #000000 10px,
+        #000000 20px
+    );
+    color: #FFFFFF;
+}
+
+#workspaces button:hover {
+    background: #D32F2F;
+    color: #000000;
+}
+
+#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #bluetooth, #network, #pulseaudio, #tray, #custom-powermenu {
+    padding: 0 15px;
+    background: #1A0808;
+    color: #FFB300;
+    border-left: 2px solid #000000;
+}
+
+/* Specifics */
+#clock {
+    color: #FFFFFF;
+    background: #B71C1C;
+}
+
+/* Hover effects */
+#battery:hover, #network:hover, #pulseaudio:hover, #custom-powermenu:hover {
+    background: #FFB300;
+    color: #000000;
+}
+
+/* Battery Specific */
+#battery.charging {
+    color: #388E3C;
+}
+
+#battery.warning {
+    color: #F57C00;
+}
+
+#battery.critical {
+    background: repeating-linear-gradient(
+        -45deg,
+        #D32F2F,
+        #D32F2F 10px,
+        #000000 10px,
+        #000000 20px
+    );
+    color: #FFFFFF;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #000000;
+        color: #D32F2F;
+    }
+}
+
+/* Network */
+#network.disconnected {
+    background: #D32F2F;
+    color: #FFFFFF;
+}
+
+/* Power Menu */
+#custom-powermenu {
+    background: #D32F2F;
+    color: #FFFFFF;
+}
+
+#custom-powermenu:hover {
+    background: #FFB300;
+    color: #000000;
+}

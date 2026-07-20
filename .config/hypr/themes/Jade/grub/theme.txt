@@ -1,0 +1,67 @@
+# =============================================================
+# JADE GRUB THEME -- Vibrant Accents (Animated)
+# =============================================================
+
+desktop-image: "background.png"
+desktop-color: "#07110E"
+title-text: ""
+
+terminal-font: "Hack Bold 18"
+terminal-width: "100%"
+terminal-height: "100%"
+
+# ---- DECORATIVE FRAME ----
++ image {
+    top = 37%-20
+    left = 50%-320
+    width = 640
+    height = 360
+    file = "frame.png"
+}
+
+# ---- BOOT MENU ----
++ boot_menu {
+    top = 37%
+    left = 50%-280
+    width = 560
+    height = 320
+
+    item_font = "Roboto Regular 27"
+    item_color = "#6C9B86"
+    selected_item_color = "#D3C6AA"
+
+    item_height = 48
+    item_padding = 10
+    item_spacing = 4
+
+    icon_width = 0
+    icon_height = 0
+    item_icon_space = 0
+
+    selected_item_pixmap_style = "select_*.png"
+
+    scrollbar = false
+}
+
+# ---- ANIMATED TIMEOUT RING ----
++ circular_progress {
+    id = "__timeout__"
+    top = 75%
+    left = 50%-45
+    width = 90
+    height = 90
+    center_bitmap = "center.png"
+    tick_bitmap = "tick.png"
+    num_ticks = 18
+}
+
+# ---- HINT ----
++ label {
+    top = 92%
+    left = 0
+    width = 100%
+    align = "center"
+    text = "Arrow Keys: Navigate   Enter: Select   e: Edit   c: Console"
+    font = "Hack Bold 18"
+    color = "#6C9B86"
+}

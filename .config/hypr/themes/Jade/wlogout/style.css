@@ -1,0 +1,66 @@
+/* ============================================================
+   Jade Theme — Wlogout Style
+   Sharp, boxy, dark jade aesthetic.
+   ============================================================ */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 14px;
+}
+
+window {
+    background-color: rgba(17, 28, 24, 0.85);
+}
+
+button {
+    color: #C1C497;
+    background-color: #111C18;
+    outline-style: none;
+    border: 2px solid #23372B;
+    border-width: 2px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 10px;
+}
+
+button:focus {
+    background-color: #23372B;
+    background-size: 25%;
+}
+
+button:hover {
+    background-color: #509475;
+    color: #111C18;
+    border-color: #509475;
+    background-size: 30%;
+    transition: all 0.3s ease;
+}
+
+#lock {
+    background-image: url("/usr/share/wlogout/icons/lock.png");
+}
+
+#logout {
+    background-image: url("/usr/share/wlogout/icons/logout.png");
+}
+
+#suspend {
+    background-image: url("/usr/share/wlogout/icons/suspend.png");
+}
+
+#shutdown {
+    background-image: url("/usr/share/wlogout/icons/shutdown.png");
+}
+
+#hibernate {
+    background-image: url("/usr/share/wlogout/icons/hibernate.png");
+}
+
+#reboot {
+    background-image: url("/usr/share/wlogout/icons/reboot.png");
+}

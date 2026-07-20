@@ -1,0 +1,152 @@
+// ============================================================
+// Waybar Layout: Extended
+// Everything from default plus system monitors and extras.
+// ============================================================
+{
+    "reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "height": 30,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature",
+        "backlight",
+        "bluetooth",
+        "network",
+        "pulseaudio",
+        "battery"
+    ],
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "clock": {
+        "format": "{:%A %H:%M}",
+        "format-alt": "{:%d %B %Y — W%V}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "󰍛 {usage}%",
+        "tooltip-format": "CPU: {usage}%",
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": " {percentage}%",
+        "tooltip-format": "RAM: {used:.1f}G / {total:.1f}G",
+        "on-click": "kitty -e btop"
+    },
+
+    "disk": {
+        "interval": 60,
+        "format": "󰋊 {percentage_used}%",
+        "tooltip-format": "{path}: {used} / {total}",
+        "path": "/"
+    },
+
+    "temperature": {
+        "format": " {temperatureC}°C",
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "tooltip-format": "Temperature: {temperatureC}°C"
+    },
+
+    "backlight": {
+        "format": "󰃟 {percent}%",
+        "tooltip-format": "Brightness: {percent}%",
+        "scroll-step": 5
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "󰂅",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-full": "󰂅",
+        "tooltip-format": "{timeTo} — {power:.1f}W",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
+    },
+
+    "network": {
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format": "{icon}",
+        "format-wifi": "{icon} {essid}",
+        "format-ethernet": "󰀂 {ifname}",
+        "format-disconnected": "󰤮 Offline",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 5,
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-off": "󰂲 Off",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {device_alias}",
+        "format-no-controller": "",
+        "tooltip-format": "Devices: {num_connections}",
+        "on-click": "blueman-manager"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  muted",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "tooltip-format": "{desc} — {volume}%"
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    }
+}

@@ -1,0 +1,52 @@
+# =============================================================
+# LUMON GRUB THEME 
+# Exact match of the provided mockup UI.
+# =============================================================
+
+desktop-image: "background.jpg"
+title-text: ""
+
+terminal-font: "Hack Bold 18"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ boot_menu {
+    top = 40%
+    left = 28%
+    width = 44%
+    height = 20%
+
+    item_font = "Roboto Regular 27"
+    item_color = "#6C9CAE"
+    selected_item_color = "#0B1924"
+    item_height = 36
+    item_padding = 5
+    item_spacing = 15
+    item_icon_space = 0
+    icon_width = 0
+    icon_height = 0
+
+    selected_item_pixmap_style = "select_*.png"
+    menu_pixmap_style = "menu_*.png"
+}
+
++ label {
+    id = "__timeout__"
+    top = 70%
+    left = 0
+    width = 100%
+    align = "center"
+    text = "Booting in %d seconds..."
+    font = "Hack Bold 18"
+    color = "#9FDDF2"
+}
+
++ label {
+    top = 85%
+    left = 0
+    width = 100%
+    align = "center"
+    text = "Use ↑ and ↓ to select an entry. Press Enter to boot."
+    font = "Hack Bold 18"
+    color = "#6C9CAE"
+}

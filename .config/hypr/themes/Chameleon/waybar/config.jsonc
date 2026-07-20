@@ -1,0 +1,35 @@
+{
+  "layer": "top",
+  "output": ["*"],
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "/home/uxna/.config/hypr/themes/Chameleon/waybar/modules/*.jsonc"
+  ],
+  // ? Groups per side
+  "modules-left": ["group/leaf-inverse"],
+  "modules-center": ["group/pill-in#center"],
+  "modules-right": ["group/leaf"],
+
+  "group/leaf-inverse": {
+    "orientation": "inherit",
+    "modules": ["hyprland/workspaces"]
+  },
+  "group/pill-in#center": {
+    "orientation": "inherit",
+    "modules": ["clock"]
+  },
+  "group/leaf": {
+    "orientation": "inherit",
+    "modules": [
+      "tray",
+      "bluetooth",
+      "network",
+      "pulseaudio",
+      "battery"
+    ]
+  }
+}

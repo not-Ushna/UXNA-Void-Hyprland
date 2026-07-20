@@ -1,0 +1,53 @@
+desktop-image: "background.png"
+desktop-color: "#000000"
+title-text: ""
+terminal-font: "Hack Bold 18"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ image {
+    top = 37%-20
+    left = 50%-320
+    width = 640
+    height = 360
+    file = "frame.png"
+}
+
++ boot_menu {
+    top = 37%
+    left = 50%-280
+    width = 560
+    height = 320
+    item_font = "DejaVu Sans Mono 24"
+    item_color = "#E0E0E0"
+    selected_item_color = "#D32F2F"
+    item_height = 48
+    item_padding = 10
+    item_spacing = 4
+    selected_item_pixmap_style = "select_*.png"
+    scrollbar = false
+}
+
++ progress_bar {
+    id = "__timeout__"
+    top = 80%
+    left = 50%-250
+    width = 500
+    height = 20
+    show_text = true
+    font = "DejaVu Sans Mono 14"
+    text_color = "#000000"
+    fg_color = "#FFB300"
+    bg_color = "#000000"
+    border_color = "#D32F2F"
+}
+
++ label {
+    top = 92%
+    left = 0
+    width = 100%
+    align = "center"
+    text = "SYSTEM READY // AWAITING COMMAND"
+    font = "Hack Bold 18"
+    color = "#FFB300"
+}

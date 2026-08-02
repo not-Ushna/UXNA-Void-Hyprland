@@ -49,8 +49,8 @@ ln -sf "$WALLPAPER" "$HOME/.cache/current_wallpaper"
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Run pywal                                                           ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-# Use colorthief backend to extract raw palette
-wal -i "$WALLPAPER" --backend colorthief -q -n -s -t || true
+# Use the default 'wal' (imagemagick) backend for accurate natural colors
+wal -i "$WALLPAPER" --backend wal -q -n -s -t || true
 
 # Wait for pywal to finish writing cache
 sleep 0.3
@@ -61,6 +61,8 @@ sleep 0.3
 # color1–color6 = the 6 most vivid, hue-diverse colors in the image (boosted).
 # color8–color14 = dimmed versions of those same colors.
 # background/foreground preserved from pywal's initial extraction.
+# (Disabled: Using native pywal output instead for better accuracy)
+if false; then
 python3 << 'PYEOF'
 import os, colorsys, json
 from colorthief import ColorThief
@@ -198,6 +200,7 @@ if os.path.exists(colors_json):
 
 print(f"Chameleon palette (from wallpaper): accent={accent_colors[0]} bg={bg_hex}")
 PYEOF
+fi
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Re-source the enhanced colors (Python rewrote colors.sh above)      ║

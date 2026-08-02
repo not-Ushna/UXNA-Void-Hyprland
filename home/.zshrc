@@ -1,48 +1,60 @@
-# ╔══════════════════════════════════════════════════════╗
-# ║  ~/.zshrc  ·  uxna's Zsh configuration             ║
-# ╚══════════════════════════════════════════════════════╝
+# ╭──────────────────────────────────────────────────────────────────────────╮
+# │                                                                          │
+# │                              ~ / . Z S H R C                             │
+# │                                                                          │
+# │                      UXNA's Aesthetic Environment                        │
+# │                                                                          │
+# ╰──────────────────────────────────────────────────────────────────────────╯
+#
+#  EDIT INSTRUCTIONS: 
+#  - This file controls how your terminal behaves, looks, and feels.
+#  - To apply any changes you make here, type: `source ~/.zshrc` in your terminal.
+#  - Comment out a line by adding a `#` at the start of it.
+#  - Uncomment a line by removing the `#` at the start of it.
 
-# --- Powerlevel10k Instant Prompt ------------------------------
-# Must stay at the very top of .zshrc.
-# Anything requiring console input must go ABOVE this block.
+# ============================================================================
+#  01. POWERLEVEL10K PROMPT INITIALIZATION
+# ============================================================================
+# NOTE: This must stay at the very top of .zshrc. 
+# It handles instant prompt rendering for blazing fast terminal startups.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# --- Oh-My-Zsh -------------------------------------------------
+# ============================================================================
+#  02. OH-MY-ZSH CONFIGURATION
+# ============================================================================
 export ZSH="$HOME/.oh-my-zsh"
+
+# 🎨 Prompt Theme
+# Change this if you don't want to use Powerlevel10k (e.g. "robbyrussell").
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# --- OMZ Options (uncomment to enable) -------------------------
-# CASE_SENSITIVE="true"
-# HYPHEN_INSENSITIVE="true"
-# zstyle ':omz:update' mode disabled   # disable auto-updates
-# zstyle ':omz:update' mode auto       # update automatically
-# zstyle ':omz:update' mode reminder   # remind me to update
-# zstyle ':omz:update' frequency 13
-# DISABLE_MAGIC_FUNCTIONS="true"
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-# ENABLE_CORRECTION="true"
-# COMPLETION_WAITING_DOTS="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-# HIST_STAMPS="yyyy-mm-dd"
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ⚙️ Optional Settings
+# Uncomment (remove the #) to enable any of these tweaks.
+# CASE_SENSITIVE="true"              # Require exact casing for tab-completion
+# HYPHEN_INSENSITIVE="true"          # Treat _ and - interchangeably
+# zstyle ':omz:update' mode disabled # Stop Oh-My-Zsh from asking to update
+# DISABLE_AUTO_TITLE="true"          # Stop terminal title from changing
+# ENABLE_CORRECTION="true"           # Prompt to correct typos
 
-# --- Plugins ---------------------------------------------------
-# Curated to match installed tools — keep this list lean.
+# ============================================================================
+#  03. PLUGINS
+# ============================================================================
+# Add or remove plugins here. Keep this list lean for maximum terminal speed!
+# Available plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
-    git                      # git aliases (gst, gco, gp, gl, gd …)
-    sudo                     # press ESC twice to prepend sudo to last command
-    extract                  # `x file.tar.gz` — universal archive extractor
-    colored-man-pages         # syntax-colored man pages
+    git                       # git aliases (gst, gco, gp, gl, gd …)
+    sudo                      # press ESC twice to prepend 'sudo' to a command
+    extract                   # type `x file.tar.gz` to extract anything effortlessly
+    colored-man-pages         # syntax-colored manual pages
     common-aliases            # ll, la, l, ... standard ls aliases
-    copypath                  # `copypath` copies current dir to clipboard
-    copyfile                  # `copyfile file` copies file contents to clipboard
-    dirhistory                # Alt+← / Alt+→ to navigate directory history
-    history-substring-search  # Up/Down arrow searches history by typed prefix
+    copypath                  # type `copypath` to copy the current folder path
+    copyfile                  # type `copyfile file` to copy file contents
+    dirhistory                # Alt+← / Alt+→ to go forward/back in directory history
+    history-substring-search  # Type a few letters and use Up/Down arrow to search history
     fzf                       # Ctrl+R fuzzy history, Ctrl+T fuzzy file insert
-    npm                       # npm aliases & completions
+    npm                       # node package manager aliases
     python                    # python/pip aliases & venv helpers
     rust                      # cargo/rustup completions
     rsync                     # rsync aliases (rsync-copy, rsync-move …)
@@ -50,17 +62,43 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# --- Autosuggestions -------------------------------------------
-# Fish-style inline grey suggestions as you type (→ to accept)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)  # history first, then tab-complete
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"   # subtle grey ghost text
+# ============================================================================
+#  04. MODERN CLI REPLACEMENTS
+# ============================================================================
+# These override legacy, boring Unix commands with modern, colorful Rust rewrites.
 
-# --- Syntax Highlighting ---------------------------------------
-# Commands turn green when valid, red when unknown (must be last)
+# 📁 eza: A modern, beautiful replacement for 'ls'
+# Change --group-directories-first to customize sorting behavior.
+alias ls="eza --icons=always --color=always --group-directories-first"
+alias ll="eza --icons=always --color=always --group-directories-first -l"
+alias la="eza --icons=always --color=always --group-directories-first -la"
+
+# 📄 bat: A modern replacement for 'cat' with syntax highlighting
+# You can change --style=plain to --style=numbers to show line numbers.
+alias cat="bat --style=plain"
+
+# 🚀 zoxide: A smarter 'cd' that remembers your frequent folders
+# Type `z myfolder` instead of `cd ~/deep/path/to/myfolder`.
+eval "$(zoxide init zsh)"
+
+# ============================================================================
+#  05. TERMINAL AESTHETICS & QUALITY OF LIFE
+# ============================================================================
+
+# 👻 Autosuggestions (Fish-style)
+# Shows subtle grey ghost text of your command history as you type.
+# Press 'Right Arrow' (→) to accept the suggestion.
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+
+# 🌈 Syntax Highlighting
+# Commands turn green when valid, and red when they have a typo.
+# Note: This MUST be the last source command in this file.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-# Tweak highlight colors to match the Chameleon theme
+
+# Highlighting color tweaks (tailored to look great on Chameleon/Dark themes)
 ZSH_HIGHLIGHT_STYLES[command]="fg=cyan,bold"
 ZSH_HIGHLIGHT_STYLES[alias]="fg=cyan,bold"
 ZSH_HIGHLIGHT_STYLES[builtin]="fg=cyan"
@@ -72,21 +110,13 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=yellow"
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=yellow"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=#555555,italic"
 
-# --- User Config (uncomment to enable) -------------------------
-# export MANPATH="/usr/local/man:$MANPATH"
-# export LANG=en_US.UTF-8
-# export EDITOR='nvim'
-# export ARCHFLAGS="-arch $(uname -m)"
-# alias zshconfig="$EDITOR ~/.zshrc"
-# alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+# ============================================================================
+#  06. GITHUB SYNC & BACKUP ALIASES
+# ============================================================================
 
-# --- Powerlevel10k Prompt --------------------------------------
-# Run `p10k configure` to customize, or edit ~/.p10k.zsh directly
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# --- Sync Alias ------------------------------------------------
-# `sync` — copies active configs into ~/Projects/UXNA-Void-Hyprland
-# using rsync only (no git operations).
+# 🔄 `sync` 
+# Copies your live system configurations into your local UXNA-Void-Hyprland repo folder.
+# NOTE: It does not push to GitHub! It only updates your local git folder.
 sync_repo() {
   local repo_path="$HOME/Projects/UXNA-Void-Hyprland"
   local text_color="\e[38;5;82m"
@@ -107,15 +137,10 @@ sync_repo() {
     echo -e "$reset_color"
   }
 
-  # Spinner while rsync runs
   echo -n "Syncing configs to repository... "
   local spin=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
-  local j
-  for ((j=1; j<=2; j++)); do
-    for i in {1..10}; do
-      echo -en "\b${spin[$i]}"
-      sleep 0.05
-    done
+  local j; for ((j=1; j<=2; j++)); do
+    for i in {1..10}; do echo -en "\b${spin[$i]}"; sleep 0.05; done
   done
   echo -en "\b \b\n"
 
@@ -142,7 +167,11 @@ sync_repo() {
 }
 alias sync='sync_repo'
 
-# Helper to automatically commit and push the repo
+# 🚀 `push`
+# Automatically stages, commits, and pushes your synced configs to GitHub.
+# Usage:
+#   `push` -> Uses the default commit message
+#   `push my custom message` -> Uses your custom commit message
 push_repo() {
   local current_dir=$(pwd)
   cd "$HOME/Projects/UXNA-Void-Hyprland" || return 1
@@ -161,15 +190,16 @@ push_repo() {
 }
 alias push='push_repo'
 
-# --- Fastfetch Wrapper -----------------------------------------
-# Theme-aware fastfetch: picks the right logo/config per active theme.
-# Supports: Evangelion (random logo), Lumon, Chameleon, and fallback.
+# ============================================================================
+#  07. DYNAMIC FASTFETCH WRAPPER
+# ============================================================================
+# Overrides the 'fastfetch' command so that it automatically picks the 
+# correct logo, color scheme, and configuration for your currently active theme.
 function fastfetch() {
     local theme_dir="$HOME/.config/hypr/themes/current"
     local theme_name="$(basename "$(readlink -f "$theme_dir")" 2>/dev/null)"
 
     if [[ "$theme_name" == "Evangelion" ]]; then
-        # Pick a random logo from the Evangelion theme assets
         local logos=("logo1.txt" "logo2.txt" "logo3.txt" "logo.png" "default")
         local idx=$(( RANDOM % ${#logos[@]} + 1 ))
         local rand_logo=${logos[$idx]}
@@ -192,7 +222,6 @@ function fastfetch() {
         return
 
     elif [[ "$theme_name" == "Lumon" ]]; then
-        # 50/50 between custom logo and Void logo
         if (( RANDOM % 2 == 0 )); then
             command fastfetch --logo "$theme_dir/fastfetch/logo.txt" "$@"
         else
@@ -206,18 +235,15 @@ function fastfetch() {
         return
     fi
 
-    # Fallback — default fastfetch behavior
+    # Fallback to default behavior if the theme isn't explicitly configured above
     command fastfetch "$@"
 }
 
-# --- Modern CLI Replacements -----------------------------------
-# eza: better ls with colors and icons
-alias ls="eza --icons=always --color=always --group-directories-first"
-alias ll="eza --icons=always --color=always --group-directories-first -l"
-alias la="eza --icons=always --color=always --group-directories-first -la"
+# ============================================================================
+#  08. POWERLEVEL10K PROMPT CONFIGURATION
+# ============================================================================
+# Source the .p10k.zsh configuration file to style the prompt.
+# Run `p10k configure` in the terminal to visually rebuild this file.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# bat: better cat with syntax highlighting
-alias cat="bat --style=plain"
-
-# zoxide: smarter cd
-eval "$(zoxide init zsh)"
+# End of ~/.zshrc

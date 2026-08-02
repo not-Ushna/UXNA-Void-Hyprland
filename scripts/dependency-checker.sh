@@ -1,0 +1,156 @@
+#!/bin/bash
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Dependency Checker — UXNA Void Hyprland                            ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+# Scans your system for every required dependency and reports which are
+# installed and which are missing. Run this before a fresh install or
+# after cloning to verify your environment is complete.
+#
+# Usage:
+#   bash scripts/check-deps.sh
+#   bash scripts/check-deps.sh --fix   # Auto-install missing packages via xbps
+
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Colors & formatting                                                 ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+RESET="\e[0m"
+BOLD="\e[1m"
+DIM="\e[2m"
+GREEN="\e[38;5;82m"
+RED="\e[38;5;196m"
+YELLOW="\e[38;5;226m"
+CYAN="\e[38;5;51m"
+PURPLE="\e[38;5;141m"
+WHITE="\e[38;5;255m"
+ICON_OK="✓"
+ICON_FAIL="✗"
+ICON_WARN="!"
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Dependency lists by category                                        ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+declare -A CATEGORIES
+declare -A CATEGORY_LABELS
+
+CATEGORIES[core]="hyprland waybar dunst kitty thunar hyprlock wlogout swayidle"
+CATEGORY_LABELS[core]="Core"
+
+CATEGORIES[utilities]="grim slurp wl-copy cliphist brightnessctl nmcli blueman pavucontrol"
+CATEGORY_LABELS[utilities]="Utilities"
+
+CATEGORIES[theming]="wal nwg-look kvantummanager qt5ct qt6ct"
+CATEGORY_LABELS[theming]="Theming"
+
+CATEGORIES[shell]="zsh fastfetch eza bat zoxide"
+CATEGORY_LABELS[shell]="Shell"
+
+CATEGORIES[rofi]="rofi"
+CATEGORY_LABELS[rofi]="Launcher"
+
+CATEGORY_ORDER=(core utilities theming shell rofi)
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Counters                                                            ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+MISSING_PKGS=()
+FOUND_COUNT=0
+TOTAL_COUNT=0
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Helper functions                                                    ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+check_command() {
+  local cmd="$1"
+  TOTAL_COUNT=$((TOTAL_COUNT + 1))
+  if command -v "$cmd" &>/dev/null; then
+    printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}%s${RESET}\n" "$cmd" "$(command -v "$cmd")"
+    FOUND_COUNT=$((FOUND_COUNT + 1))
+    return 0
+  fi
+  if xbps-query "$cmd" &>/dev/null 2>&1; then
+    printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}(xbps: installed)${RESET}\n" "$cmd"
+    FOUND_COUNT=$((FOUND_COUNT + 1))
+    return 0
+  fi
+  printf "    ${RED}${ICON_FAIL}${RESET} ${WHITE}%-22s${RESET} ${DIM}${RED}not found${RESET}\n" "$cmd"
+  MISSING_PKGS+=("$cmd")
+  return 1
+}
+
+check_font() {
+  local font_name="$1"
+  TOTAL_COUNT=$((TOTAL_COUNT + 1))
+  if fc-list | grep -qi "${font_name%% *}"; then
+    printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}(fc-list found)${RESET}\n" "$font_name"
+    FOUND_COUNT=$((FOUND_COUNT + 1))
+    return 0
+  fi
+  printf "    ${YELLOW}${ICON_WARN}${RESET} ${WHITE}%-22s${RESET} ${DIM}${YELLOW}not detected${RESET}\n" "$font_name"
+  return 1
+}
+
+print_category() {
+  local label="$1"
+  echo ""
+  echo -e "  ${BOLD}${CYAN}${label}${RESET}"
+  echo -e "  ${DIM}$(printf '─%.0s' {1..50})${RESET}"
+}
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Banner                                                              ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+echo ""
+echo -e "${BOLD}${PURPLE}"
+echo "  ╔══════════════════════════════════════════════════════════╗"
+echo "  ║  UXNA - Void Hyprland - Dependency Checker              ║"
+echo "  ╚══════════════════════════════════════════════════════════╝"
+echo -e "${RESET}"
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Scan each category                                                  ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+for cat in "${CATEGORY_ORDER[@]}"; do
+  print_category "${CATEGORY_LABELS[$cat]}"
+  for pkg in ${CATEGORIES[$cat]}; do
+    check_command "$pkg"
+  done
+done
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Fonts                                                               ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+print_category "Fonts"
+check_font "JetBrains Mono Nerd"
+check_font "Nerd Fonts"
+
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Summary                                                             ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+MISSING_COUNT=${#MISSING_PKGS[@]}
+echo ""
+echo -e "  ${DIM}$(printf '═%.0s' {1..60})${RESET}"
+
+if [[ $MISSING_COUNT -eq 0 ]]; then
+  echo -e "  ${GREEN}${BOLD}${ICON_OK} All ${FOUND_COUNT}/${TOTAL_COUNT} dependencies are installed. You're good to go!${RESET}"
+else
+  echo -e "  ${YELLOW}${BOLD}${ICON_WARN} ${FOUND_COUNT}/${TOTAL_COUNT} found — ${RED}${MISSING_COUNT} missing:${RESET}"
+  echo ""
+  for pkg in "${MISSING_PKGS[@]}"; do
+    echo -e "      ${RED}${ICON_FAIL}${RESET} $pkg"
+  done
+  echo ""
+  if [[ "${1:-}" == "--fix" ]]; then
+    echo -e "  ${CYAN}${BOLD}Installing missing packages via xbps...${RESET}"
+    echo ""
+    sudo xbps-install -y "${MISSING_PKGS[@]}" && \
+      echo -e "  ${GREEN}${BOLD}${ICON_OK} Done! All missing packages installed.${RESET}" || \
+      echo -e "  ${RED}${BOLD}${ICON_FAIL} Some packages failed. Check output above.${RESET}"
+  else
+    echo -e "  ${DIM}Tip: Run with ${CYAN}--fix${RESET}${DIM} to auto-install missing packages:${RESET}"
+    echo -e "  ${DIM}  bash scripts/check-deps.sh --fix${RESET}"
+  fi
+fi
+
+echo -e "  ${DIM}$(printf '═%.0s' {1..60})${RESET}"
+echo ""

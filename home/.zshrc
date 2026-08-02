@@ -142,6 +142,25 @@ sync_repo() {
 }
 alias sync='sync_repo'
 
+# Helper to automatically commit and push the repo
+push_repo() {
+  local current_dir=$(pwd)
+  cd "$HOME/Projects/UXNA-Void-Hyprland" || return 1
+  
+  local commit_msg="$*"
+  if [[ -z "$commit_msg" ]]; then
+    commit_msg="sync latest configs and theme updates: $(date +'%Y-%m-%d %H:%M')"
+  fi
+
+  echo -e "\e[38;5;82mCommitting and pushing to GitHub...\e[0m"
+  git add .
+  git commit -m "$commit_msg" || echo -e "\e[38;5;226mNothing new to commit.\e[0m"
+  git push
+  
+  cd "$current_dir"
+}
+alias push='push_repo'
+
 # --- Fastfetch Wrapper -----------------------------------------
 # Theme-aware fastfetch: picks the right logo/config per active theme.
 # Supports: Evangelion (random logo), Lumon, Chameleon, and fallback.

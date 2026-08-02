@@ -3,8 +3,8 @@
 THEME=$(readlink -f ~/.config/hypr/themes/current | awk -F/ '{print $NF}')
 
 if [[ "$THEME" == "Chameleon" ]]; then
-    # 3-column × 2-row glassmorphism grid
-    wlogout -b 3 -c 15 -r 15 -m 300 -L 200 -R 200 -T 100 -B 100 \
+    # 3×2 compact grid
+    wlogout -b 3 -c 0 -r 0 -m 0 -L 330 -R 330 -T 140 -B 140 \
         --layout ~/.config/hypr/themes/current/wlogout/layout \
         --css ~/.config/hypr/themes/current/wlogout/style.css
 else

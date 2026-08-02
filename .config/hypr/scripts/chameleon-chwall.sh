@@ -48,10 +48,11 @@ wal -i "$WALLPAPER" --backend colorthief -q -n -s -t || true
 
 # Wait for pywal to finish writing cache
 sleep 0.3
-
 # --- Smart Chameleon Palette Enhancer ---
-# Replaces the flat pywal output with a vibrant, hue-diverse palette
-# derived from the dominant wallpaper colors.
+# Extracts colors DIRECTLY from the wallpaper image.
+# color1–color6 = the 6 most vivid, hue-diverse colors in the image (boosted).
+# color8–color14 = dimmed versions of those same colors.
+# background/foreground preserved from pywal's initial extraction.
 python3 << 'PYEOF'
 import os, colorsys, json
 from colorthief import ColorThief
@@ -67,13 +68,27 @@ def hex_to_rgb(hx):
     hx = hx.lstrip('#')
     return tuple(int(hx[i:i+2], 16) for i in (0, 2, 4))
 
-wal_cache = os.path.expanduser("~/.cache/wal")
-colors_sh  = os.path.join(wal_cache, "colors.sh")
+def boost_color(r, g, b, sat_boost=0.2, val_floor=0.70):
+    """Lightly boost saturation and ensure minimum brightness."""
+    h, s, v = rgb_to_hsv(r, g, b)
+    s = min(1.0, s + sat_boost)
+    v = max(val_floor, v)
+    return hsv_to_hex(h, s, v)
+
+def dim_color(r, g, b):
+    """Dim a color to ~60% brightness for muted variants."""
+    h, s, v = rgb_to_hsv(r, g, b)
+    s = s * 0.65
+    v = v * 0.60
+    return hsv_to_hex(h, s, v)
+
+wal_cache   = os.path.expanduser("~/.cache/wal")
+colors_sh   = os.path.join(wal_cache, "colors.sh")
 colors_json = os.path.join(wal_cache, "colors.json")
 
 # Read existing pywal output for background/foreground/wallpaper
-bg_hex = "#0a0a0f"
-fg_hex = "#c0c0cf"
+bg_hex   = "#0a0a0f"
+fg_hex   = "#c0c0cf"
 wallpaper = ""
 if os.path.exists(colors_sh):
     with open(colors_sh) as f:
@@ -85,44 +100,46 @@ if os.path.exists(colors_sh):
             elif line.startswith("wallpaper="):
                 wallpaper = line.split("=")[1].strip().strip("'\"")
 
-# Extract a rich palette from the wallpaper
+# Extract a rich palette directly from the wallpaper image
 try:
     ct = ColorThief(wallpaper)
-    raw_palette = ct.get_palette(color_count=12, quality=1)
-except Exception:
+    # Get 16 candidates at max quality; we'll pick best 6 as accents
+    raw_palette = ct.get_palette(color_count=16, quality=1)
+except Exception as e:
+    print(f"ColorThief failed: {e}")
     exit(0)
 
-# Find the most saturated/vivid color as the primary accent
-best = max(raw_palette, key=lambda c: rgb_to_hsv(*c)[1] * rgb_to_hsv(*c)[2])
-h_accent, s_accent, v_accent = rgb_to_hsv(*best)
+# Sort by vividness (saturation * value) — most vivid colors first
+raw_palette.sort(key=lambda c: rgb_to_hsv(*c)[1] * rgb_to_hsv(*c)[2], reverse=True)
 
-# Boost saturation of the accent heavily
-s_accent = min(1.0, s_accent + 0.35)
-v_accent = max(0.75, v_accent)  # Ensure it's bright enough
+# Deduplicate by hue: keep colors whose hue is >20° apart from already-selected ones.
+# This prevents 6 nearly identical blues swamping the palette.
+selected = []
+for c in raw_palette:
+    h, s, v = rgb_to_hsv(*c)
+    too_close = any(
+        min(abs(h - rgb_to_hsv(*sc)[0]), 1.0 - abs(h - rgb_to_hsv(*sc)[0])) < 0.055
+        for sc in selected
+    )
+    if not too_close:
+        selected.append(c)
+    if len(selected) >= 6:
+        break
 
-# Generate 6 distinct hue-shifted ANSI accent colors (color1–color6)
-# Each shifted by 60° in hue for visual variety, maintaining accent's energy
-hue_offsets = [0, 0.08, 0.16, -0.08, 0.24, -0.16]
-accent_colors = []
-for offset in hue_offsets:
-    h = (h_accent + offset) % 1.0
-    # Alternate slightly between more saturated and slightly lighter
-    s = min(1.0, s_accent - abs(offset) * 0.3)
-    v = min(1.0, v_accent + abs(offset) * 0.1)
-    accent_colors.append(hsv_to_hex(h, s, v))
+# Pad to 6 if the wallpaper has few distinct hues (e.g. monochrome)
+for c in raw_palette:
+    if len(selected) >= 6:
+        break
+    if c not in selected:
+        selected.append(c)
 
-# Dim variants for color8–color14 (slightly darker/less saturated)
-dim_colors = []
-for offset in hue_offsets:
-    h = (h_accent + offset) % 1.0
-    s = min(1.0, (s_accent - abs(offset) * 0.3) * 0.7)
-    v = min(1.0, (v_accent + abs(offset) * 0.1) * 0.65)
-    dim_colors.append(hsv_to_hex(h, s, v))
+# Build palette from actual wallpaper colors (lightly boosted for vibrancy)
+accent_colors = [boost_color(*c) for c in selected[:6]]
+dim_colors    = [dim_color(*c)   for c in selected[:6]]
 
-# Compose the final 16-color palette
 palette = {
     "color0":  bg_hex,
-    "color1":  accent_colors[0],  # primary accent
+    "color1":  accent_colors[0],   # Most vivid wallpaper color
     "color2":  accent_colors[1],
     "color3":  accent_colors[2],
     "color4":  accent_colors[3],
@@ -139,7 +156,7 @@ palette = {
     "color15": fg_hex,
 }
 
-# Overwrite colors.sh
+# Overwrite colors.sh in-place (keep all other lines like FZF, LS_COLORS)
 with open(colors_sh, "r") as f:
     lines = f.readlines()
 new_lines = []
@@ -160,7 +177,6 @@ if os.path.exists(colors_json):
     with open(colors_json) as f:
         jdata = json.load(f)
     for key, val in palette.items():
-        r, g, b = hex_to_rgb(val)
         if "colors" in jdata and key in jdata["colors"]:
             jdata["colors"][key] = val
         if "special" in jdata:
@@ -172,7 +188,7 @@ if os.path.exists(colors_json):
     with open(colors_json, "w") as f:
         json.dump(jdata, f, indent=4)
 
-print(f"Chameleon palette enhanced: accent={accent_colors[0]}")
+print(f"Chameleon palette (from wallpaper): accent={accent_colors[0]} bg={bg_hex}")
 PYEOF
 
 # --- Re-source the enhanced colors (Python rewrote colors.sh above) ---
@@ -390,6 +406,185 @@ cat > "$THEME_DIR/waybar/theme.css" << EOF
 @define-color wb-hvr-fg ${background};
 EOF
 
+# --- Update Hyprlock config with current colors ----------------
+python3 << 'HYPRLOCK_EOF'
+import os, re
+
+colors_sh   = os.path.expanduser("~/.cache/wal/colors.sh")
+theme_dir   = os.path.expanduser("~/.config/hypr/themes/Chameleon")
+output_path = os.path.join(theme_dir, "hyprlock", "hyprlock.conf")
+
+# Parse colors from enhanced colors.sh
+colors = {}
+wallpaper = ""
+with open(colors_sh) as f:
+    for line in f:
+        m = re.match(r"^(color\d+|background|foreground|wallpaper)='?(#?[^']+)'?", line)
+        if m:
+            colors[m.group(1)] = m.group(2).strip().strip("'")
+        if line.startswith("wallpaper="):
+            wallpaper = line.split("=", 1)[1].strip().strip("'\"")
+
+def hex_rgba(h, alpha="ff"):
+    return f"rgba({h.lstrip('#')}{alpha})"
+
+accent  = colors.get("color4", "#00bbd3")
+accent2 = colors.get("color6", "#00ef6b")
+fail    = colors.get("color5", "#c714f1")
+bg      = colors.get("background", "#020206")
+fg      = colors.get("foreground", "#9d9da7")
+muted   = colors.get("color8", "#2f7198")
+
+conf = f"""# ╔══════════════════════════════════════════════════════════════════╗
+# ║  Hyprlock  ·  Chameleon Theme                                  ║
+# ║  Auto-regenerated by chameleon-chwall.sh on wallpaper change   ║
+# ╚══════════════════════════════════════════════════════════════════╝
+
+# --- General ---------------------------------------------------
+general {{
+    no_fade_in         = false
+    no_fade_out        = false
+    grace              = 0
+    ignore_empty_input = true
+    hide_cursor        = true
+}}
+
+# --- Background ------------------------------------------------
+# Wallpaper with blur + slight dim for readability
+background {{
+    monitor           =
+    path              = ~/.cache/current_wallpaper
+    blur_passes       = 4
+    blur_size         = 7
+    contrast          = 0.95
+    brightness        = 0.45
+    vibrancy          = 0.15
+    vibrancy_darkness = 0.35
+}}
+
+# --- Clock (large, centered) -----------------------------------
+label {{
+    monitor       =
+    text          = $TIME
+    color         = {hex_rgba(accent)}
+    font_size     = 96
+    font_family   = JetBrainsMono Nerd Font Bold
+    position      = 0, 120
+    halign        = center
+    valign        = center
+    shadow_passes = 3
+    shadow_size   = 12
+    shadow_color  = rgba(0,0,0,0.8)
+    shadow_boost  = 1.2
+}}
+
+# --- Date (below clock) ----------------------------------------
+label {{
+    monitor       =
+    text          = cmd[update:60000] date +"%A, %B %d"
+    color         = {hex_rgba(accent, "cc")}
+    font_size     = 16
+    font_family   = JetBrainsMono Nerd Font
+    position      = 0, 42
+    halign        = center
+    valign        = center
+    shadow_passes = 2
+    shadow_size   = 6
+    shadow_color  = rgba(0,0,0,0.7)
+}}
+
+# --- Password input field (glassmorphic card) -------------------
+input-field {{
+    monitor           =
+    size              = 320, 55
+    outline_thickness = 2
+    dots_size         = 0.28
+    dots_spacing      = 0.55
+    dots_center       = true
+    dots_rounding     = -1
+
+    outer_color       = {hex_rgba(accent, "66")}
+    inner_color       = {hex_rgba(bg, "99")}
+    font_color        = {hex_rgba(accent)}
+    font_family       = JetBrainsMono Nerd Font
+
+    fade_on_empty     = true
+    placeholder_text  = <span foreground="{accent}99"> Enter Password</span>
+    hide_input        = false
+
+    check_color       = {hex_rgba(accent2)}
+    fail_color        = {hex_rgba(fail)}
+    fail_text         = <span foreground="{fail}"><i> $FAIL ($ATTEMPTS)</i></span>
+    capslock_color    = {hex_rgba(muted)}
+
+    position          = 0, -80
+    halign            = center
+    valign            = center
+    rounding          = 14
+
+    shadow_passes     = 3
+    shadow_size       = 10
+    shadow_color      = rgba(0,0,0,0.6)
+}}
+
+# --- Username label (above input field) ------------------------
+label {{
+    monitor       =
+    text          =  uxna
+    color         = {hex_rgba(fg, "cc")}
+    font_size     = 13
+    font_family   = JetBrainsMono Nerd Font
+    position      = 0, -28
+    halign        = center
+    valign        = center
+    shadow_passes = 1
+    shadow_size   = 4
+    shadow_color  = rgba(0,0,0,0.5)
+}}
+
+# --- Bottom: uptime (left) -------------------------------------
+label {{
+    monitor     =
+    text        = cmd[update:60000] echo " $(uptime -p | sed 's/up //')"
+    color       = {hex_rgba(fg, "66")}
+    font_size   = 11
+    font_family = JetBrainsMono Nerd Font
+    position    = -40, 28
+    halign      = left
+    valign      = bottom
+}}
+
+# --- Bottom: battery (right) -----------------------------------
+label {{
+    monitor     =
+    text        = cmd[update:30000] bash -c 'b=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo "?"); s=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo ""); [ "$s" = "Charging" ] && echo "󰂄 $b%" || echo "󰁹 $b%"'
+    color       = {hex_rgba(fg, "66")}
+    font_size   = 11
+    font_family = JetBrainsMono Nerd Font
+    position    = -40, 28
+    halign      = right
+    valign      = bottom
+}}
+
+# --- Bottom: theme branding (center) ---------------------------
+label {{
+    monitor     =
+    text        = 🦎 CHAMELEON
+    color       = {hex_rgba(accent, "33")}
+    font_size   = 10
+    font_family = JetBrainsMono Nerd Font
+    position    = 0, 14
+    halign      = center
+    valign      = bottom
+}}
+"""
+
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+with open(output_path, "w") as f:
+    f.write(conf)
+print(f"hyprlock.conf written: accent={accent} bg={bg}")
+HYPRLOCK_EOF
+
 # --- Update Wlogout colors and SVGs ---
 python3 << 'WLOGOUT_EOF'
 import os, re, json
@@ -413,7 +608,7 @@ bg     = colors.get("background", "#000101")
 bg_hex = bg.lstrip("#")
 bg_rgb = f"{int(bg_hex[0:2],16)},{int(bg_hex[2:4],16)},{int(bg_hex[4:6],16)}"
 
-# Recolor SVG icons
+# Recolor SVG icons and convert to PNG
 if os.path.exists(icons_dir):
     for fname in os.listdir(icons_dir):
         if not fname.endswith(".svg"):
@@ -422,61 +617,90 @@ if os.path.exists(icons_dir):
         with open(p) as f:
             content = f.read()
         color = bg if "-hover" in fname else accent
-        content = re.sub(r'fill="[^"]+"', f'fill="{color}"', content)
         content = re.sub(r'stroke="[^"]+"', f'stroke="{color}"', content)
+        content = re.sub(r'fill="#[0-9a-fA-F]+"', f'fill="{color}"', content)
         with open(p, "w") as f:
             f.write(content)
+        # Convert to crisp PNG
+        png_path = p.replace(".svg", ".png")
+        os.system(f'magick -background none -size 256x256 "{p}" "{png_path}" 2>/dev/null || convert -background none -size 256x256 "{p}" "{png_path}" 2>/dev/null')
 
 # Write CSS — using only valid GTK CSS properties, glassmorphism card design
 ax_hex = accent.lstrip("#")
 ar, ag, ab = int(ax_hex[0:2],16), int(ax_hex[2:4],16), int(ax_hex[4:6],16)
 accent_rgb = f"{ar},{ag},{ab}"
 
-css = f"""/* Chameleon — Wlogout Glassmorphism Cards (auto-generated by chameleon-chwall.sh) */
+css = f"""/* ╔══════════════════════════════════════════════════════════════╗
+   ║  Wlogout Style  ·  Chameleon Theme                         ║
+   ║  Auto-regenerated by chameleon-chwall.sh on wallpaper change║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+/* --- Reset ------------------------------------------------- */
 * {{
     background-image: none;
     font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+    all: unset;
 }}
-window {{ background-color: rgba({bg_rgb}, 0.78); }}
-button {{
-    background-color: rgba({bg_rgb}, 0.55);
-    border: 1px solid rgba({accent_rgb}, 0.35);
-    border-radius: 18px;
-    color: rgba({ar},{ag},{ab}, 0.7);
-    font-size: 13px;
-    font-weight: 700;
-    margin: 12px;
-    padding-bottom: 25px;
-    background-repeat: no-repeat;
-    background-position: center 30%;
-    background-size: 38%;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
-    transition: all 200ms ease;
-}}
-button:hover, button:focus {{
-    background-color: rgba({accent_rgb}, 0.12);
-    border: 1px solid {accent};
+
+/* --- Window Background ------------------------------------- */
+window {{
+    background-color: rgba({bg_rgb}, 0.82);   /* Dark overlay behind cards */
     color: {accent};
-    box-shadow:
-        0 0 0 1px rgba({accent_rgb}, 0.6),
-        0 0 35px rgba({accent_rgb}, 0.35),
-        0 8px 32px rgba(0,0,0,0.5);
-    background-size: 42%;
-    outline: none;
 }}
-#lock      {{ background-image: image(url("{icons_dir}/lock.svg")); }}
-#logout    {{ background-image: image(url("{icons_dir}/logout.svg")); }}
-#suspend   {{ background-image: image(url("{icons_dir}/suspend.svg")); }}
-#shutdown  {{ background-image: image(url("{icons_dir}/shutdown.svg")); }}
-#hibernate {{ background-image: image(url("{icons_dir}/hibernate.svg")); }}
-#reboot    {{ background-image: image(url("{icons_dir}/reboot.svg")); }}
-#lock:hover, #lock:focus           {{ background-image: image(url("{icons_dir}/lock-hover.svg")); }}
-#logout:hover, #logout:focus       {{ background-image: image(url("{icons_dir}/logout-hover.svg")); }}
-#suspend:hover, #suspend:focus     {{ background-image: image(url("{icons_dir}/suspend-hover.svg")); }}
-#shutdown:hover, #shutdown:focus   {{ background-image: image(url("{icons_dir}/shutdown-hover.svg")); }}
-#hibernate:hover, #hibernate:focus {{ background-image: image(url("{icons_dir}/hibernate-hover.svg")); }}
-#reboot:hover, #reboot:focus       {{ background-image: image(url("{icons_dir}/reboot-hover.svg")); }}
+
+/* --- Button Cards (default state) -------------------------- */
+button {{
+    background-color: rgba({bg_rgb}, 0.85);            /* Card background */
+    border:           1px solid rgba({accent_rgb}, 0.2);/* Subtle accent border */
+    border-radius:    12px;
+    color:            rgba({accent_rgb}, 0.55);          /* Muted accent text */
+    font-size:        12px;
+    font-weight:      600;
+    letter-spacing:   0.08em;
+    margin:           8px;
+    padding-bottom:   24px;
+
+    /* Icon — positioned above the label */
+    background-repeat:   no-repeat;
+    background-position: center calc(50% - 14px);
+    background-size:     40px;
+
+    transition: background-color 150ms ease,
+                border-color     150ms ease,
+                color            150ms ease,
+                box-shadow       150ms ease;
+
+    min-height: 0;
+}}
+
+/* --- Button Cards (hover / focus state) -------------------- */
+button:hover,
+button:focus {{
+    background-color: rgba({accent_rgb}, 0.1);         /* Tinted card on hover */
+    border-color:     rgba({accent_rgb}, 0.6);
+    color:            {accent};
+    box-shadow:       0 0 24px rgba({accent_rgb}, 0.2); /* Glow */
+    background-size:  44px;                           /* Slight icon scale */
+    outline:          none;
+}}
+
+/* --- Icons (per-button background images) ------------------ */
+#lock      {{ background-image: url("{icons_dir}/lock.png"); }}
+#logout    {{ background-image: url("{icons_dir}/logout.png"); }}
+#suspend   {{ background-image: url("{icons_dir}/suspend.png"); }}
+#shutdown  {{ background-image: url("{icons_dir}/shutdown.png"); }}
+#hibernate {{ background-image: url("{icons_dir}/hibernate.png"); }}
+#reboot    {{ background-image: url("{icons_dir}/reboot.png"); }}
+
+/* --- Icons (hover state — same PNGs, styling handled by button:hover) --- */
+#lock:hover,      #lock:focus      {{ background-image: url("{icons_dir}/lock-hover.png"); }}
+#logout:hover,    #logout:focus    {{ background-image: url("{icons_dir}/logout-hover.png"); }}
+#suspend:hover,   #suspend:focus   {{ background-image: url("{icons_dir}/suspend-hover.png"); }}
+#shutdown:hover,  #shutdown:focus  {{ background-image: url("{icons_dir}/shutdown-hover.png"); }}
+#hibernate:hover, #hibernate:focus {{ background-image: url("{icons_dir}/hibernate-hover.png"); }}
+#reboot:hover,    #reboot:focus    {{ background-image: url("{icons_dir}/reboot-hover.png"); }}
 """
+
 
 css_path = os.path.join(theme_dir, "wlogout", "style.css")
 with open(css_path, "w") as f:
@@ -611,5 +835,134 @@ pkill thunar 2>/dev/null || true
 
 # --- Notify ---
 notify-send "🦎 Chameleon" "Palette from: $(basename "$WALLPAPER")" -t 3000
+
+# --- Update VS Code & Antigravity IDE Colors ---
+python3 << 'EOF'
+import os, json, re
+
+colors_sh = os.path.expanduser("~/.cache/wal/colors.sh")
+vscode_settings = "/home/uxna/.var/app/com.visualstudio.code/config/Code/User/settings.json"
+ide_settings = os.path.expanduser("~/.config/Antigravity IDE/User/settings.json")
+
+colors = {}
+if os.path.exists(colors_sh):
+    with open(colors_sh) as f:
+        for line in f:
+            m = re.match(r"^(color\d+|background|foreground)='?(#[0-9a-fA-F]+)'?", line)
+            if m:
+                colors[m.group(1)] = m.group(2)
+
+bg      = colors.get("background", "#0c0b07")
+fg      = colors.get("foreground", "#b1b0a7")
+accent  = colors.get("color1",     "#b2773b")
+accent2 = colors.get("color2",     "#a4b237")
+accent3 = colors.get("color3",     "#6db276")
+muted   = colors.get("color8",     "#675748")
+
+def hex_add(h, amount):
+    h = h.lstrip("#")
+    r, g, b = int(h[0:2],16), int(h[2:4],16), int(h[4:6],16)
+    r = max(0, min(255, r + amount))
+    g = max(0, min(255, g + amount))
+    b = max(0, min(255, b + amount))
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+def alpha(h, a):
+    return h + a
+
+bg_light   = hex_add(bg, 12)
+bg_sidebar = hex_add(bg, 6)
+bg_input   = hex_add(bg, 18)
+bg_hover   = hex_add(bg, 22)
+border     = hex_add(muted, -20)
+
+color_theme = {
+    "editor.background":                            bg_light,
+    "editor.foreground":                            fg,
+    "editor.lineHighlightBackground":               alpha(accent, "15"),
+    "editor.selectionBackground":                   alpha(accent, "44"),
+    "editor.selectionHighlightBackground":          alpha(accent, "22"),
+    "editor.inactiveSelectionBackground":           alpha(accent, "22"),
+    "editor.wordHighlightBackground":               alpha(accent, "33"),
+    "editor.findMatchBackground":                   alpha(accent2, "55"),
+    "editor.findMatchHighlightBackground":          alpha(accent2, "33"),
+    "editorLineNumber.foreground":                  alpha(muted, "cc"),
+    "editorLineNumber.activeForeground":            accent,
+    "editorCursor.foreground":                      accent,
+    "editorWhitespace.foreground":                  alpha(muted, "44"),
+    "editorIndentGuide.background1":                alpha(muted, "44"),
+    "editorIndentGuide.activeBackground1":          alpha(accent, "66"),
+    "editorRuler.foreground":                       alpha(muted, "44"),
+    "sideBar.background":                           bg_sidebar,
+    "sideBar.foreground":                           fg,
+    "sideBar.border":                               alpha(border, "88"),
+    "sideBarSectionHeader.background":              bg,
+    "sideBarSectionHeader.foreground":              accent,
+    "activityBar.background":                       bg,
+    "activityBar.foreground":                       fg,
+    "activityBar.inactiveForeground":               alpha(muted, "cc"),
+    "activityBar.border":                           alpha(border, "66"),
+    "activityBarBadge.background":                  accent,
+    "activityBarBadge.foreground":                  bg,
+    "titleBar.activeBackground":                    bg,
+    "titleBar.activeForeground":                    fg,
+    "titleBar.inactiveBackground":                  bg,
+    "titleBar.inactiveForeground":                  alpha(fg, "77"),
+    "titleBar.border":                              alpha(border, "55"),
+    "tab.activeBackground":                         bg_light,
+    "tab.activeForeground":                         fg,
+    "tab.inactiveBackground":                       bg_sidebar,
+    "tab.activeBorder":                             accent,
+    "tab.hoverBackground":                          bg_hover,
+    "editorGroupHeader.tabsBackground":             bg,
+    "statusBar.background":                         bg,
+    "statusBar.foreground":                         fg,
+    "statusBar.border":                             alpha(border, "55"),
+    "statusBar.noFolderBackground":                 bg,
+    "statusBar.debuggingBackground":                accent,
+    "panel.background":                             bg_sidebar,
+    "panel.border":                                 alpha(border, "88"),
+    "terminal.background":                          bg,
+    "terminal.foreground":                          fg,
+    "terminal.ansiBlack":                           colors.get("color0", "#0c0b07"),
+    "terminal.ansiRed":                             colors.get("color1", "#b2773b"),
+    "terminal.ansiGreen":                           colors.get("color2", "#a4b237"),
+    "terminal.ansiYellow":                          colors.get("color3", "#6db276"),
+    "terminal.ansiBlue":                            colors.get("color4", "#89b27c"),
+    "terminal.ansiMagenta":                         colors.get("color5", "#b26b3b"),
+    "terminal.ansiCyan":                            colors.get("color6", "#b29849"),
+    "terminal.ansiWhite":                           colors.get("color7", "#b1b0a7"),
+    "terminalCursor.foreground":                    accent,
+    "terminalCursor.background":                    bg,
+    "dropdown.background":                          bg_input,
+    "dropdown.border":                              alpha(border, "88"),
+    "input.background":                             bg_input,
+    "input.border":                                 alpha(border, "88"),
+    "scrollbarSlider.background":                   alpha(muted, "44"),
+    "scrollbarSlider.hoverBackground":              alpha(muted, "88"),
+    "scrollbarSlider.activeBackground":             alpha(accent, "88"),
+    "gitDecoration.addedResourceForeground":        accent2,
+    "gitDecoration.modifiedResourceForeground":     accent,
+    "gitDecoration.deletedResourceForeground":      colors.get("color5", "#b26b3b"),
+    "button.background":                            accent,
+    "button.foreground":                            bg,
+    "list.activeSelectionBackground":               alpha(accent, "33"),
+    "list.hoverBackground":                         alpha(accent, "15"),
+}
+
+for path in [vscode_settings, ide_settings]:
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        try:
+            with open(path) as f:
+                settings = json.load(f)
+        except Exception:
+            settings = {}
+        settings["workbench.colorCustomizations"] = color_theme
+        with open(path, "w") as f:
+            json.dump(settings, f, indent=4)
+    except Exception:
+        pass
+EOF
 
 echo "✓ Chameleon recolored from: $WALLPAPER"

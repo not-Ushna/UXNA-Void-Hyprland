@@ -13,7 +13,7 @@
     padding = 12
     horizontal_padding = 12
     frame_width = 2
-    frame_color = "#c61288"
+    frame_color = "#4e4ab2"
     sort = yes
     font = "JetBrainsMono Nerd Font 11"
     line_height = 0
@@ -44,17 +44,17 @@
 [urgency_low]
     background = "#0c0708"
     foreground = "#b1a8ab"
-    frame_color = "#7f2c3a"
+    frame_color = "#754950"
     timeout = 3
 
 [urgency_normal]
     background = "#0c0708"
     foreground = "#b1a8ab"
-    frame_color = "#c61288"
+    frame_color = "#4e4ab2"
     timeout = 5
 
 [urgency_critical]
-    background = "#c40d2d"
+    background = "#c42a45"
     foreground = "#0c0708"
-    frame_color = "#c40d2d"
+    frame_color = "#c42a45"
     timeout = 0

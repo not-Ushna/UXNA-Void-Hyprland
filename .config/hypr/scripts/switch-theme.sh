@@ -85,56 +85,56 @@ fi
 # 1. Update symlink
 ln -sfn "$THEMES_DIR/$chosen" "$CURRENT_LINK"
 
-# --- Chameleon: run pywal pipeline instead of static configs ---
+# --- Component Updates ---
 if [[ "$chosen" == "Chameleon" ]]; then
     notify-send "🦎 Chameleon" "Generating palette from wallpaper..." -t 2000
     bash "$HOME/.config/hypr/scripts/chameleon-chwall.sh" 2>/dev/null || true
-    exit 0
-fi
-
-# 2. Apply wallpaper (start swww-daemon if not running)
-if ! pgrep -x swww-daemon >/dev/null 2>&1; then
-    swww-daemon &
-    sleep 0.5
-fi
-
-# Find wallpaper (try main.jpg, main.png, or first image)
-WALLPAPER=""
-for ext in jpg png jpeg webp; do
-    if [[ -f "$CURRENT_LINK/wallpapers/main.$ext" ]]; then
-        WALLPAPER="$CURRENT_LINK/wallpapers/main.$ext"
-        break
+    hyprctl reload 2>/dev/null || true
+else
+    # 2. Apply wallpaper (start swww-daemon if not running)
+    if ! pgrep -x swww-daemon >/dev/null 2>&1; then
+        swww-daemon &
+        sleep 0.5
     fi
-done
-if [[ -z "$WALLPAPER" ]]; then
-    WALLPAPER=$(find "$CURRENT_LINK/wallpapers/" -type f -name "*.jpg" -o -name "*.png" | head -1)
-fi
 
-if [[ -n "$WALLPAPER" ]]; then
-    swww img "$WALLPAPER" \
-        --transition-fps 60 \
-        --transition-type any \
-        --transition-duration 2
-fi
+    # Find wallpaper (try main.jpg, main.png, or first image)
+    WALLPAPER=""
+    for ext in jpg png jpeg webp; do
+        if [[ -f "$CURRENT_LINK/wallpapers/main.$ext" ]]; then
+            WALLPAPER="$CURRENT_LINK/wallpapers/main.$ext"
+            break
+        fi
+    done
+    if [[ -z "$WALLPAPER" ]]; then
+        WALLPAPER=$(find "$CURRENT_LINK/wallpapers/" -type f -name "*.jpg" -o -name "*.png" | head -1)
+    fi
 
-# 3. Reload Hyprland (picks up new colors.conf)
-hyprctl reload 2>/dev/null || true
+    if [[ -n "$WALLPAPER" ]]; then
+        swww img "$WALLPAPER" \
+            --transition-fps 60 \
+            --transition-type any \
+            --transition-duration 2
+    fi
 
-# 4. Restart Waybar
-pkill waybar 2>/dev/null || true
-pkill -9 waybar 2>/dev/null || true
-sleep 0.3
-WAYBAR_LAYOUT="$HOME/.config/hypr/waybar/current-layout"
-if [[ -L "$WAYBAR_LAYOUT" ]] || [[ -f "$WAYBAR_LAYOUT" ]]; then
-    nohup waybar -c "$WAYBAR_LAYOUT" -s "$CURRENT_LINK/waybar/style.css" >/dev/null 2>&1 &
-fi
+    # 3. Reload Hyprland (picks up new colors.conf)
+    hyprctl reload 2>/dev/null || true
 
-# 5. Restart Dunst
-pkill dunst 2>/dev/null || true
-sleep 0.2
-if [[ -f "$CURRENT_LINK/dunst/dunstrc" ]]; then
-    dunst -conf "$CURRENT_LINK/dunst/dunstrc" &
-    disown
+    # 4. Restart Waybar
+    pkill waybar 2>/dev/null || true
+    pkill -9 waybar 2>/dev/null || true
+    sleep 0.3
+    WAYBAR_LAYOUT="$HOME/.config/hypr/waybar/current-layout"
+    if [[ -L "$WAYBAR_LAYOUT" ]] || [[ -f "$WAYBAR_LAYOUT" ]]; then
+        nohup waybar -c "$WAYBAR_LAYOUT" -s "$CURRENT_LINK/waybar/style.css" >/dev/null 2>&1 &
+    fi
+
+    # 5. Restart Dunst
+    pkill dunst 2>/dev/null || true
+    sleep 0.2
+    if [[ -f "$CURRENT_LINK/dunst/dunstrc" ]]; then
+        dunst -conf "$CURRENT_LINK/dunst/dunstrc" &
+        disown
+    fi
 fi
 
 # 6. Apply GTK theme

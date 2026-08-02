@@ -1,17 +1,25 @@
 #!/bin/bash
 set -e
 
-ARCHIVE="$HOME/Resource/HyDE-master/Source/arcs/Grub_Pochita.tar.gz"
+# Path to the synced custom theme in this repository
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SYNCED_THEME="$REPO_ROOT/boot/grub/themes/Pochita_Pochita"
 THEMES_DIR="/boot/grub/themes"
-THEME_PATH="$THEMES_DIR/Pochita/theme.txt"
+THEME_PATH="$THEMES_DIR/Pochita_Pochita/theme.txt"
 GRUB_DEFAULT="/etc/default/grub"
 
-# 1. Create themes directory and extract
-mkdir -p "$THEMES_DIR"
-tar -xzf "$ARCHIVE" -C "$THEMES_DIR"
-echo "✓ Pochita theme extracted to $THEMES_DIR/Pochita/"
+if [ ! -d "$SYNCED_THEME" ]; then
+    echo "Error: Custom theme not found at $SYNCED_THEME"
+    echo "Make sure you have cloned the repo completely."
+    exit 1
+fi
 
-# 2. Remove any existing GRUB_THEME lines (handles duplicates/commented variants)
+# 1. Create themes directory and copy custom theme
+mkdir -p "$THEMES_DIR"
+cp -r "$SYNCED_THEME" "$THEMES_DIR/"
+echo "✓ Pochita_Pochita theme copied to $THEMES_DIR/"
+
+# 2. Remove any existing GRUB_THEME lines
 sed -i '/^#*\s*GRUB_THEME=/d' "$GRUB_DEFAULT"
 
 # 3. Insert the new GRUB_THEME line
@@ -27,4 +35,4 @@ echo "✓ GRUB_GFXMODE set"
 
 # 5. Regenerate grub.cfg
 grub-mkconfig -o /boot/grub/grub.cfg
-echo "✓ grub.cfg regenerated — Pochita will appear on next boot!"
+echo "✓ grub.cfg regenerated — Pochita_Pochita will appear on next boot!"

@@ -162,6 +162,9 @@ sync_repo() {
   local changed_files=""
   changed_files+=$(rsync -ai --delete "$HOME/.config/hypr/"      "$repo_path/.config/hypr/"      2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
   changed_files+=$'\n'$(rsync -ai --delete "$HOME/.config/fastfetch/" "$repo_path/.config/fastfetch/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
+  changed_files+=$'\n'$(rsync -ai --delete "$HOME/.config/kitty/" "$repo_path/.config/kitty/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
+  changed_files+=$'\n'$(rsync -ai "$HOME/.var/app/com.visualstudio.code/config/Code/User/settings.json" "$repo_path/vscode/settings.json" 2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
+  changed_files+=$'\n'$(rsync -ai --delete "/boot/grub/themes/Pochita_Pochita/" "$repo_path/boot/grub/themes/Pochita_Pochita/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
   changed_files+=$'\n'$(rsync -ai "$HOME/.zshrc"    "$repo_path/home/.zshrc"    2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
   changed_files+=$'\n'$(rsync -ai "$HOME/.p10k.zsh" "$repo_path/home/.p10k.zsh" 2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
 

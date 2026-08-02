@@ -12,25 +12,29 @@
 #  - Comment out a line by adding a `#` at the start of it.
 #  - Uncomment a line by removing the `#` at the start of it.
 
-# ============================================================================
-#  01. POWERLEVEL10K PROMPT INITIALIZATION
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  01. POWERLEVEL10K PROMPT INITIALIZATION                             ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # NOTE: This must stay at the very top of .zshrc. 
 # It handles instant prompt rendering for blazing fast terminal startups.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ============================================================================
-#  02. OH-MY-ZSH CONFIGURATION
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  02. OH-MY-ZSH CONFIGURATION                                         ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 export ZSH="$HOME/.oh-my-zsh"
 
-# 🎨 Prompt Theme
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  🎨 Prompt Theme                                                      ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Change this if you don't want to use Powerlevel10k (e.g. "robbyrussell").
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# ⚙️ Optional Settings
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  ⚙️ Optional Settings                                                ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Uncomment (remove the #) to enable any of these tweaks.
 # CASE_SENSITIVE="true"              # Require exact casing for tab-completion
 # HYPHEN_INSENSITIVE="true"          # Treat _ and - interchangeably
@@ -38,9 +42,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"          # Stop terminal title from changing
 # ENABLE_CORRECTION="true"           # Prompt to correct typos
 
-# ============================================================================
-#  03. PLUGINS
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  03. PLUGINS                                                         ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Add or remove plugins here. Keep this list lean for maximum terminal speed!
 # Available plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
@@ -62,37 +66,47 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# ============================================================================
-#  04. MODERN CLI REPLACEMENTS
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  04. MODERN CLI REPLACEMENTS                                         ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # These override legacy, boring Unix commands with modern, colorful Rust rewrites.
 
-# 📁 eza: A modern, beautiful replacement for 'ls'
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  📁 eza: A modern, beautiful replacement for 'ls'                     ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Change --group-directories-first to customize sorting behavior.
 alias ls="eza --icons=always --color=always --group-directories-first"
 alias ll="eza --icons=always --color=always --group-directories-first -l"
 alias la="eza --icons=always --color=always --group-directories-first -la"
 
-# 📄 bat: A modern replacement for 'cat' with syntax highlighting
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  📄 bat: A modern replacement for 'cat' with syntax highlighting      ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # You can change --style=plain to --style=numbers to show line numbers.
 alias cat="bat --style=plain"
 
-# 🚀 zoxide: A smarter 'cd' that remembers your frequent folders
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  🚀 zoxide: A smarter 'cd' that remembers your frequent folders       ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Type `z myfolder` instead of `cd ~/deep/path/to/myfolder`.
 eval "$(zoxide init zsh)"
 
-# ============================================================================
-#  05. TERMINAL AESTHETICS & QUALITY OF LIFE
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  05. TERMINAL AESTHETICS & QUALITY OF LIFE                           ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 
-# 👻 Autosuggestions (Fish-style)
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  👻 Autosuggestions (Fish-style)                                      ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Shows subtle grey ghost text of your command history as you type.
 # Press 'Right Arrow' (→) to accept the suggestion.
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 
-# 🌈 Syntax Highlighting
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  🌈 Syntax Highlighting                                               ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Commands turn green when valid, and red when they have a typo.
 # Note: This MUST be the last source command in this file.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -110,9 +124,9 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=yellow"
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=yellow"
 ZSH_HIGHLIGHT_STYLES[comment]="fg=#555555,italic"
 
-# ============================================================================
-#  06. GITHUB SYNC & BACKUP ALIASES
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  06. GITHUB SYNC & BACKUP ALIASES                                    ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 
 # 🔄 `sync` 
 # Copies your live system configurations into your local UXNA-Void-Hyprland repo folder.
@@ -167,7 +181,9 @@ sync_repo() {
 }
 alias sync='sync_repo'
 
-# 🚀 `push`
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  🚀 `push`                                                            ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Automatically stages, commits, and pushes your synced configs to GitHub.
 # Usage:
 #   `push` -> Uses the default commit message
@@ -190,9 +206,9 @@ push_repo() {
 }
 alias push='push_repo'
 
-# ============================================================================
-#  07. DYNAMIC FASTFETCH WRAPPER
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  07. DYNAMIC FASTFETCH WRAPPER                                       ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Overrides the 'fastfetch' command so that it automatically picks the 
 # correct logo, color scheme, and configuration for your currently active theme.
 function fastfetch() {
@@ -239,9 +255,9 @@ function fastfetch() {
     command fastfetch "$@"
 }
 
-# ============================================================================
-#  08. POWERLEVEL10K PROMPT CONFIGURATION
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  08. POWERLEVEL10K PROMPT CONFIGURATION                              ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # Source the .p10k.zsh configuration file to style the prompt.
 # Run `p10k configure` in the terminal to visually rebuild this file.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

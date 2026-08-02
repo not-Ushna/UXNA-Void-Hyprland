@@ -80,12 +80,15 @@ if [[ "$chosen" == "$current_theme" ]]; then
     exit 0
 fi
 
-# ---- Apply the new theme ----
-
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Apply the new theme                                                 ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 # 1. Update symlink
 ln -sfn "$THEMES_DIR/$chosen" "$CURRENT_LINK"
 
-# --- Component Updates ---
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  Component Updates                                                   ║
+# ╚══════════════════════════════════════════════════════════════════════╝
 if [[ "$chosen" == "Chameleon" ]]; then
     notify-send "🦎 Chameleon" "Generating palette from wallpaper..." -t 2000
     bash "$HOME/.config/hypr/scripts/chameleon-chwall.sh" 2>/dev/null || true

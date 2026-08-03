@@ -1,0 +1,22 @@
+/* Promised Future — GTK4 / libadwaita overrides
+   Frutiger Aero Aesthetic: Aquatic blues, bright grass-green/cyan accents */
+
+@define-color accent_color #20D0FC;
+@define-color accent_bg_color #32CD32; /* Grass green accents */
+@define-color accent_fg_color #FFFFFF;
+@define-color window_bg_color #002855; /* Deep aquatic blue */
+@define-color window_fg_color #EAF6FF;
+@define-color view_bg_color #003B73; /* Mid-water depth */
+@define-color view_fg_color #EAF6FF;
+@define-color headerbar_bg_color #002855;
+@define-color headerbar_fg_color #FFFFFF;
+@define-color card_bg_color #003B73;
+@define-color card_fg_color #EAF6FF;
+@define-color popover_bg_color #003B73;
+@define-color popover_fg_color #EAF6FF;
+@define-color sidebar_bg_color #002855;
+@define-color sidebar_fg_color #B0E0E6;
+@define-color destructive_color #FF6B6B;
+@define-color success_color #32CD32;
+@define-color warning_color #F7DC6F;
+@define-color error_color #FF6B6B;

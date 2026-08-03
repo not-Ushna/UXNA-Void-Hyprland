@@ -1,0 +1,30 @@
+/* Deep Aquatic Frutiger Aero Overrides for Diinki-Aero */
+.background, window.csd, window.solid-csd {
+    background-color: #002855 !important;
+    color: #EAF6FF !important;
+}
+
+.view, iconview, textview > text, coverflow cover, gridview > child box {
+    background-color: #003B73 !important;
+    color: #EAF6FF !important;
+}
+
+headerbar, .titlebar {
+    background-color: #001C3D !important;
+    color: #FFFFFF !important;
+}
+
+label {
+    color: #EAF6FF;
+}
+
+.dim-label {
+    color: rgba(234, 246, 255, 0.7) !important;
+}
+
+/* Ensure selected items retain their Frutiger Aero glassy blue */
+.view:selected:focus, .view:selected, iconview:selected, gridview > child:selected {
+    color: #000000 !important;
+    background-color: #CCE8FF !important;
+    background-image: linear-gradient(to bottom, #d5ecff, #c3e4fe) !important;
+}

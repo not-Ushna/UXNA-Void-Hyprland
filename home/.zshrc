@@ -112,17 +112,32 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-# Highlighting color tweaks (tailored to look great on Chameleon/Dark themes)
-ZSH_HIGHLIGHT_STYLES[command]="fg=cyan,bold"
-ZSH_HIGHLIGHT_STYLES[alias]="fg=cyan,bold"
-ZSH_HIGHLIGHT_STYLES[builtin]="fg=cyan"
-ZSH_HIGHLIGHT_STYLES[function]="fg=cyan"
-ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red,bold"
-ZSH_HIGHLIGHT_STYLES[path]="fg=white,underline"
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=yellow"
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=yellow"
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=yellow"
-ZSH_HIGHLIGHT_STYLES[comment]="fg=#555555,italic"
+local current_theme_name="$(basename "$(readlink -f "$HOME/.config/hypr/themes/current")" 2>/dev/null)"
+if [[ "$current_theme_name" == "PromisedFuture" ]]; then
+    # Highlighting color tweaks (tailored to look great on Frutiger Aero themes)
+    ZSH_HIGHLIGHT_STYLES[command]="fg=#50C8FF,bold" # Sky blue
+    ZSH_HIGHLIGHT_STYLES[alias]="fg=#50C8FF,bold"
+    ZSH_HIGHLIGHT_STYLES[builtin]="fg=#50C8FF"
+    ZSH_HIGHLIGHT_STYLES[function]="fg=#50C8FF"
+    ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=#FF6B6B,bold" # Fail red
+    ZSH_HIGHLIGHT_STYLES[path]="fg=#FFFFFF,underline" # White
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=#F7DC6F"
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=#F7DC6F"
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=#F7DC6F"
+    ZSH_HIGHLIGHT_STYLES[comment]="fg=#1A3A5C,italic"
+else
+    # Highlighting color tweaks (tailored to look great on Chameleon/Dark themes)
+    ZSH_HIGHLIGHT_STYLES[command]="fg=cyan,bold"
+    ZSH_HIGHLIGHT_STYLES[alias]="fg=cyan,bold"
+    ZSH_HIGHLIGHT_STYLES[builtin]="fg=cyan"
+    ZSH_HIGHLIGHT_STYLES[function]="fg=cyan"
+    ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red,bold"
+    ZSH_HIGHLIGHT_STYLES[path]="fg=white,underline"
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=yellow"
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=yellow"
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=yellow"
+    ZSH_HIGHLIGHT_STYLES[comment]="fg=#555555,italic"
+fi
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  06. GITHUB SYNC & BACKUP ALIASES                                    ║

@@ -127,8 +127,12 @@ else
     pkill -9 waybar 2>/dev/null || true
     sleep 0.3
     WAYBAR_LAYOUT="$HOME/.config/hypr/waybar/current-layout"
+    if [[ -f "$CURRENT_LINK/waybar/layout.jsonc" ]]; then
+        WAYBAR_LAYOUT="$CURRENT_LINK/waybar/layout.jsonc"
+    fi
     if [[ -L "$WAYBAR_LAYOUT" ]] || [[ -f "$WAYBAR_LAYOUT" ]]; then
         nohup waybar -c "$WAYBAR_LAYOUT" -s "$CURRENT_LINK/waybar/style.css" >/dev/null 2>&1 &
+        disown
     fi
 
     # 5. Restart Dunst

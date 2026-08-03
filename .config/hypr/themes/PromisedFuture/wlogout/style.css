@@ -1,0 +1,47 @@
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  Promised Future Theme — Wlogout Style                              ║
+   ║  Aurora Aero glass — teal-green depth, glossy weighted buttons.     ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 14px;
+}
+
+window {
+    background-color: rgba(0, 25, 25, 0.55);
+}
+
+button {
+    color: #FFFFFF;
+    background-color: transparent;
+    outline-style: none;
+    border: 1px solid rgba(32, 200, 160, 0.40);
+    border-radius: 8px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: 20%, 100%;
+    margin: 15px;
+    transition: all 200ms ease;
+}
+
+button:focus {
+    border: 1px solid rgba(32, 200, 160, 0.80);
+}
+
+/* ── Base: Deep teal-green glass ── */
+#lock     { background-image: url("/usr/share/wlogout/icons/lock.png"),     linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+#logout   { background-image: url("/usr/share/wlogout/icons/logout.png"),   linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+#suspend  { background-image: url("/usr/share/wlogout/icons/suspend.png"),  linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+#shutdown { background-image: url("/usr/share/wlogout/icons/shutdown.png"), linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+#hibernate{ background-image: url("/usr/share/wlogout/icons/hibernate.png"),linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+#reboot   { background-image: url("/usr/share/wlogout/icons/reboot.png"),   linear-gradient(180deg, rgba(30,120,100,0.50) 0%, rgba(30,120,100,0.15) 48%, rgba(5,50,45,0.60) 52%, rgba(0,30,28,0.70) 100%); }
+
+/* ── Hover: Brighter aurora glow ── */
+#lock:hover     { background-image: url("/usr/share/wlogout/icons/lock.png"),     linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }
+#logout:hover   { background-image: url("/usr/share/wlogout/icons/logout.png"),   linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }
+#suspend:hover  { background-image: url("/usr/share/wlogout/icons/suspend.png"),  linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }
+#shutdown:hover { background-image: url("/usr/share/wlogout/icons/shutdown.png"), linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }
+#hibernate:hover{ background-image: url("/usr/share/wlogout/icons/hibernate.png"),linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }
+#reboot:hover   { background-image: url("/usr/share/wlogout/icons/reboot.png"),   linear-gradient(180deg, rgba(50,200,160,0.55) 0%, rgba(50,200,160,0.20) 48%, rgba(20,100,80,0.60) 52%, rgba(10,70,60,0.70) 100%); border-color: rgba(32, 200, 160, 0.80); background-size: 22%, 100%; }

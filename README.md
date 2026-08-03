@@ -99,13 +99,13 @@ sudo bash ~/Projects/UXNA-Void-Hyprland/scripts/install-pochita-grub.sh
 Before installing, verify your system has every required dependency:
 
 ```bash
-bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh
+bash ~/Downloads/UXNA-Void-Hyprland/scripts/dependency-checker.sh
 ```
 
 If anything is missing, pass `--fix` to automatically install everything via `xbps`:
 
 ```bash
-bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh --fix
+bash ~/Downloads/UXNA-Void-Hyprland/scripts/dependency-checker.sh --fix
 ```
 
 The checker scans across **6 categories** — Core, Utilities, Theming, Shell, Launcher, and Fonts — and prints a clean ` / ` status for each one with a summary at the bottom.

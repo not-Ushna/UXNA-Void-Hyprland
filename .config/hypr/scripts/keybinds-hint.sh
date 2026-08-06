@@ -8,7 +8,7 @@ README_PATH="$HOME/Projects/UXNA-Void-Hyprland/README.md"
 # 4. Remove leading/trailing pipes and backticks
 # 5. Format into clean columns
 # 6. Pipe into Rofi
-awk '/## ⌨️ Keybinds/{flag=1; next} /^## /{if(flag) exit} flag' "$README_PATH" | \
+awk '/## Keybindings/{flag=1; next} /^## /{if(flag) exit} flag' "$README_PATH" | \
   grep '^|' | \
   tail -n +3 | \
   sed 's/^|//; s/|$//' | \
@@ -21,4 +21,4 @@ awk '/## ⌨️ Keybinds/{flag=1; next} /^## /{if(flag) exit} flag' "$README_PAT
     gsub(/\*\*/, "", $2);
     printf "%-35s ➜  %s\n", $1, $2
   }' | \
-  rofi -dmenu -i -p "Shortcuts" -theme ~/.config/hypr/themes/current/rofi/launcher.rasi
+  rofi -dmenu -i -p "Shortcuts" -theme ~/.config/hypr/themes/current/rofi/launcher.rasi -theme-str 'window { width: 750px; } listview { lines: 10; }'

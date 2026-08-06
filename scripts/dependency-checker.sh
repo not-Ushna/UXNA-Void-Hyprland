@@ -36,19 +36,22 @@ declare -A CATEGORY_LABELS
 CATEGORIES[core]="hyprland waybar dunst kitty thunar hyprlock wlogout swayidle"
 CATEGORY_LABELS[core]="Core"
 
-CATEGORIES[utilities]="grim slurp wl-copy cliphist brightnessctl nmcli blueman pavucontrol"
+CATEGORIES[utilities]="grim slurp wl-copy:wl-clipboard cliphist brightnessctl nmcli:NetworkManager blueman pavucontrol"
 CATEGORY_LABELS[utilities]="Utilities"
 
-CATEGORIES[theming]="wal nwg-look kvantummanager qt5ct qt6ct"
+CATEGORIES[theming]="wal:pywal nwg-look kvantummanager:kvantum qt5ct qt6ct papirus-icon-theme"
 CATEGORY_LABELS[theming]="Theming"
 
-CATEGORIES[shell]="zsh fastfetch eza bat zoxide"
+CATEGORIES[shell]="zsh fastfetch eza bat zoxide playerctl git curl wget unzip make gcc"
 CATEGORY_LABELS[shell]="Shell"
 
-CATEGORIES[rofi]="rofi"
+CATEGORIES[system]="pipewire wireplumber polkit-gnome gsettings-desktop-schemas dconf"
+CATEGORY_LABELS[system]="System"
+
+CATEGORIES[rofi]="rofi:rofi-wayland"
 CATEGORY_LABELS[rofi]="Launcher"
 
-CATEGORY_ORDER=(core utilities theming shell rofi)
+CATEGORY_ORDER=(core utilities theming shell system rofi)
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Counters                                                            ║
@@ -62,19 +65,30 @@ TOTAL_COUNT=0
 # ╚══════════════════════════════════════════════════════════════════════╝
 check_command() {
   local cmd="$1"
+  local pkg="${2:-$1}"
   TOTAL_COUNT=$((TOTAL_COUNT + 1))
-  if command -v "$cmd" &>/dev/null; then
+
+  # Special directory checks for themes
+  if [[ "$cmd" == "papirus-icon-theme" ]]; then
+    if [[ -d "/usr/share/icons/Papirus" ]]; then
+      printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}(dir found)${RESET}\n" "$cmd"
+      FOUND_COUNT=$((FOUND_COUNT + 1))
+      return 0
+    fi
+  elif [[ "$cmd" == "polkit-gnome" ]]; then
+    if [[ -d "/usr/libexec/polkit-gnome" || -f "/usr/libexec/polkit-gnome-authentication-agent-1" || -f "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]]; then
+      printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}(libexec found)${RESET}\n" "$cmd"
+      FOUND_COUNT=$((FOUND_COUNT + 1))
+      return 0
+    fi
+  elif command -v "$cmd" &>/dev/null; then
     printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}%s${RESET}\n" "$cmd" "$(command -v "$cmd")"
     FOUND_COUNT=$((FOUND_COUNT + 1))
     return 0
   fi
-  if xbps-query "$cmd" &>/dev/null 2>&1; then
-    printf "    ${GREEN}${ICON_OK}${RESET} ${WHITE}%-22s${RESET} ${DIM}(xbps: installed)${RESET}\n" "$cmd"
-    FOUND_COUNT=$((FOUND_COUNT + 1))
-    return 0
-  fi
+
   printf "    ${RED}${ICON_FAIL}${RESET} ${WHITE}%-22s${RESET} ${DIM}${RED}not found${RESET}\n" "$cmd"
-  MISSING_PKGS+=("$cmd")
+  MISSING_PKGS+=("$pkg")
   return 1
 }
 
@@ -103,7 +117,7 @@ print_category() {
 echo ""
 echo -e "${BOLD}${PURPLE}"
 echo "  ╔══════════════════════════════════════════════════════════╗"
-echo "  ║  UXNA - Void Hyprland - Dependency Checker              ║"
+echo "  ║  UXNA - Universal Hyprland - Dependency Checker         ║"
 echo "  ╚══════════════════════════════════════════════════════════╝"
 echo -e "${RESET}"
 
@@ -112,8 +126,10 @@ echo -e "${RESET}"
 # ╚══════════════════════════════════════════════════════════════════════╝
 for cat in "${CATEGORY_ORDER[@]}"; do
   print_category "${CATEGORY_LABELS[$cat]}"
-  for pkg in ${CATEGORIES[$cat]}; do
-    check_command "$pkg"
+  for item in ${CATEGORIES[$cat]}; do
+    cmd="${item%%:*}"
+    pkg="${item#*:}"
+    check_command "$cmd" "$pkg"
   done
 done
 
@@ -141,16 +157,38 @@ else
   done
   echo ""
   if [[ "${1:-}" == "--fix" ]]; then
-    echo -e "  ${CYAN}${BOLD}Installing missing packages via xbps...${RESET}"
-    echo ""
-    sudo xbps-install -y "${MISSING_PKGS[@]}" && \
-      echo -e "  ${GREEN}${BOLD}${ICON_OK} Done! All missing packages installed.${RESET}" || \
-      echo -e "  ${RED}${BOLD}${ICON_FAIL} Some packages failed. Check output above.${RESET}"
+    echo -e "  ${CYAN}${BOLD}Detecting package manager...${RESET}"
+    PM=""
+    if command -v xbps-install &> /dev/null; then
+        PM="sudo xbps-install -y"
+    elif command -v pacman &> /dev/null; then
+        PM="sudo pacman -S --noconfirm"
+    elif command -v apt-get &> /dev/null; then
+        PM="sudo apt-get update && sudo apt-get install -y"
+    elif command -v dnf &> /dev/null; then
+        PM="sudo dnf install -y"
+    elif command -v zypper &> /dev/null; then
+        PM="sudo zypper install -y"
+    fi
+    
+    if [[ -n "$PM" ]]; then
+        echo -e "  ${CYAN}${BOLD}Installing missing packages via ${PM%% *}...${RESET}"
+        echo ""
+        eval "$PM ${MISSING_PKGS[*]}" && \
+          echo -e "  ${GREEN}${BOLD}${ICON_OK} Done! All missing packages installed.${RESET}" || \
+          echo -e "  ${RED}${BOLD}${ICON_FAIL} Some packages failed. Note: package names vary by distro. Please install remaining packages manually.${RESET}"
+    else
+        echo -e "  ${RED}${BOLD}${ICON_FAIL} Unknown package manager. Please install missing packages manually.${RESET}"
+    fi
   else
     echo -e "  ${DIM}Tip: Run with ${CYAN}--fix${RESET}${DIM} to auto-install missing packages:${RESET}"
-    echo -e "  ${DIM}  bash scripts/check-deps.sh --fix${RESET}"
+    echo -e "  ${DIM}  bash scripts/dependency-checker.sh --fix${RESET}"
   fi
 fi
 
 echo -e "  ${DIM}$(printf '═%.0s' {1..60})${RESET}"
 echo ""
+
+if [[ $MISSING_COUNT -ne 0 ]]; then
+  exit 1
+fi

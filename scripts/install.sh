@@ -59,86 +59,14 @@ echo "║     A themeable Hyprland desktop for Void Linux      ║"
 echo "╚══════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
-# ---- Step 1: Install packages ----
+# ---- Step 1: Check dependencies ----
 if [[ "$INSTALL_PACKAGES" == true ]]; then
-    info "Installing system packages..."
-
-    # Core packages available in Void repos
-    PACKAGES=(
-        hyprland
-        waybar
-        rofi-wayland
-        dunst
-        kitty
-        thunar
-        hyprlock
-        wlogout
-        swayidle
-        grim
-        slurp
-        wl-clipboard
-        cliphist
-        pipewire
-        wireplumber
-        nwg-look
-        kvantum
-        qt5ct
-        qt6ct
-        polkit-gnome
-        brightnessctl
-        NetworkManager
-        blueman
-        pavucontrol
-        gsettings-desktop-schemas
-        dconf
-        papirus-icon-theme
-        zsh
-        fastfetch
-        git
-        curl
-        wget
-        unzip
-        base-devel
-        eza
-        bat
-        zoxide
-        playerctl
-        pywal
-    )
-
-    # Build the install command — ignore packages that don't exist
-    info "Syncing repositories..."
-    sudo xbps-install -Sy
-
-    info "Installing packages (some may already be installed)..."
-    for pkg in "${PACKAGES[@]}"; do
-        if xbps-query "$pkg" >/dev/null 2>&1; then
-            ok "$pkg already installed"
-        else
-            if sudo xbps-install -y "$pkg" 2>/dev/null; then
-                ok "Installed $pkg"
-            else
-                warn "Could not install $pkg — may not exist in repos or has a different name"
-            fi
-        fi
-    done
-
-    # Install fonts
-    info "Installing fonts..."
-    FONT_PACKAGES=(
-        font-jetbrains-mono-nerd
-        nerd-fonts
-        font-inter
-    )
-    for pkg in "${FONT_PACKAGES[@]}"; do
-        if xbps-query "$pkg" >/dev/null 2>&1; then
-            ok "$pkg already installed"
-        else
-            sudo xbps-install -y "$pkg" 2>/dev/null || warn "Could not install $pkg"
-        fi
-    done
-
-    ok "Package installation complete"
+    info "Verifying dependencies..."
+    if ! bash "$REPO_DIR/scripts/dependency-checker.sh"; then
+        echo ""
+        err "Missing dependencies detected! The installation will not proceed.\nPlease install them manually or run:\n  bash scripts/dependency-checker.sh --fix"
+    fi
+    ok "All dependencies are installed"
 fi
 
 # ---- Step 2: Build swww if not available ----
@@ -293,16 +221,21 @@ if command -v pipewire >/dev/null 2>&1; then
 fi
 
 info "Enabling essential services..."
-if [ -d /etc/sv/dbus ]; then
-    sudo ln -s /etc/sv/dbus /var/service/ 2>/dev/null || true
+if command -v systemctl &> /dev/null; then
+    sudo systemctl enable NetworkManager 2>/dev/null || true
+    sudo systemctl enable polkit 2>/dev/null || true
+elif command -v sv &> /dev/null || [ -d /var/service ]; then
+    if [ -d /etc/sv/dbus ]; then
+        sudo ln -s /etc/sv/dbus /var/service/ 2>/dev/null || true
+    fi
+    if [ -d /etc/sv/NetworkManager ]; then
+        sudo ln -s /etc/sv/NetworkManager /var/service/ 2>/dev/null || true
+    fi
+    if [ -d /etc/sv/polkitd ]; then
+        sudo ln -s /etc/sv/polkitd /var/service/ 2>/dev/null || true
+    fi
 fi
-if [ -d /etc/sv/NetworkManager ]; then
-    sudo ln -s /etc/sv/NetworkManager /var/service/ 2>/dev/null || true
-fi
-if [ -d /etc/sv/polkitd ]; then
-    sudo ln -s /etc/sv/polkitd /var/service/ 2>/dev/null || true
-fi
-ok "Essential services enabled"
+ok "Essential services configured"
 
 # ---- Complete ----
 echo ""

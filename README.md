@@ -1,8 +1,8 @@
 <div align="center">
 
-# UXNA · Void Hyprland
+# UXNA · Universal Hyprland
 
-**A hand-crafted, theme-aware Hyprland desktop environment for Void Linux.**  
+**A hand-crafted, distro-agnostic themeable Hyprland desktop environment.**  
 Every pixel is intentional. Every animation, scripted. Built to be yours.
 
 [![Void Linux](https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=voidlinux&logoColor=white)](https://voidlinux.org/)
@@ -15,7 +15,7 @@ Every pixel is intentional. Every animation, scripted. Built to be yours.
 
 ## Overview
 
-This is my personal Hyprland rice for Void Linux — a fully unified desktop where themes propagate across every component instantly. Choose a theme once, and everything snaps into place: window borders, terminal colors, Waybar, lock screen, notification daemon, Rofi, GTK apps, VS Code, and even GRUB.
+This is my personal Hyprland rice — a fully unified desktop where themes propagate across every component instantly. Choose a theme once, and everything snaps into place: window borders, terminal colors, Waybar, lock screen, notification daemon, Rofi, GTK apps, VS Code, and even GRUB.
 
 ### Key Highlights
 
@@ -72,7 +72,7 @@ UXNA-Void-Hyprland/
 
 ## Fresh Install
 
-You can install the entire desktop environment with a single command. This will automatically clone the repository, install all required packages via `xbps`, set up Zsh with Oh-My-Zsh and Powerlevel10k, and symlink all configuration files.
+You can install the entire desktop environment with a single command. This will automatically clone the repository, install all required packages via your package manager, set up Zsh with Oh-My-Zsh and Powerlevel10k, and symlink all configuration files.
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/not-Ushna/UXNA-Void-Hyprland/main/setup.sh)
@@ -108,42 +108,13 @@ Before installing, verify your system has every required dependency:
 bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh
 ```
 
-If anything is missing, pass `--fix` to automatically install everything via `xbps`:
+If anything is missing, pass `--fix` to automatically install everything using your package manager:
 
 ```bash
 bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh --fix
 ```
 
 The checker scans across **6 categories** — Core, Utilities, Theming, Shell, Launcher, and Fonts — and prints a clean ` / ` status for each one with a summary at the bottom.
-
----
-
-## Daily Workflow: Sync & Push
-
-This setup comes with two custom terminal commands that keep everything backed up to GitHub automatically.
-
-**`sync`** — Copies all live system configs into your local repo:
-```bash
-sync
-```
-
-**`push`** — Commits and pushes to GitHub. Supports custom messages:
-```bash
-push                               # Default: "sync latest configs and theme updates: 2026-08-02 13:13"
-push fixed chameleon animations    # Custom commit message (no quotes needed)
-```
-
-**What `sync` backs up:**
-
-| Source | Destination in Repo |
-|:---|:---|
-| `~/.config/hypr/` | `.config/hypr/` |
-| `~/.config/fastfetch/` | `.config/fastfetch/` |
-| `~/.config/kitty/` | `.config/kitty/` |
-| `~/.var/app/com.visualstudio.code/.../settings.json` | `vscode/settings.json` |
-| `/boot/grub/themes/Pochita_Pochita/` | `boot/grub/themes/Pochita_Pochita/` |
-| `~/.zshrc` | `home/.zshrc` |
-| `~/.p10k.zsh` | `home/.p10k.zsh` |
 
 ---
 

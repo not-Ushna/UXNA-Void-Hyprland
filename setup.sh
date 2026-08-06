@@ -17,10 +17,27 @@ NC='\033[0m'
 
 echo -e "${CYAN}==> Bootstrapping UXNA Void Hyprland installation...${NC}"
 
+# Detect package manager
+PM=""
+if command -v xbps-install &> /dev/null; then
+    PM="sudo xbps-install -Sy"
+elif command -v pacman &> /dev/null; then
+    PM="sudo pacman -Sy --noconfirm"
+elif command -v apt-get &> /dev/null; then
+    PM="sudo apt-get update && sudo apt-get install -y"
+elif command -v dnf &> /dev/null; then
+    PM="sudo dnf install -y"
+elif command -v zypper &> /dev/null; then
+    PM="sudo zypper install -y"
+else
+    echo -e "${RED}==> Error: Could not detect package manager. Please install git manually.${NC}"
+    exit 1
+fi
+
 # Ensure git is installed
 if ! command -v git &> /dev/null; then
-    echo -e "${CYAN}==> git not found. Installing git via xbps...${NC}"
-    sudo xbps-install -Sy git
+    echo -e "${CYAN}==> git not found. Installing git...${NC}"
+    eval "$PM git"
 fi
 
 # Clone repository

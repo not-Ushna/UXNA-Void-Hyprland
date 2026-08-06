@@ -36,6 +36,7 @@ This is my personal Hyprland rice for Void Linux — a fully unified desktop whe
 | ** Jade** | Forest-black background, active jade green borders, warm grey-green text. Boxy, square modules. | Dark / Minimal |
 | ** Lumon** | Deep slate background, pale cyan borders, muted corporate aesthetic. Inspired by *Severance*. | Dark / Modern |
 | ** Evangelion** | Absolute black background, emergency red borders, warning amber accents. Tactical alert layout. | Dark / Aggressive |
+| ** PromisedFuture** | True Frutiger Aero: Teal Aurora, Vibrant Green, Golden Warmth. Classic glassy aesthetic with high blur and drop shadows. | Glossy / Frutiger Aero |
 
 Switch themes with `Super + Shift + T` to open the visual gallery.
 

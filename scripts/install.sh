@@ -99,6 +99,11 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
         wget
         unzip
         base-devel
+        eza
+        bat
+        zoxide
+        playerctl
+        pywal
     )
 
     # Build the install command — ignore packages that don't exist
@@ -223,6 +228,15 @@ mkdir -p "$CONFIG_DIR"
 ln -sfn "$REPO_DIR/.config/hypr" "$HYPR_DIR"
 ok "Linked $HYPR_DIR → $REPO_DIR/.config/hypr"
 
+# Link kitty and fastfetch
+[[ -L "$CONFIG_DIR/kitty" ]] && rm "$CONFIG_DIR/kitty"
+ln -sfn "$REPO_DIR/.config/kitty" "$CONFIG_DIR/kitty"
+ok "Linked kitty config"
+
+[[ -L "$CONFIG_DIR/fastfetch" ]] && rm "$CONFIG_DIR/fastfetch"
+ln -sfn "$REPO_DIR/.config/fastfetch" "$CONFIG_DIR/fastfetch"
+ok "Linked fastfetch config"
+
 # ---- Step 6: Set up Waybar layouts ----
 info "Setting up Waybar layouts..."
 WAYBAR_LAYOUTS_DEST="$HYPR_DIR/waybar-layouts"
@@ -243,7 +257,7 @@ ok "Waybar layouts configured (default: $DEFAULT_LAYOUT)"
 info "Setting initial theme to $DEFAULT_THEME..."
 THEMES_DIR="$HYPR_DIR/themes"
 if [[ ! -L "$THEMES_DIR/current" ]]; then
-    ln -sfn "$THEMES_DIR/$DEFAULT_THEME" "$THEMES_DIR/current"
+    ln -sfn "$DEFAULT_THEME" "$THEMES_DIR/current"
 fi
 ok "Active theme: $DEFAULT_THEME"
 
@@ -278,6 +292,18 @@ if command -v pipewire >/dev/null 2>&1; then
     ok "PipeWire available — will start with Hyprland session"
 fi
 
+info "Enabling essential services..."
+if [ -d /etc/sv/dbus ]; then
+    sudo ln -s /etc/sv/dbus /var/service/ 2>/dev/null || true
+fi
+if [ -d /etc/sv/NetworkManager ]; then
+    sudo ln -s /etc/sv/NetworkManager /var/service/ 2>/dev/null || true
+fi
+if [ -d /etc/sv/polkitd ]; then
+    sudo ln -s /etc/sv/polkitd /var/service/ 2>/dev/null || true
+fi
+ok "Essential services enabled"
+
 # ---- Complete ----
 echo ""
 echo -e "${BOLD}${GREEN}╔══════════════════════════════════════════════════════╗${NC}"
@@ -285,17 +311,17 @@ echo -e "${BOLD}${GREEN}║          Installation Complete!                     
 echo -e "${BOLD}${GREEN}╚══════════════════════════════════════════════════════╝${NC}"
 echo ""
 echo -e "${BOLD}Keybind Cheat Sheet:${NC}"
-echo -e "  ${CYAN}Super + Return${NC}     Open terminal (Kitty)"
-echo -e "  ${CYAN}Super + D${NC}          App launcher (Rofi)"
-echo -e "  ${CYAN}Super + T${NC}          Switch theme"
-echo -e "  ${CYAN}Super + Shift + B${NC}  Cycle Waybar layout"
+echo -e "  ${CYAN}Super + T${NC}          Open terminal (Kitty)"
+echo -e "  ${CYAN}Super + A${NC}          App launcher (Rofi)"
+echo -e "  ${CYAN}Super + Shift + T${NC}  Switch theme"
+echo -e "  ${CYAN}Super + Shift + W${NC}  Change wallpaper"
 echo -e "  ${CYAN}Super + L${NC}          Lock screen"
-echo -e "  ${CYAN}Super + Shift + L${NC}  Logout menu"
+echo -e "  ${CYAN}Super + X${NC}          Power menu"
 echo -e "  ${CYAN}Super + Q${NC}          Close window"
-echo -e "  ${CYAN}Super + F${NC}          Fullscreen"
+echo -e "  ${CYAN}Shift + F11${NC}        Fullscreen"
 echo -e "  ${CYAN}Super + E${NC}          File manager (Thunar)"
 echo -e "  ${CYAN}Super + V${NC}          Clipboard history"
-echo -e "  ${CYAN}Print${NC}              Screenshot (area)"
+echo -e "  ${CYAN}Super + /${NC}          Show all keybinds"
 echo ""
 echo -e "Active theme: ${GREEN}$DEFAULT_THEME${NC}"
 echo -e "Active layout: ${GREEN}${DEFAULT_LAYOUT/layout-/}${NC}"

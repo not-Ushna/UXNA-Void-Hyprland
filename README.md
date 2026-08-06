@@ -71,10 +71,15 @@ UXNA-Void-Hyprland/
 
 ## Fresh Install
 
-Clone the repository and run the installer. It will automatically install all required packages via `xbps`, set up Zsh with Oh-My-Zsh and Powerlevel10k, and symlink all configuration files.
+You can install the entire desktop environment with a single command. This will automatically clone the repository, install all required packages via `xbps`, set up Zsh with Oh-My-Zsh and Powerlevel10k, and symlink all configuration files.
 
 ```bash
-git clone https://github.com/uxna/UXNA-Void-Hyprland.git ~/Projects/UXNA-Void-Hyprland
+bash <(curl -fsSL https://raw.githubusercontent.com/not-Ushna/UXNA-Void-Hyprland/main/setup.sh)
+```
+
+**Alternative (Manual Clone):**
+```bash
+git clone https://github.com/not-Ushna/UXNA-Void-Hyprland.git ~/Projects/UXNA-Void-Hyprland
 cd ~/Projects/UXNA-Void-Hyprland
 ./scripts/install.sh
 ```
@@ -99,13 +104,13 @@ sudo bash ~/Projects/UXNA-Void-Hyprland/scripts/install-pochita-grub.sh
 Before installing, verify your system has every required dependency:
 
 ```bash
-bash ~/Downloads/UXNA-Void-Hyprland/scripts/dependency-checker.sh
+bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh
 ```
 
 If anything is missing, pass `--fix` to automatically install everything via `xbps`:
 
 ```bash
-bash ~/Downloads/UXNA-Void-Hyprland/scripts/dependency-checker.sh --fix
+bash ~/Projects/UXNA-Void-Hyprland/scripts/dependency-checker.sh --fix
 ```
 
 The checker scans across **6 categories** — Core, Utilities, Theming, Shell, Launcher, and Fonts — and prints a clean ` / ` status for each one with a summary at the bottom.
@@ -199,7 +204,7 @@ All scripts live in `~/.config/hypr/scripts/`.
 | `Super + Scroll` | Scroll through workspaces |
 | `Super + LMB / RMB` | Drag to move / resize |
 | `Super + P` / `Print` | Capture screenshot |
-| `Super + Shift + P` | Color picker |
+
 | `Super + /` | Show keybindings hint overlay |
 | `Super + F1/F2/F3` | Set power profile (Saver / Balanced / Performance) |
 | Media Keys | System volume, media playback, and brightness |

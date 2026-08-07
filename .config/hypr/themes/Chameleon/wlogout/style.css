@@ -12,16 +12,16 @@
 
 /* --- Window Background ------------------------------------- */
 window {
-    background-color: rgba(15,14,14, 0.82);   /* Dark overlay behind cards */
-    color: #8C7431;
+    background-color: rgba(14,14,22, 0.82);   /* Dark overlay behind cards */
+    color: #B08ED0;
 }
 
 /* --- Button Cards (default state) -------------------------- */
 button {
-    background-color: rgba(15,14,14, 0.85);            /* Card background */
-    border:           1px solid rgba(140,116,49, 0.2);/* Subtle accent border */
+    background-color: rgba(14,14,22, 0.85);            /* Card background */
+    border:           1px solid rgba(176,142,208, 0.2);/* Subtle accent border */
     border-radius:    12px;
-    color:            rgba(140,116,49, 0.55);          /* Muted accent text */
+    color:            rgba(176,142,208, 0.55);          /* Muted accent text */
     font-size:        12px;
     font-weight:      600;
     letter-spacing:   0.08em;
@@ -44,10 +44,10 @@ button {
 /* --- Button Cards (hover / focus state) -------------------- */
 button:hover,
 button:focus {
-    background-color: rgba(140,116,49, 0.1);         /* Tinted card on hover */
-    border-color:     rgba(140,116,49, 0.6);
-    color:            #8C7431;
-    box-shadow:       0 0 24px rgba(140,116,49, 0.2); /* Glow */
+    background-color: rgba(176,142,208, 0.1);         /* Tinted card on hover */
+    border-color:     rgba(176,142,208, 0.6);
+    color:            #B08ED0;
+    box-shadow:       0 0 24px rgba(176,142,208, 0.2); /* Glow */
     background-size:  44px;                           /* Slight icon scale */
     outline:          none;
 }

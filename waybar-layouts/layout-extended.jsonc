@@ -123,7 +123,7 @@
     },
 
     "bluetooth": {
-        "format": " {status}",
+        "format": " {status}",
         "format-off": "󰂲 Off",
         "format-disabled": "󰂲",
         "format-connected": "󰂱 {device_alias}",

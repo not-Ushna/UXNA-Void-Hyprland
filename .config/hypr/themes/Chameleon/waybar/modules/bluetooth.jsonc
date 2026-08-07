@@ -1,9 +1,9 @@
 {
   "bluetooth": {
-    "format": "",
+    "format": "",
     "rotate": 0,
-    "format-disabled": "",
-    "format-connected": " {num_connections}",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱 {num_connections}",
     "format-connected-battery": "{icon} {num_connections}",
     // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
     "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],

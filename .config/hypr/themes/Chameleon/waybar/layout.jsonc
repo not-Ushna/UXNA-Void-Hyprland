@@ -54,6 +54,7 @@
         "modules": [
             "backlight",            // Screen brightness (scroll to adjust)
             "network",              // Wifi / ethernet
+            "bluetooth",            // Bluetooth
             "pulseaudio",           // Volume
             "pulseaudio#microphone",// Mic
             "custom/updates"        // Pending package updates

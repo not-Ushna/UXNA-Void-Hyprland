@@ -18,6 +18,7 @@
 
     "modules-right": [
         "tray",
+        "bluetooth",
         "pulseaudio",
         "network",
         "battery",
@@ -68,6 +69,16 @@
         "tooltip-format-disconnected": "Disconnected",
         "interval": 5,
         "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "Bluetooth: {status}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "blueman-manager"
     },
 
     "pulseaudio": {

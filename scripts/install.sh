@@ -224,6 +224,7 @@ info "Enabling essential services..."
 if command -v systemctl &> /dev/null; then
     sudo systemctl enable NetworkManager 2>/dev/null || true
     sudo systemctl enable polkit 2>/dev/null || true
+    sudo systemctl enable bluetooth 2>/dev/null || true
 elif command -v sv &> /dev/null || [ -d /var/service ]; then
     if [ -d /etc/sv/dbus ]; then
         sudo ln -s /etc/sv/dbus /var/service/ 2>/dev/null || true
@@ -233,6 +234,9 @@ elif command -v sv &> /dev/null || [ -d /var/service ]; then
     fi
     if [ -d /etc/sv/polkitd ]; then
         sudo ln -s /etc/sv/polkitd /var/service/ 2>/dev/null || true
+    fi
+    if [ -d /etc/sv/bluetoothd ]; then
+        sudo ln -s /etc/sv/bluetoothd /var/service/ 2>/dev/null || true
     fi
 fi
 ok "Essential services configured"

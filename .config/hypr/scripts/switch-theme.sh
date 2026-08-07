@@ -165,6 +165,13 @@ if [[ -f "$CURRENT_LINK/fastfetch/config.jsonc" ]]; then
     cp -f "$CURRENT_LINK/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc" 2>/dev/null || true
 fi
 
+# 7.6 Apply cava theme
+if [[ -f "$CURRENT_LINK/cava/config" ]]; then
+    mkdir -p "$HOME/.config/cava"
+    cp -f "$CURRENT_LINK/cava/config" "$HOME/.config/cava/config" 2>/dev/null || true
+    killall -USR2 cava 2>/dev/null || true
+fi
+
 # Reload running kitty terminals to pick up the updated current symlink
 kill -SIGUSR1 $(pgrep kitty) 2>/dev/null || true
 # 8. Update GRUB seamlessly in the background (no sudo required)

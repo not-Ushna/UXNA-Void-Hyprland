@@ -1,133 +1,100 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "file",
-    "source": "/home/uxna/.config/hypr/themes/PromisedFuture/fastfetch/void_windows_logo.txt",
-    "color": {
-      "1": "red",
-      "2": "green",
-      "3": "blue",
-      "4": "yellow",
-      "5": "light_white"
-    },
     "padding": {
-      "top": 1,
-      "left": 1,
-      "right": 2
+      "top": 2,
+      "right": 4,
+      "left": 2
     }
   },
   "display": {
-    "separator": " "
+    "separator": " ",
+    "color": {
+      "separator": "white"
+    }
   },
   "modules": [
+    "break",
     {
-      "type": "custom",
-      "format": "\u001b[36m╭──────────\u001b[32mHardware\u001b[36m──────────╮\u001b[0m"
-    },
-    {
-      "type": "host",
-      "key": "\u001b[36m│ \u001b[96m󰌢 PC:",
-      "keyColor": "cyan"
-    },
-    {
-      "type": "cpu",
-      "key": "\u001b[36m│ \u001b[32m├󰻠:",
-      "keyColor": "green"
-    },
-    {
-      "type": "gpu",
-      "key": "\u001b[36m│ \u001b[32m├󰍛:",
-      "keyColor": "green"
-    },
-    {
-      "type": "display",
-      "key": "\u001b[36m│ \u001b[32m├󰍹:",
-      "keyColor": "green"
-    },
-    {
-      "type": "disk",
-      "key": "\u001b[36m│ \u001b[33m├󰋊:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "memory",
-      "key": "\u001b[36m│ \u001b[33m├󰊚:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "swap",
-      "key": "\u001b[36m│ \u001b[33m╰󰓡:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[36m╰────────────────────────────╯\u001b[0m"
+      "type": "title",
+      "format": " \u001b[35m {1} \u001b[37m󰁔 \u001b[36m {2}"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[36m╭──────────\u001b[32mSoftware\u001b[36m──────────╮\u001b[0m"
+      "format": "\u001b[36m ╭───────────╮"
     },
     {
       "type": "os",
-      "key": "\u001b[36m│ \u001b[96m󰣇 OS:",
-      "format": "\u001b[97m{pretty-name} {arch}",
+      "key": " │  OS      │",
       "keyColor": "cyan"
     },
     {
       "type": "kernel",
-      "key": "\u001b[36m│ \u001b[96m├:",
+      "key": " │ 󰌽 Kernel  │",
       "keyColor": "cyan"
     },
     {
-      "type": "wm",
-      "key": "\u001b[36m│ \u001b[32m├󰨇:",
-      "keyColor": "green"
-    },
-    {
-      "type": "terminal",
-      "key": "\u001b[36m│ \u001b[32m├:",
-      "keyColor": "green"
-    },
-    {
       "type": "packages",
-      "key": "\u001b[36m│ \u001b[33m├󰏖:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "terminalfont",
-      "key": "\u001b[36m│ \u001b[33m╰A:",
-      "keyColor": "yellow"
+      "key": " │ 󰏗 Packages│",
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
-      "format": "\u001b[36m╰────────────────────────────╯\u001b[0m"
+      "format": "\u001b[36m ╰───────────╯"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[36m╭───\u001b[32mAge / Uptime / Colors\u001b[36m────╮\u001b[0m"
+      "format": "\u001b[35m ╭───────────╮"
     },
     {
-      "type": "command",
-      "key": "\u001b[36m│ \u001b[33m󰔠 OS Age:",
-      "keyColor": "yellow",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      "type": "shell",
+      "key": " │  Shell   │",
+      "keyColor": "magenta"
     },
     {
-      "type": "uptime",
-      "key": "\u001b[36m│ \u001b[32m󰅐 Uptime:",
-      "keyColor": "green"
+      "type": "wm",
+      "key": " │  WM      │",
+      "keyColor": "magenta"
     },
     {
-      "type": "colors",
-      "key": "\u001b[36m│ \u001b[97m󰏘 Colors:",
-      "symbol": "circle",
-      "keyColor": "white"
+      "type": "terminal",
+      "key": " │  Terminal│",
+      "keyColor": "magenta"
     },
     {
       "type": "custom",
-      "format": "\u001b[36m╰────────────────────────────╯\u001b[0m"
+      "format": "\u001b[35m ╰───────────╯"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[35m ╭───────────╮"
+    },
+    {
+      "type": "cpu",
+      "key": " │ 󰍛 CPU     │",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "key": " │ 󰢮 GPU     │",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": " │ 󰘚 Memory  │",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[35m ╰───────────╯"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle"
     }
   ]
 }

@@ -1,0 +1,14 @@
+[general]
+mode = normal
+framerate = 60
+
+[input]
+method = pulse
+
+[color]
+gradient = 1
+gradient_count = 4
+gradient_color_1 = '#FF3B30'
+gradient_color_2 = '#FF9500'
+gradient_color_3 = '#34C759'
+gradient_color_4 = '#9FDDF2'

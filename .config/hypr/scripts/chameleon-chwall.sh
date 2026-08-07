@@ -54,6 +54,14 @@ wal -i "$WALLPAPER" --backend wal -q -n -s -t || true
 
 # Wait for pywal to finish writing cache
 sleep 0.3
+
+# Update Cava Config for Chameleon
+mkdir -p "$HOME/.config/hypr/themes/Chameleon/cava"
+cp -f "$HOME/.cache/wal/cava.config" "$HOME/.config/hypr/themes/Chameleon/cava/config" 2>/dev/null || true
+mkdir -p "$HOME/.config/cava"
+cp -f "$HOME/.cache/wal/cava.config" "$HOME/.config/cava/config" 2>/dev/null || true
+killall -USR2 cava 2>/dev/null || true
+
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Smart Chameleon Palette Enhancer                                    ║
 # ╚══════════════════════════════════════════════════════════════════════╝

@@ -172,6 +172,13 @@ if [[ -f "$CURRENT_LINK/cava/config" ]]; then
     killall -USR2 cava 2>/dev/null || true
 fi
 
+# 7.7 Apply Zen Browser theme
+ZEN_CHROME="$HOME/.var/app/app.zen_browser.zen/.zen/peppvdil.Default (release)/chrome"
+if [[ -f "$CURRENT_LINK/zen/userChrome.css" ]]; then
+    mkdir -p "$ZEN_CHROME"
+    cp -f "$CURRENT_LINK/zen/userChrome.css" "$ZEN_CHROME/userChrome.css" 2>/dev/null || true
+fi
+
 # Reload running kitty terminals to pick up the updated current symlink
 kill -SIGUSR1 $(pgrep kitty) 2>/dev/null || true
 # 8. Update GRUB seamlessly in the background (no sudo required)

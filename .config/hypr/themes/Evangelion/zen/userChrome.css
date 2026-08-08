@@ -1,0 +1,143 @@
+/* ═══════════════════════════════════════════════════════════════
+ *  EVANGELION — Zen Browser userChrome.css
+ *  NERV HQ: Black steel, MAGI red accents, warning amber
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ── Core palette variables ── */
+:root {
+  --eva-bg:         #000000;
+  --eva-surface:    #1A0808;
+  --eva-surface2:   #2D1010;
+  --eva-border:     #3A1515;
+  --eva-red:        #D32F2F;
+  --eva-red-dim:    #B71C1C;
+  --eva-amber:      #FFB300;
+  --eva-orange:     #F57C00;
+  --eva-green:      #388E3C;
+  --eva-grey:       #455A64;
+  --eva-text:       #E0E0E0;
+  --eva-text-dim:   #9E9E9E;
+
+  /* Zen overrides */
+  --zen-colors-primary: #D32F2F !important;
+  --zen-primary-color: #D32F2F !important;
+  --zen-colors-secondary: #FFB300 !important;
+  --zen-colors-tertiary: #388E3C !important;
+  --zen-colors-border: #3A1515 !important;
+
+  --toolbar-bgcolor: #000000 !important;
+  --toolbar-color: #E0E0E0 !important;
+  --lwt-toolbar-field-background-color: #1A0808 !important;
+  --lwt-toolbar-field-color: #E0E0E0 !important;
+  --lwt-toolbar-field-border-color: #3A1515 !important;
+  --lwt-toolbar-field-focus: #2D1010 !important;
+  --lwt-toolbar-field-focus-color: #E0E0E0 !important;
+
+  --lwt-accent-color: #000000 !important;
+  --lwt-text-color: #E0E0E0 !important;
+  --arrowpanel-background: #1A0808 !important;
+  --arrowpanel-color: #E0E0E0 !important;
+  --arrowpanel-border-color: #3A1515 !important;
+
+  --tab-selected-bgcolor: #D32F2F !important;
+  --tab-selected-textcolor: #FFFFFF !important;
+
+  --urlbar-box-bgcolor: #1A0808 !important;
+  --urlbar-box-hover-bgcolor: #2D1010 !important;
+  --urlbar-box-active-bgcolor: #3A1515 !important;
+  --urlbar-box-text-color: #E0E0E0 !important;
+
+  --sidebar-background-color: #000000 !important;
+  --sidebar-text-color: #E0E0E0 !important;
+  --sidebar-border-color: #3A1515 !important;
+}
+
+/* ── Sidebar / vertical tabs ── */
+#zen-sidebar-web-panel,
+#zen-sidebar-web-panel-wrapper,
+#navigator-toolbox,
+#sidebar-box {
+  background-color: var(--eva-bg) !important;
+  color: var(--eva-text) !important;
+}
+
+/* ── Tab bar ── */
+.tabbrowser-tab {
+  color: var(--eva-text-dim) !important;
+}
+.tabbrowser-tab[selected="true"],
+.tabbrowser-tab[visuallyselected="true"] {
+  color: #FFFFFF !important;
+}
+.tabbrowser-tab[selected="true"] .tab-background,
+.tabbrowser-tab[visuallyselected="true"] .tab-background {
+  background: linear-gradient(135deg, var(--eva-red) 0%, var(--eva-red-dim) 100%) !important;
+  border: none !important;
+}
+.tabbrowser-tab:hover:not([selected]) .tab-background {
+  background-color: var(--eva-surface) !important;
+}
+
+/* ── URL bar ── */
+#urlbar-background {
+  background-color: var(--eva-surface) !important;
+  border: 1px solid var(--eva-border) !important;
+}
+#urlbar[focused] #urlbar-background {
+  border-color: var(--eva-red) !important;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.3) !important;
+}
+#urlbar-input {
+  color: var(--eva-text) !important;
+}
+
+/* ── Main browser area chrome ── */
+#navigator-toolbox {
+  border-bottom: 1px solid var(--eva-border) !important;
+}
+
+/* ── Panels & popups ── */
+panel,
+menupopup,
+.panel-arrowcontent {
+  background-color: var(--eva-surface) !important;
+  color: var(--eva-text) !important;
+  border: 1px solid var(--eva-border) !important;
+}
+menuitem:hover,
+.panel-arrowcontent toolbarbutton:hover {
+  background-color: var(--eva-surface2) !important;
+}
+
+/* ── Buttons ── */
+toolbarbutton:hover {
+  background-color: var(--eva-surface2) !important;
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-color: var(--eva-red-dim) var(--eva-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(211, 47, 47, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+/* ── Find bar ── */
+.findbar-container {
+  background-color: var(--eva-surface) !important;
+  color: var(--eva-text) !important;
+}
+
+/* ── Compact mode zen buttons ── */
+#zen-sidebar-top-buttons,
+#zen-sidebar-foot-buttons {
+  background-color: var(--eva-bg) !important;
+}
+#zen-sidebar-top-buttons toolbarbutton:hover,
+#zen-sidebar-foot-buttons toolbarbutton:hover {
+  background-color: var(--eva-surface2) !important;
+}

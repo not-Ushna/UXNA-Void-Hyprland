@@ -1,0 +1,143 @@
+/* ═══════════════════════════════════════════════════════════════
+ *  LUMON — Zen Browser userChrome.css
+ *  Severance: Cold slate blues, clinical cyan, corporate steel
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ── Core palette variables ── */
+:root {
+  --lumon-bg:        #0B1924;
+  --lumon-surface:   #112332;
+  --lumon-surface2:  #1A3040;
+  --lumon-border:    #2A4858;
+  --lumon-cyan:      #9FDDF2;
+  --lumon-cyan-muted:#5A8A9E;
+  --lumon-green:     #34C759;
+  --lumon-red:       #FF3B30;
+  --lumon-orange:    #FF9500;
+  --lumon-text:      #9FDDF2;
+  --lumon-text-dim:  #5A8A9E;
+  --lumon-white:     #FFFFFF;
+
+  /* Zen overrides */
+  --zen-colors-primary: #9FDDF2 !important;
+  --zen-primary-color: #9FDDF2 !important;
+  --zen-colors-secondary: #5A8A9E !important;
+  --zen-colors-tertiary: #34C759 !important;
+  --zen-colors-border: #2A4858 !important;
+
+  --toolbar-bgcolor: #0B1924 !important;
+  --toolbar-color: #9FDDF2 !important;
+  --lwt-toolbar-field-background-color: #112332 !important;
+  --lwt-toolbar-field-color: #9FDDF2 !important;
+  --lwt-toolbar-field-border-color: #2A4858 !important;
+  --lwt-toolbar-field-focus: #1A3040 !important;
+  --lwt-toolbar-field-focus-color: #9FDDF2 !important;
+
+  --lwt-accent-color: #0B1924 !important;
+  --lwt-text-color: #9FDDF2 !important;
+  --arrowpanel-background: #112332 !important;
+  --arrowpanel-color: #9FDDF2 !important;
+  --arrowpanel-border-color: #2A4858 !important;
+
+  --tab-selected-bgcolor: #2A4858 !important;
+  --tab-selected-textcolor: #9FDDF2 !important;
+
+  --urlbar-box-bgcolor: #112332 !important;
+  --urlbar-box-hover-bgcolor: #1A3040 !important;
+  --urlbar-box-active-bgcolor: #2A4858 !important;
+  --urlbar-box-text-color: #9FDDF2 !important;
+
+  --sidebar-background-color: #0B1924 !important;
+  --sidebar-text-color: #9FDDF2 !important;
+  --sidebar-border-color: #2A4858 !important;
+}
+
+/* ── Sidebar / vertical tabs ── */
+#zen-sidebar-web-panel,
+#zen-sidebar-web-panel-wrapper,
+#navigator-toolbox,
+#sidebar-box {
+  background-color: var(--lumon-bg) !important;
+  color: var(--lumon-text) !important;
+}
+
+/* ── Tab bar ── */
+.tabbrowser-tab {
+  color: var(--lumon-text-dim) !important;
+}
+.tabbrowser-tab[selected="true"],
+.tabbrowser-tab[visuallyselected="true"] {
+  color: var(--lumon-cyan) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-background,
+.tabbrowser-tab[visuallyselected="true"] .tab-background {
+  background: linear-gradient(135deg, var(--lumon-border) 0%, var(--lumon-surface2) 100%) !important;
+  border-left: 2px solid var(--lumon-cyan) !important;
+}
+.tabbrowser-tab:hover:not([selected]) .tab-background {
+  background-color: var(--lumon-surface) !important;
+}
+
+/* ── URL bar ── */
+#urlbar-background {
+  background-color: var(--lumon-surface) !important;
+  border: 1px solid var(--lumon-border) !important;
+}
+#urlbar[focused] #urlbar-background {
+  border-color: var(--lumon-cyan) !important;
+  box-shadow: 0 0 6px rgba(159, 221, 242, 0.2) !important;
+}
+#urlbar-input {
+  color: var(--lumon-text) !important;
+}
+
+/* ── Main browser area chrome ── */
+#navigator-toolbox {
+  border-bottom: 1px solid var(--lumon-border) !important;
+}
+
+/* ── Panels & popups ── */
+panel,
+menupopup,
+.panel-arrowcontent {
+  background-color: var(--lumon-surface) !important;
+  color: var(--lumon-text) !important;
+  border: 1px solid var(--lumon-border) !important;
+}
+menuitem:hover,
+.panel-arrowcontent toolbarbutton:hover {
+  background-color: var(--lumon-surface2) !important;
+}
+
+/* ── Buttons ── */
+toolbarbutton:hover {
+  background-color: var(--lumon-surface2) !important;
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-color: var(--lumon-cyan-muted) var(--lumon-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(159, 221, 242, 0.25) !important;
+  color: var(--lumon-white) !important;
+}
+
+/* ── Find bar ── */
+.findbar-container {
+  background-color: var(--lumon-surface) !important;
+  color: var(--lumon-text) !important;
+}
+
+/* ── Compact mode zen buttons ── */
+#zen-sidebar-top-buttons,
+#zen-sidebar-foot-buttons {
+  background-color: var(--lumon-bg) !important;
+}
+#zen-sidebar-top-buttons toolbarbutton:hover,
+#zen-sidebar-foot-buttons toolbarbutton:hover {
+  background-color: var(--lumon-surface2) !important;
+}

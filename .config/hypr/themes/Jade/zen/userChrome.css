@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════════════════════════════
+ *  JADE — Zen Browser userChrome.css
+ *  Deep forest: Dark greens, jade accents, gold/pink highlights
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ── Core palette variables ── */
+:root {
+  --jade-bg:        #111C18;
+  --jade-surface:   #23372B;
+  --jade-surface2:  #2E4637;
+  --jade-border:    #3A5545;
+  --jade-green:     #509475;
+  --jade-bright:    #549E6A;
+  --jade-cyan:      #2DD5B7;
+  --jade-gold:      #D7C995;
+  --jade-pink:      #D2689C;
+  --jade-yellow:    #E5C736;
+  --jade-red:       #FF5345;
+  --jade-text:      #F6F5DD;
+  --jade-text-dim:  #ACD4CF;
+
+  /* Zen overrides */
+  --zen-colors-primary: #509475 !important;
+  --zen-primary-color: #509475 !important;
+  --zen-colors-secondary: #2DD5B7 !important;
+  --zen-colors-tertiary: #D7C995 !important;
+  --zen-colors-border: #3A5545 !important;
+
+  --toolbar-bgcolor: #111C18 !important;
+  --toolbar-color: #F6F5DD !important;
+  --lwt-toolbar-field-background-color: #23372B !important;
+  --lwt-toolbar-field-color: #F6F5DD !important;
+  --lwt-toolbar-field-border-color: #3A5545 !important;
+  --lwt-toolbar-field-focus: #2E4637 !important;
+  --lwt-toolbar-field-focus-color: #F6F5DD !important;
+
+  --lwt-accent-color: #111C18 !important;
+  --lwt-text-color: #F6F5DD !important;
+  --arrowpanel-background: #23372B !important;
+  --arrowpanel-color: #F6F5DD !important;
+  --arrowpanel-border-color: #3A5545 !important;
+
+  --tab-selected-bgcolor: #509475 !important;
+  --tab-selected-textcolor: #F6F5DD !important;
+
+  --urlbar-box-bgcolor: #23372B !important;
+  --urlbar-box-hover-bgcolor: #2E4637 !important;
+  --urlbar-box-active-bgcolor: #3A5545 !important;
+  --urlbar-box-text-color: #F6F5DD !important;
+
+  --sidebar-background-color: #111C18 !important;
+  --sidebar-text-color: #F6F5DD !important;
+  --sidebar-border-color: #3A5545 !important;
+}
+
+/* ── Sidebar / vertical tabs ── */
+#zen-sidebar-web-panel,
+#zen-sidebar-web-panel-wrapper,
+#navigator-toolbox,
+#sidebar-box {
+  background-color: var(--jade-bg) !important;
+  color: var(--jade-text) !important;
+}
+
+/* ── Tab bar ── */
+.tabbrowser-tab {
+  color: var(--jade-text-dim) !important;
+}
+.tabbrowser-tab[selected="true"],
+.tabbrowser-tab[visuallyselected="true"] {
+  color: var(--jade-text) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-background,
+.tabbrowser-tab[visuallyselected="true"] .tab-background {
+  background: linear-gradient(135deg, var(--jade-green) 0%, var(--jade-bright) 100%) !important;
+  border: none !important;
+}
+.tabbrowser-tab:hover:not([selected]) .tab-background {
+  background-color: var(--jade-surface) !important;
+}
+
+/* ── URL bar ── */
+#urlbar-background {
+  background-color: var(--jade-surface) !important;
+  border: 1px solid var(--jade-border) !important;
+}
+#urlbar[focused] #urlbar-background {
+  border-color: var(--jade-cyan) !important;
+  box-shadow: 0 0 6px rgba(45, 213, 183, 0.25) !important;
+}
+#urlbar-input {
+  color: var(--jade-text) !important;
+}
+
+/* ── Main browser area chrome ── */
+#navigator-toolbox {
+  border-bottom: 1px solid var(--jade-border) !important;
+}
+
+/* ── Panels & popups ── */
+panel,
+menupopup,
+.panel-arrowcontent {
+  background-color: var(--jade-surface) !important;
+  color: var(--jade-text) !important;
+  border: 1px solid var(--jade-border) !important;
+}
+menuitem:hover,
+.panel-arrowcontent toolbarbutton:hover {
+  background-color: var(--jade-surface2) !important;
+}
+
+/* ── Buttons ── */
+toolbarbutton:hover {
+  background-color: var(--jade-surface2) !important;
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-color: var(--jade-green) var(--jade-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(80, 148, 117, 0.35) !important;
+  color: var(--jade-text) !important;
+}
+
+/* ── Find bar ── */
+.findbar-container {
+  background-color: var(--jade-surface) !important;
+  color: var(--jade-text) !important;
+}
+
+/* ── Compact mode zen buttons ── */
+#zen-sidebar-top-buttons,
+#zen-sidebar-foot-buttons {
+  background-color: var(--jade-bg) !important;
+}
+#zen-sidebar-top-buttons toolbarbutton:hover,
+#zen-sidebar-foot-buttons toolbarbutton:hover {
+  background-color: var(--jade-surface2) !important;
+}

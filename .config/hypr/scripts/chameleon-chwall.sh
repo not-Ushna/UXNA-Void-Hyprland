@@ -62,6 +62,13 @@ mkdir -p "$HOME/.config/cava"
 cp -f "$HOME/.cache/wal/cava.config" "$HOME/.config/cava/config" 2>/dev/null || true
 killall -USR2 cava 2>/dev/null || true
 
+# Update Zen Browser theme for Chameleon
+ZEN_CHROME="$HOME/.var/app/app.zen_browser.zen/.zen/peppvdil.Default (release)/chrome"
+mkdir -p "$ZEN_CHROME"
+mkdir -p "$HOME/.config/hypr/themes/Chameleon/zen"
+cp -f "$HOME/.cache/wal/zen-userChrome.css" "$HOME/.config/hypr/themes/Chameleon/zen/userChrome.css" 2>/dev/null || true
+cp -f "$HOME/.cache/wal/zen-userChrome.css" "$ZEN_CHROME/userChrome.css" 2>/dev/null || true
+
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Smart Chameleon Palette Enhancer                                    ║
 # ╚══════════════════════════════════════════════════════════════════════╝

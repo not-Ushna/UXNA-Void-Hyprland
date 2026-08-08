@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════════════════════════════
+ *  PROMISED FUTURE — Zen Browser userChrome.css
+ *  Aurora: Deep teal-navy, glowing green/mint, futuristic glow
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ── Core palette variables ── */
+:root {
+  --pf-bg:          #002E3D;
+  --pf-surface:     #004050;
+  --pf-surface2:    #005565;
+  --pf-border:      #00687A;
+  --pf-teal:        #20C8A0;
+  --pf-green:       #00FF7F;
+  --pf-mint:        #72EFDD;
+  --pf-aqua:        #48CAE4;
+  --pf-gold:        #F0D850;
+  --pf-coral:       #FF6B6B;
+  --pf-soft-mint:   #ADE8D4;
+  --pf-text:        #EAFFF5;
+  --pf-text-dim:    #80C8B0;
+
+  /* Zen overrides */
+  --zen-colors-primary: #20C8A0 !important;
+  --zen-primary-color: #20C8A0 !important;
+  --zen-colors-secondary: #72EFDD !important;
+  --zen-colors-tertiary: #F0D850 !important;
+  --zen-colors-border: #00687A !important;
+
+  --toolbar-bgcolor: #002E3D !important;
+  --toolbar-color: #EAFFF5 !important;
+  --lwt-toolbar-field-background-color: #004050 !important;
+  --lwt-toolbar-field-color: #EAFFF5 !important;
+  --lwt-toolbar-field-border-color: #00687A !important;
+  --lwt-toolbar-field-focus: #005565 !important;
+  --lwt-toolbar-field-focus-color: #EAFFF5 !important;
+
+  --lwt-accent-color: #002E3D !important;
+  --lwt-text-color: #EAFFF5 !important;
+  --arrowpanel-background: #004050 !important;
+  --arrowpanel-color: #EAFFF5 !important;
+  --arrowpanel-border-color: #00687A !important;
+
+  --tab-selected-bgcolor: #20C8A0 !important;
+  --tab-selected-textcolor: #002E3D !important;
+
+  --urlbar-box-bgcolor: #004050 !important;
+  --urlbar-box-hover-bgcolor: #005565 !important;
+  --urlbar-box-active-bgcolor: #00687A !important;
+  --urlbar-box-text-color: #EAFFF5 !important;
+
+  --sidebar-background-color: #002E3D !important;
+  --sidebar-text-color: #EAFFF5 !important;
+  --sidebar-border-color: #00687A !important;
+}
+
+/* ── Sidebar / vertical tabs ── */
+#zen-sidebar-web-panel,
+#zen-sidebar-web-panel-wrapper,
+#navigator-toolbox,
+#sidebar-box {
+  background-color: var(--pf-bg) !important;
+  color: var(--pf-text) !important;
+}
+
+/* ── Tab bar ── */
+.tabbrowser-tab {
+  color: var(--pf-text-dim) !important;
+}
+.tabbrowser-tab[selected="true"],
+.tabbrowser-tab[visuallyselected="true"] {
+  color: var(--pf-bg) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-background,
+.tabbrowser-tab[visuallyselected="true"] .tab-background {
+  background: linear-gradient(135deg, var(--pf-teal) 0%, var(--pf-mint) 100%) !important;
+  border: none !important;
+}
+.tabbrowser-tab:hover:not([selected]) .tab-background {
+  background-color: var(--pf-surface) !important;
+}
+
+/* ── URL bar ── */
+#urlbar-background {
+  background-color: var(--pf-surface) !important;
+  border: 1px solid var(--pf-border) !important;
+}
+#urlbar[focused] #urlbar-background {
+  border-color: var(--pf-teal) !important;
+  box-shadow: 0 0 8px rgba(32, 200, 160, 0.3) !important;
+}
+#urlbar-input {
+  color: var(--pf-text) !important;
+}
+
+/* ── Main browser area chrome ── */
+#navigator-toolbox {
+  border-bottom: 1px solid var(--pf-border) !important;
+}
+
+/* ── Panels & popups ── */
+panel,
+menupopup,
+.panel-arrowcontent {
+  background-color: var(--pf-surface) !important;
+  color: var(--pf-text) !important;
+  border: 1px solid var(--pf-border) !important;
+}
+menuitem:hover,
+.panel-arrowcontent toolbarbutton:hover {
+  background-color: var(--pf-surface2) !important;
+}
+
+/* ── Buttons ── */
+toolbarbutton:hover {
+  background-color: var(--pf-surface2) !important;
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-color: var(--pf-teal) var(--pf-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(32, 200, 160, 0.3) !important;
+  color: var(--pf-text) !important;
+}
+
+/* ── Find bar ── */
+.findbar-container {
+  background-color: var(--pf-surface) !important;
+  color: var(--pf-text) !important;
+}
+
+/* ── Compact mode zen buttons ── */
+#zen-sidebar-top-buttons,
+#zen-sidebar-foot-buttons {
+  background-color: var(--pf-bg) !important;
+}
+#zen-sidebar-top-buttons toolbarbutton:hover,
+#zen-sidebar-foot-buttons toolbarbutton:hover {
+  background-color: var(--pf-surface2) !important;
+}

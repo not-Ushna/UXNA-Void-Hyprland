@@ -1,3 +1,12 @@
 /* Chameleon Theme Waybar Styles (Ported HyDE Modules) */
 @import "/home/uxna/.local/share/waybar/styles/defaults.css";
 @import "theme.css";
+
+* {
+    font-size: 14px;
+    min-height: 24px;
+}
+
+window#waybar {
+    padding: 2px 0;
+}

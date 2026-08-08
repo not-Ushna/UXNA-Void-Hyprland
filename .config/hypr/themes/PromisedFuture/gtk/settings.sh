@@ -34,9 +34,9 @@ fi
 # Icon theme, cursor, font
 if command -v gsettings > /dev/null 2>&1; then
     if [ -d "$AERO_ICON_DEST" ]; then
-        gsettings set org.gnome.desktop.interface icon-theme "crystal-remix-icon-theme-diinki-version"
+        gsettings set org.gnome.desktop.interface icon-theme "Windows-7"
     else
-        gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+        gsettings set org.gnome.desktop.interface icon-theme "Windows-7"
     fi
     gsettings set org.gnome.desktop.interface cursor-theme "Windows-7-Aero-Cursors_Default"
     gsettings set org.gnome.desktop.interface cursor-size 24

@@ -10,7 +10,7 @@ gsettings set org.gnome.desktop.wm.preferences theme "Adwaita"
 
 # Icon and cursor themes
 if command -v gsettings >/dev/null 2>&1; then
-    gsettings set org.gnome.desktop.interface icon-theme "Colloid-Teal-Dark"
+    gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-9FDDF2-dark"
     gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Classic"
     gsettings set org.gnome.desktop.interface cursor-size 24
     gsettings set org.gnome.desktop.interface font-name "Inter 11"

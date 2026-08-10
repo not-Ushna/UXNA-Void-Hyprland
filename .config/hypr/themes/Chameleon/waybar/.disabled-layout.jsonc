@@ -1,0 +1,10 @@
+{
+  "group/pill#right1": [
+    "custom/updates"
+  ],
+  "group/pill#right2": [
+    "memory",
+    "temperature",
+    "custom/weather"
+  ]
+}

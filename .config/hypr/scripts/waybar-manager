@@ -1,0 +1,5 @@
+#!/bin/bash
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  Waybar Modules Manager — Launch wrapper                     ║
+# ╚══════════════════════════════════════════════════════════════╝
+exec python3 "$(dirname "$0")/waybar-modules-manager.py" "$@"

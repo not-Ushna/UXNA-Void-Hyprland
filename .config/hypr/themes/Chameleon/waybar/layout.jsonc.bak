@@ -52,6 +52,7 @@
       "tray",
       "battery",
       "cpu",
+      "custom/weather",
       "custom/power",
       "custom/spotify"
     ]

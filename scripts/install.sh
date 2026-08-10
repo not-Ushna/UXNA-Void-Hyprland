@@ -1,8 +1,8 @@
 #!/bin/bash
 # ============================================================
-# install.sh — Void Linux Hyprland Themes Installer
+# install.sh — Universal Hyprland Themes Installer
 #
-# Sets up a complete Hyprland desktop environment on Void Linux
+# Sets up a complete distro-agnostic Hyprland desktop environment
 # with theme switching support.
 #
 # Usage:
@@ -54,8 +54,8 @@ err()   { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 # ---- Banner ----
 echo -e "${BOLD}${CYAN}"
 echo "╔══════════════════════════════════════════════════════╗"
-echo "║     Void-Hyprland Themes Installer                  ║"
-echo "║     A themeable Hyprland desktop for Void Linux      ║"
+echo "║     Universal Hyprland Themes Installer             ║"
+echo "║     A distro-agnostic themeable Hyprland desktop     ║"
 echo "╚══════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
@@ -83,7 +83,12 @@ if ! command -v swww >/dev/null 2>&1; then
     else
         info "Building swww from source (requires cargo)..."
         if ! command -v cargo >/dev/null 2>&1; then
-            sudo xbps-install -y rust cargo
+            if command -v xbps-install &> /dev/null; then sudo xbps-install -y rust cargo; \
+            elif command -v pacman &> /dev/null; then sudo pacman -S --noconfirm rust cargo; \
+            elif command -v apt-get &> /dev/null; then sudo apt-get update && sudo apt-get install -y cargo rustc; \
+            elif command -v dnf &> /dev/null; then sudo dnf install -y cargo rust; \
+            elif command -v zypper &> /dev/null; then sudo zypper install -y cargo rust; \
+            else err "No package manager found to install rust/cargo. Install manually and rerun."; fi
         fi
         SWWW_BUILD_DIR="/tmp/swww-build"
         git clone https://github.com/LGFae/swww.git "$SWWW_BUILD_DIR" 2>/dev/null || true
@@ -214,7 +219,7 @@ ok "Scripts are executable"
 # ---- Step 10: Enable services ----
 info "Checking PipeWire services..."
 if command -v pipewire >/dev/null 2>&1; then
-    # On Void, PipeWire is typically started via the session
+    # PipeWire is typically started via the session
     # Ensure the autostart entries exist
     mkdir -p "$CONFIG_DIR/pipewire"
     ok "PipeWire available — will start with Hyprland session"

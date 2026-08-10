@@ -5,7 +5,6 @@
 **A hand-crafted, distro-agnostic themeable Hyprland desktop environment.**  
 Every pixel is intentional. Every animation, scripted. Built to be yours.
 
-[![Void Linux](https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=voidlinux&logoColor=white)](https://voidlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-89B4FA?style=for-the-badge&logo=hyprland&logoColor=white)](https://hyprland.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
@@ -94,7 +93,7 @@ A Rofi-powered interactive menu for managing WiFi connections, toggling VPNs, an
 ## ✦ Repository Structure
 
 ```
-UXNA-Void-Hyprland/
+UXNA-Hyprland/
 ├── .config/
 │   ├── hypr/
 │   │   ├── hyprland.conf          # Main Hyprland configuration
@@ -130,7 +129,7 @@ UXNA-Void-Hyprland/
 ### One-Liner (Recommended)
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/not-Ushna/UXNA-Void-Hyprland/main/setup.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/not-Ushna/UXNA-Hyprland/main/setup.sh)
 ```
 
 This will clone the repo, install all packages, set up Zsh with Oh-My-Zsh and Powerlevel10k, and symlink all configuration files.
@@ -138,8 +137,8 @@ This will clone the repo, install all packages, set up Zsh with Oh-My-Zsh and Po
 ### Manual
 
 ```bash
-git clone https://github.com/not-Ushna/UXNA-Void-Hyprland.git ~/Projects/UXNA-Void-Hyprland
-cd ~/Projects/UXNA-Void-Hyprland
+git clone https://github.com/not-Ushna/UXNA-Hyprland.git ~/Projects/UXNA-Hyprland
+cd ~/Projects/UXNA-Hyprland
 ./scripts/install.sh
 ```
 
@@ -276,6 +275,6 @@ Installed automatically by `install.sh`:
 
 **MIT** — Do whatever you want with it. A ⭐ is appreciated.
 
-*Built with obsessive attention to detail on Void Linux.*
+*Built with obsessive attention to detail.*
 
 </div>

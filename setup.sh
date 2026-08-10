@@ -1,13 +1,13 @@
 #!/bin/bash
 # ============================================================
-# UXNA Void Hyprland — One-Command Installer Bootstrap
-# https://github.com/not-Ushna/UXNA-Void-Hyprland
+# UXNA Universal Hyprland — One-Command Installer Bootstrap
+# https://github.com/not-Ushna/UXNA-Hyprland
 # ============================================================
 
 set -e
 
-REPO_URL="https://github.com/not-Ushna/UXNA-Void-Hyprland.git"
-TARGET_DIR="$HOME/Projects/UXNA-Void-Hyprland"
+REPO_URL="https://github.com/not-Ushna/UXNA-Hyprland.git"
+TARGET_DIR="$HOME/Projects/UXNA-Hyprland"
 
 # Colors
 CYAN='\033[0;36m'
@@ -15,7 +15,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}==> Bootstrapping UXNA Void Hyprland installation...${NC}"
+echo -e "${CYAN}==> Bootstrapping UXNA Universal Hyprland installation...${NC}"
 
 # Detect package manager
 PM=""

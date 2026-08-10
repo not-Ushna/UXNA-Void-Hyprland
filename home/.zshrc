@@ -144,10 +144,10 @@ fi
 # ╚══════════════════════════════════════════════════════════════════════╝
 
 # 🔄 `sync` 
-# Copies your live system configurations into your local UXNA-Void-Hyprland repo folder.
+# Copies your live system configurations into your local UXNA-Hyprland repo folder.
 # NOTE: It does not push to GitHub! It only updates your local git folder.
 sync_repo() {
-  local repo_path="$HOME/Projects/UXNA-Void-Hyprland"
+  local repo_path="$HOME/Projects/UXNA-Hyprland"
   local text_color="\e[38;5;82m"
   local file_color="\e[38;5;226m"
   local err_color="\e[38;5;196m"
@@ -208,7 +208,7 @@ alias sync='sync_repo'
 #   `push my custom message` -> Uses your custom commit message
 push_repo() {
   local current_dir=$(pwd)
-  cd "$HOME/Projects/UXNA-Void-Hyprland" || return 1
+  cd "$HOME/Projects/UXNA-Hyprland" || return 1
   
   local commit_msg="$*"
   if [[ -z "$commit_msg" ]]; then

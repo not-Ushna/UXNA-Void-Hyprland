@@ -1,6 +1,6 @@
 #!/bin/bash
 
-README_PATH="$HOME/Projects/UXNA-Void-Hyprland/README.md"
+README_PATH="$HOME/Projects/UXNA-Hyprland/README.md"
 
 # 1. Find the Keybinds section
 # 2. Grab only table rows (starting with |)

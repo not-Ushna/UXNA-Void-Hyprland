@@ -1,6 +1,6 @@
 #!/bin/bash
 # ╔══════════════════════════════════════════════════════════════════════╗
-# ║  Dependency Checker — UXNA Void Hyprland                            ║
+# ║  Dependency Checker — UXNA Universal Hyprland                        ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 # Scans your system for every required dependency and reports which are
 # installed and which are missing. Run this before a fresh install or
@@ -8,7 +8,7 @@
 #
 # Usage:
 #   bash scripts/check-deps.sh
-#   bash scripts/check-deps.sh --fix   # Auto-install missing packages via xbps
+#   bash scripts/check-deps.sh --fix   # Auto-install missing packages
 
 
 # ╔══════════════════════════════════════════════════════════════════════╗

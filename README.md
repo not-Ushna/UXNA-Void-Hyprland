@@ -2,13 +2,13 @@
 
 # UXNA · Universal Hyprland
 
-**A hand-crafted, themeable Hyprland desktop environment for Void Linux.**  
+**A hand-crafted, distro-agnostic themeable Hyprland desktop environment.**  
 Every pixel is intentional. Every animation, scripted. Built to be yours.
 
 [![Void Linux](https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=voidlinux&logoColor=white)](https://voidlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-89B4FA?style=for-the-badge&logo=hyprland&logoColor=white)](https://hyprland.org/)
-[![Waybar](https://img.shields.io/badge/Waybar-333333?style=for-the-badge&logo=wayland&logoColor=white)](https://github.com/Alexays/Waybar)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
 
 
 <br/>

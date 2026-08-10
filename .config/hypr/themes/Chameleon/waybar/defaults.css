@@ -24,7 +24,7 @@
 @import "includes/border-radius.css";
 @import "includes/global.css";
 
-/* Base HyDE Styles */
+/* Base uxna Styles */
 
 window#waybar {
     background: @bar-bg;

@@ -1,10 +1,10 @@
 {
   "custom/updates": {
-    "exec": "hyde-shell system.update",
+    "exec": "uxna-shell system.update",
     "return-type": "json",
     "format": "{0}",
     "rotate": 0,
-    "on-click": "hyde-shell app system.update.sh up", 
+    "on-click": "uxna-shell app system.update.sh up", 
     "interval": 86400,
     "tooltip": true,
     "signal": 20

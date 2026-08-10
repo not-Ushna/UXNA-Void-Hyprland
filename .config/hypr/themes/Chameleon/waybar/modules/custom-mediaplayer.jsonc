@@ -1,6 +1,6 @@
 {
   "custom/mediaplayer": {
-    "exec": "hyde-shell mediaplayer.py",
+    "exec": "uxna-shell mediaplayer.py",
     "return-type": "json",
     "format": "{0}",
     "tooltip": true,

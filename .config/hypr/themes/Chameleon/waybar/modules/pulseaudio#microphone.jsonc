@@ -5,9 +5,9 @@
     "format-source": "\uf86b",
     "format-source-muted": "\uf131",
     "on-click": "pavucontrol-qt -t 4 || pavucontrol -t 4",
-    "on-click-middle": "hyde-shell volumecontrol -i m",
-    "on-scroll-up": "hyde-shell volumecontrol -i i",
-    "on-scroll-down": "hyde-shell volumecontrol -i d",
+    "on-click-middle": "uxna-shell volumecontrol -i m",
+    "on-scroll-up": "uxna-shell volumecontrol -i i",
+    "on-scroll-down": "uxna-shell volumecontrol -i d",
     "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
     "scroll-step": 5
   }

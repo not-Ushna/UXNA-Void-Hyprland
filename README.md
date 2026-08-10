@@ -9,8 +9,6 @@ Every pixel is intentional. Every animation, scripted. Built to be yours.
 [![Hyprland](https://img.shields.io/badge/Hyprland-89B4FA?style=for-the-badge&logo=hyprland&logoColor=white)](https://hyprland.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-
-
 <br/>
 
 [Overview](#-overview) · [Themes](#-themes) · [Features](#-features) · [Installation](#-installation) · [Keybindings](#-keybindings) · [Scripts](#-scripts) · [Dependencies](#-dependencies)
@@ -21,16 +19,16 @@ Every pixel is intentional. Every animation, scripted. Built to be yours.
 
 ## ✦ Overview
 
-UXNA is a fully unified Hyprland desktop where themes propagate across **every component** instantly. Choose a theme once, and everything snaps into place — window borders, terminal colors, Waybar, lock screen, notification daemon, Rofi, GTK apps, VS Code, and even GRUB.
+This is my personal Hyprland rice — a fully unified desktop where themes propagate across every component instantly. Choose a theme once, and everything snaps into place: window borders, terminal colors, Waybar, lock screen, notification daemon, Rofi, GTK apps, VS Code, and even GRUB.
 
-### Why UXNA?
+### Key Highlights
 
-- **🎨 One theme, everywhere.** GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, and VS Code all update together on a single theme change.
-- **🌈 Chameleon Mode.** Dynamic wallpaper-driven theming powered by `pywal`. The entire UI adapts to your wallpaper's color palette in real-time.
-- **📐 Multiple Waybar Layouts.** Cycle between default, minimal, and extended monitoring layouts without touching the theme.
-- **🔋 Smart Battery.** Automatic power profile switching based on battery level.
-- **☕ Caffeine Mode.** One-key toggle to prevent your screen from sleeping.
-- **🔧 Barcraft.** A custom GUI tool to enable/disable individual Waybar modules with live preview.
+- **🌈 Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
+- **🎨 Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, and VS Code all update together on a single theme change.
+- **📐 Waybar Layouts** — Cycle between default, minimal, and extended monitoring layouts without touching the theme.
+- **🔧 Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
+- **💾 Smart Backup** — A `sync` + `push` workflow to effortlessly version-control your entire desktop config on GitHub.
+- **🎨 Custom GRUB Theme** — A personalized `Pochita_Pochita` GRUB bootloader theme backed up and installable from this repo.
 
 ---
 
@@ -133,8 +131,7 @@ UXNA-Void-Hyprland/
 │   ├── install.sh                 # Full automated installer
 │   ├── dependency-checker.sh      # Verify all dependencies
 │   └── install-pochita-grub.sh    # GRUB theme installer
-├── setup.sh                       # One-liner bootstrap script
-└── assets/                        # README assets
+└── setup.sh                       # One-liner bootstrap script
 ```
 
 ---
@@ -172,6 +169,8 @@ Before installing, verify your system has every required dependency:
 ./scripts/dependency-checker.sh --fix   # Auto-install missing
 ```
 
+The checker scans across **6 categories** — Core, Utilities, Theming, Shell, Launcher, and Fonts — and prints a clean `✓ / ✗` status for each one.
+
 ### GRUB Theme (Optional)
 
 ```bash
@@ -186,7 +185,7 @@ sudo bash ./scripts/install-pochita-grub.sh
 
 | Shortcut | Action |
 |:---|:---|
-| `Super + Q` | Close active window |
+| `Super + Q` / `Alt + F4` | Close active window |
 | `Super + L` | Lock session |
 | `Super + Ctrl + L` | Start screensaver |
 | `Super + X` | Open power menu |

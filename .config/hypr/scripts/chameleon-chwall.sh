@@ -316,6 +316,13 @@ selection { background-color: ${color4}; color: ${background}; }
 headerbar { background-color: @headerbar_bg_color; border-bottom: 1px solid @headerbar_border_color; box-shadow: none; }
 EOF
 
+mkdir -p "$HOME/.config/gtk-3.0"
+cp "$HOME/.config/gtk-4.0/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
+cat "$HOME/Projects/UXNA-Hyprland/.config/hypr/scripts/thunar.css" >> "$HOME/.config/gtk-3.0/gtk.css"
+pkill thunar 2>/dev/null || true
+
+
+
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Update Dunst colors                                                 ║
 # ╚══════════════════════════════════════════════════════════════════════╝
@@ -904,6 +911,7 @@ disown
 # ╚══════════════════════════════════════════════════════════════════════╝
 pkill nautilus 2>/dev/null || true
 pkill thunar 2>/dev/null || true
+
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Notify                                                              ║

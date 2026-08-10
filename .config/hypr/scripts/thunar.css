@@ -1,0 +1,30 @@
+/* Thunar Specific Styling */
+window.thunar {
+    background-color: @window_bg_color;
+}
+
+window.thunar .sidebar {
+    background-color: @sidebar_bg_color;
+    color: @sidebar_fg_color;
+}
+
+window.thunar .sidebar row:selected {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+window.thunar .view,
+window.thunar iconview,
+window.thunar treeview {
+    background-color: @view_bg_color;
+    color: @view_fg_color;
+}
+
+window.thunar toolbar {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+}
+
+window.thunar paned > separator {
+    background-color: @borders;
+}

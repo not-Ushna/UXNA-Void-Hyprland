@@ -450,7 +450,7 @@ class WaybarManager:
                 ("x/Space", "toggle"),
                 ("a", "add"),
                 ("d/DEL", "remove"),
-                ("K/J", "reorder"),
+                ("+/-/K/J", "reorder"),
                 ("Tab", "next section"),
                 ("s", "save"),
                 ("r/R", "reload/restart"),
@@ -760,7 +760,7 @@ class WaybarManager:
             self.mode = 'add'
 
         # ── Reorder ──
-        elif key in (ord('K'), 337):     # Shift+Up
+        elif key in (ord('K'), ord('+'), ord('='), 337):     # Shift+Up or +/=
             if not self.items:
                 return
             item_type, si, mi = self.items[self.cursor]
@@ -773,7 +773,7 @@ class WaybarManager:
                 self.cursor -= 1
                 self.dirty = True
 
-        elif key in (ord('J'), 336):     # Shift+Down
+        elif key in (ord('J'), ord('-'), 336):     # Shift+Down or -
             if not self.items:
                 return
             item_type, si, mi = self.items[self.cursor]

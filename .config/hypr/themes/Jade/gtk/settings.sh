@@ -41,3 +41,8 @@ gtk-cursor-theme-name=$(gsettings get org.gnome.desktop.interface cursor-theme |
 gtk-font-name=$(gsettings get org.gnome.desktop.interface font-name | tr -d "'")
 gtk-application-prefer-dark-theme=$([ "$(gsettings get org.gnome.desktop.interface color-scheme | tr -d "'")" == "prefer-dark" ] && echo 1 || echo 0)
 EOF
+
+# Configure Thunar GTK3 CSS
+cp "$SCRIPT_DIR/gtk4.css" ~/.config/gtk-3.0/gtk.css
+cat "$HOME/Projects/UXNA-Hyprland/.config/hypr/scripts/thunar.css" >> ~/.config/gtk-3.0/gtk.css
+pkill thunar 2>/dev/null || true

@@ -1,0 +1,113 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 30,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/power"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate"
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "format": "\uf2db {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "\uf0c9 {}%"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}\u00b0C",
+    "format-icons": [
+      "\uf76b",
+      "\uf2c9",
+      "\uf769"
+    ]
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "\ue38d",
+      "\ue3d3",
+      "\ue3d1",
+      "\ue3cf",
+      "\ue3ce",
+      "\ue3cd",
+      "\ue3ca",
+      "\ue3c8",
+      "\ue39b"
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "\uf6a9",
+    "format-icons": {
+      "default": [
+        "\uf026",
+        "\uf027",
+        "\uf028"
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": "\uf1eb {essid}",
+    "format-ethernet": "\uf796 {ipaddr}",
+    "tooltip-format": "\uf796 {ifname} via {gwaddr}",
+    "format-linked": "\uf796 {ifname} (No IP)",
+    "format-disconnected": "\u26a0 Disconnected",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "\uf5e7 {capacity}%",
+    "format-plugged": "\uf1e6 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": [
+      "\uf244",
+      "\uf243",
+      "\uf242",
+      "\uf241",
+      "\uf240"
+    ]
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "custom/power": {
+    "format": "\u23fb",
+    "tooltip": false,
+    "on-click": "wlogout"
+  },
+  "custom/powermenu": {
+    "format": "\u23fb",
+    "tooltip": false,
+    "on-click": "wlogout"
+  }
+}

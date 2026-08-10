@@ -25,7 +25,6 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 
 - **🌈 Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
 - **🎨 Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, and VS Code all update together on a single theme change.
-- **📐 Waybar Layouts** — Cycle between default, minimal, and extended monitoring layouts without touching the theme.
 - **🔧 Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
 - **💾 Smart Backup** — A `sync` + `push` workflow to effortlessly version-control your entire desktop config on GitHub.
 - **🎨 Custom GRUB Theme** — A personalized `Pochita_Pochita` GRUB bootloader theme backed up and installable from this repo.
@@ -66,21 +65,10 @@ A custom Python GUI to manage your Waybar modules. Toggle modules on and off per
 <tr>
 <td>
 
-### 📐 Waybar Layouts
-Three switchable Waybar layouts included:
-- **Default** — Balanced bar with all essential modules
-- **Minimal** — Clock + workspaces only
-- **Extended** — Full system monitoring with CPU, GPU, RAM, temps
-
-</td>
-<td>
-
 ### 🔒 Lock & Screensaver
 A themed Hyprlock configuration with a custom screensaver that matches your active theme. Activate with `Super + L` to lock or `Super + Ctrl + L` for the screensaver.
 
 </td>
-</tr>
-<tr>
 <td>
 
 ### 🔋 Smart Battery
@@ -90,7 +78,9 @@ An intelligent battery monitor that automatically adjusts your power profile:
 - **≥ 80%** → Performance
 
 </td>
-<td>
+</tr>
+<tr>
+<td colspan="2">
 
 ### 🌐 Network Menu
 A Rofi-powered interactive menu for managing WiFi connections, toggling VPNs, and switching networks — no terminal needed.
@@ -119,7 +109,6 @@ UXNA-Void-Hyprland/
 │   │   └── waybar/                # Waybar configuration
 │   ├── kitty/                     # Kitty terminal configuration
 │   └── fastfetch/                 # System info configuration
-├── waybar-layouts/                # Switchable Waybar layout files
 ├── home/
 │   ├── .zshrc                     # Zsh config (Powerlevel10k, aliases)
 │   └── .p10k.zsh                  # Powerlevel10k prompt configuration
@@ -255,7 +244,6 @@ All scripts live in `.config/hypr/scripts/`.
 | `chameleon-chwall.sh` | Chameleon engine: picks wallpaper, runs pywal, pushes colors everywhere |
 | `switch-wallpaper.sh` | Wallpaper switcher with swww transitions |
 | `barcraft.py` | GUI module manager for Waybar |
-| `cycle-waybar-layout.sh` | Rotate between Waybar layouts |
 | `smart-battery.sh` | Automatic power profile based on battery level |
 | `toggle-caffeine.sh` | Toggle sleep/idle prevention |
 | `toggle-dropdown.sh` | Persistent dropdown Kitty terminal |

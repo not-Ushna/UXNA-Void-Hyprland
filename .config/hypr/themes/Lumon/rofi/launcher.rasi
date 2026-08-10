@@ -68,6 +68,7 @@ element {
     text-color: #6C9CAE; /* Muted Cyan for unselected */
     padding: 10px 12px;
     border-radius: 4px;
+    spacing: 15px;
 }
 
 element-icon {
@@ -77,6 +78,7 @@ element-icon {
 element-text {
     background-color: transparent;
     text-color: inherit;
+    vertical-align: 0.5;
 }
 
 element selected {

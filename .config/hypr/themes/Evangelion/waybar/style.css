@@ -43,7 +43,7 @@ window#waybar {
     color: #000000;
 }
 
-#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #bluetooth, #network, #pulseaudio, #tray, #custom-powermenu {
+#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #bluetooth, #network, #pulseaudio, #tray, #custom-powermenu, #custom-power {
     padding: 0 15px;
     background: #1A0808;
     color: #FFB300;
@@ -57,7 +57,7 @@ window#waybar {
 }
 
 /* Hover effects */
-#battery:hover, #network:hover, #pulseaudio:hover, #custom-powermenu:hover {
+#battery:hover, #network:hover, #pulseaudio:hover, #custom-powermenu:hover, #custom-power:hover {
     background: #FFB300;
     color: #000000;
 }
@@ -101,12 +101,12 @@ window#waybar {
 }
 
 /* Power Menu */
-#custom-powermenu {
+#custom-powermenu, #custom-power {
     background: #D32F2F;
     color: #FFFFFF;
 }
 
-#custom-powermenu:hover {
+#custom-powermenu:hover, #custom-power:hover {
     background: #FFB300;
     color: #000000;
 }

@@ -74,6 +74,7 @@ tooltip label {
 #bluetooth,
 #backlight,
 #tray,
+#custom-power,
 #custom-powermenu,
 #custom-weather {
     padding: 0 10px;
@@ -149,6 +150,7 @@ tooltip label {
     -gtk-icon-effect: dim;
 }
 
+#custom-power,
 #custom-powermenu {
     color: #FF5345;
     padding: 0 12px;

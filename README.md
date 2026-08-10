@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="UXNA Banner" width="100%"/>
-
-<br/>
+# UXNA · Universal Hyprland
 
 **A hand-crafted, themeable Hyprland desktop environment for Void Linux.**  
 Every pixel is intentional. Every animation, scripted. Built to be yours.
@@ -11,6 +9,7 @@ Every pixel is intentional. Every animation, scripted. Built to be yours.
 [![Hyprland](https://img.shields.io/badge/Hyprland-89B4FA?style=for-the-badge&logo=hyprland&logoColor=white)](https://hyprland.org/)
 [![Waybar](https://img.shields.io/badge/Waybar-333333?style=for-the-badge&logo=wayland&logoColor=white)](https://github.com/Alexays/Waybar)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
 
 <br/>
 

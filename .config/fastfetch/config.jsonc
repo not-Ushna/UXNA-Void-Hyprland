@@ -1,123 +1,76 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "logo": {
-    "padding": {
-      "top": 1,
-      "left": 1,
-      "right": 2
-    }
-  },
   "display": {
-    "separator": " "
+    "separator": " // ",
+    "color": {
+      "separator": "yellow"
+    }
   },
   "modules": [
     {
       "type": "custom",
-      "format": "\u001b[90m╭──────────\u001b[32mHardware\u001b[90m──────────╮\u001b[0m"
+      "format": "\u001b[31m=======================================\u001b[0m"
     },
     {
-      "type": "host",
-      "key": "\u001b[90m│ \u001b[36m󰌢 PC:",
-      "keyColor": "cyan"
-    },
-    {
-      "type": "cpu",
-      "key": "\u001b[90m│ \u001b[32m├󰻠:",
-      "keyColor": "green"
-    },
-    {
-      "type": "gpu",
-      "key": "\u001b[90m│ \u001b[32m├󰍛:",
-      "keyColor": "green"
-    },
-    {
-      "type": "display",
-      "key": "\u001b[90m│ \u001b[32m├󰍹:",
-      "keyColor": "green"
-    },
-    {
-      "type": "disk",
-      "key": "\u001b[90m│ \u001b[35m├󰋊:",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "memory",
-      "key": "\u001b[90m│ \u001b[35m├󰊚:",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "swap",
-      "key": "\u001b[90m│ \u001b[35m╰󰓡:",
-      "keyColor": "magenta"
+      "type": "title",
+      "color": {
+        "user": "red",
+        "at": "white",
+        "host": "red"
+      },
+      "format": "AUTHORIZATION: {1}@{2}"
     },
     {
       "type": "custom",
-      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m╭──────────\u001b[32mSoftware\u001b[90m──────────╮\u001b[0m"
+      "format": "\u001b[31m=======================================\u001b[0m"
     },
     {
       "type": "os",
-      "key": "\u001b[90m│ \u001b[31m󰣇 OS:",
+      "key": "[ SYSTEM    ]",
       "keyColor": "red"
     },
     {
       "type": "kernel",
-      "key": "\u001b[90m│ \u001b[31m├:",
+      "key": "[ KERNEL    ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "uptime",
+      "key": "[ UPTIME    ]",
+      "keyColor": "red"
+    },
+    {
+      "type": "packages",
+      "key": "[ PACKAGES  ]",
       "keyColor": "red"
     },
     {
       "type": "wm",
-      "key": "\u001b[90m│ \u001b[32m├󰨇:",
-      "keyColor": "green"
+      "key": "[ INTERFACE ]",
+      "keyColor": "yellow"
     },
     {
       "type": "terminal",
-      "key": "\u001b[90m│ \u001b[32m├:",
-      "keyColor": "green"
+      "key": "[ TERMINAL  ]",
+      "keyColor": "yellow"
     },
     {
-      "type": "packages",
-      "key": "\u001b[90m│ \u001b[32m├󰏖:",
-      "keyColor": "green"
+      "type": "cpu",
+      "key": "[ PROCESSOR ]",
+      "keyColor": "yellow"
     },
     {
-      "type": "terminalfont",
-      "key": "\u001b[90m│ \u001b[32m╰A:",
-      "keyColor": "green"
+      "type": "memory",
+      "key": "[ MEMORY    ]",
+      "keyColor": "yellow"
     },
     {
       "type": "custom",
-      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m╭───\u001b[32mAge / Uptime / Colors\u001b[90m────╮\u001b[0m"
-    },
-    {
-      "type": "command",
-      "key": "\u001b[90m│ \u001b[31m󰔠 OS Age:",
-      "keyColor": "red",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
-    },
-    {
-      "type": "uptime",
-      "key": "\u001b[90m│ \u001b[31m󰅐 Uptime:",
-      "keyColor": "red"
+      "format": "\u001b[31m=======================================\u001b[0m"
     },
     {
       "type": "colors",
-      "key": "\u001b[90m│ \u001b[37m󰏘 Colors:",
-      "symbol": "circle",
-      "keyColor": "white"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m╰────────────────────────────╯\u001b[0m"
+      "symbol": "square"
     }
   ]
 }

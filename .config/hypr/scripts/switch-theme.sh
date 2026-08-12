@@ -179,6 +179,11 @@ if [[ -f "$CURRENT_LINK/zen/userChrome.css" ]]; then
     cp -f "$CURRENT_LINK/zen/userChrome.css" "$ZEN_CHROME/userChrome.css" 2>/dev/null || true
 fi
 
+# 7.8 Apply VS Code / Antigravity IDE theme dynamically based on colors.conf
+if [[ -f "$HOME/.config/hypr/scripts/update-vscode-theme.py" ]]; then
+    python3 "$HOME/.config/hypr/scripts/update-vscode-theme.py" 2>/dev/null || true
+fi
+
 # Reload running kitty terminals to pick up the updated current symlink
 kill -SIGUSR1 $(pgrep kitty) 2>/dev/null || true
 # 8. Update GRUB seamlessly in the background (no sudo required)

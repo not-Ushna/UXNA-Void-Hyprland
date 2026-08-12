@@ -16,11 +16,11 @@ configuration {
 * {
     font:             "JetBrains Mono Nerd Font 12";
     background:       #111C18;
-    background-alt:   #23372B;
+    background-alt:   #021D22;
     foreground:       #C1C497;
     selected:         #509475;
     active:           #549E6A;
-    urgent:           #FF5345;
+    urgent:           #044F38;
     border-color:     #509475;
 }
 

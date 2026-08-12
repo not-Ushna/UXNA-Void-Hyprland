@@ -1,4 +1,9 @@
 {
+  "include": [
+    "/home/uxna/.local/share/waybar/modules/*.jsonc",
+    "/home/uxna/.config/waybar/modules/*.jsonc",
+    "/home/uxna/.config/hypr/themes/current/waybar/modules/*.jsonc"
+  ],
   "layer": "top",
   "position": "top",
   "mod": "dock",
@@ -7,9 +12,11 @@
   "gtk-layer-shell": true,
   "height": 30,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/cava"
   ],
   "modules-center": [
+    "idle_inhibitor",
     "clock"
   ],
   "modules-right": [
@@ -29,53 +36,53 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "cpu": {
-    "format": "\uf2db {usage}%",
+    "format": " {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "\uf0c9 {}%"
+    "format": " {}%"
   },
   "temperature": {
     "critical-threshold": 80,
-    "format": "{icon} {temperatureC}\u00b0C",
+    "format": "{icon} {temperatureC}°C",
     "format-icons": [
-      "\uf76b",
-      "\uf2c9",
-      "\uf769"
+      "",
+      "",
+      ""
     ]
   },
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": [
-      "\ue38d",
-      "\ue3d3",
-      "\ue3d1",
-      "\ue3cf",
-      "\ue3ce",
-      "\ue3cd",
-      "\ue3ca",
-      "\ue3c8",
-      "\ue39b"
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "\uf6a9",
+    "format-muted": "",
     "format-icons": {
       "default": [
-        "\uf026",
-        "\uf027",
-        "\uf028"
+        "",
+        "",
+        ""
       ]
     },
     "on-click": "pavucontrol"
   },
   "network": {
-    "format-wifi": "\uf1eb {essid}",
-    "format-ethernet": "\uf796 {ipaddr}",
-    "tooltip-format": "\uf796 {ifname} via {gwaddr}",
-    "format-linked": "\uf796 {ifname} (No IP)",
-    "format-disconnected": "\u26a0 Disconnected",
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ipaddr}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "battery": {
@@ -85,15 +92,15 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "\uf5e7 {capacity}%",
-    "format-plugged": "\uf1e6 {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-icons": [
-      "\uf244",
-      "\uf243",
-      "\uf242",
-      "\uf241",
-      "\uf240"
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
   "tray": {
@@ -101,13 +108,49 @@
     "spacing": 10
   },
   "custom/power": {
-    "format": "\u23fb",
+    "format": "⏻",
     "tooltip": false,
     "on-click": "wlogout"
   },
   "custom/powermenu": {
-    "format": "\u23fb",
+    "format": "⏻",
     "tooltip": false,
     "on-click": "wlogout"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰛊"
+    },
+    "tooltip": true,
+    "tooltip-format-activated": "<span foreground='#98c379'>󰅶 Caffeine Mode Active</span>\nPrevents system from going to sleep",
+    "tooltip-format-deactivated": "<span foreground='#e06c75'>󰛊 Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
+  },
+  "cava": {
+    "framerate": 60,
+    "autosens": 1,
+    "bars": 14,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "method": "pipewire",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": [
+      " ",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ]
   }
 }

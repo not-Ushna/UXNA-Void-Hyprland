@@ -76,7 +76,7 @@ tooltip label {
 }
 
 /* ── System Tray Area ── */
-#tray, #clock, #pulseaudio, #network, #battery, #custom-power, #custom-powermenu {
+#tray, #clock, #pulseaudio, #network, #battery, #custom-power, #custom-powermenu, #idle_inhibitor, #custom-cava {
     padding: 0 8px;
     margin: 0;
     color: #FFFFFF;

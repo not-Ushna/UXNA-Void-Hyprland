@@ -6,50 +6,50 @@
 /* ── Core palette variables ── */
 :root {
   --jade-bg:        #111C18;
-  --jade-surface:   #23372B;
+  --jade-surface:   #021D22;
   --jade-surface2:  #2E4637;
   --jade-border:    #3A5545;
   --jade-green:     #509475;
   --jade-bright:    #549E6A;
-  --jade-cyan:      #2DD5B7;
+  --jade-cyan:      #54C088;
   --jade-gold:      #D7C995;
-  --jade-pink:      #D2689C;
-  --jade-yellow:    #E5C736;
-  --jade-red:       #FF5345;
-  --jade-text:      #F6F5DD;
-  --jade-text-dim:  #ACD4CF;
+  --jade-pink:      #0B8D59;
+  --jade-yellow:    #D7C995;
+  --jade-red:       #044F38;
+  --jade-text:      #DBE8C3;
+  --jade-text-dim:  #54C088;
 
   /* Zen overrides */
   --zen-colors-primary: #509475 !important;
   --zen-primary-color: #509475 !important;
-  --zen-colors-secondary: #2DD5B7 !important;
+  --zen-colors-secondary: #54C088 !important;
   --zen-colors-tertiary: #D7C995 !important;
   --zen-colors-border: #3A5545 !important;
 
   --toolbar-bgcolor: #111C18 !important;
-  --toolbar-color: #F6F5DD !important;
-  --lwt-toolbar-field-background-color: #23372B !important;
-  --lwt-toolbar-field-color: #F6F5DD !important;
+  --toolbar-color: #DBE8C3 !important;
+  --lwt-toolbar-field-background-color: #021D22 !important;
+  --lwt-toolbar-field-color: #DBE8C3 !important;
   --lwt-toolbar-field-border-color: #3A5545 !important;
   --lwt-toolbar-field-focus: #2E4637 !important;
-  --lwt-toolbar-field-focus-color: #F6F5DD !important;
+  --lwt-toolbar-field-focus-color: #DBE8C3 !important;
 
   --lwt-accent-color: #111C18 !important;
-  --lwt-text-color: #F6F5DD !important;
-  --arrowpanel-background: #23372B !important;
-  --arrowpanel-color: #F6F5DD !important;
+  --lwt-text-color: #DBE8C3 !important;
+  --arrowpanel-background: #021D22 !important;
+  --arrowpanel-color: #DBE8C3 !important;
   --arrowpanel-border-color: #3A5545 !important;
 
   --tab-selected-bgcolor: #509475 !important;
-  --tab-selected-textcolor: #F6F5DD !important;
+  --tab-selected-textcolor: #DBE8C3 !important;
 
-  --urlbar-box-bgcolor: #23372B !important;
+  --urlbar-box-bgcolor: #021D22 !important;
   --urlbar-box-hover-bgcolor: #2E4637 !important;
   --urlbar-box-active-bgcolor: #3A5545 !important;
-  --urlbar-box-text-color: #F6F5DD !important;
+  --urlbar-box-text-color: #DBE8C3 !important;
 
   --sidebar-background-color: #111C18 !important;
-  --sidebar-text-color: #F6F5DD !important;
+  --sidebar-text-color: #DBE8C3 !important;
   --sidebar-border-color: #3A5545 !important;
 }
 

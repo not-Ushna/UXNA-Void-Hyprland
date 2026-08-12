@@ -17,7 +17,7 @@ button {
     color: #C1C497;
     background-color: #111C18;
     outline-style: none;
-    border: 2px solid #23372B;
+    border: 2px solid #021D22;
     border-width: 2px;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,7 +29,7 @@ button {
 }
 
 button:focus {
-    background-color: #23372B;
+    background-color: #021D22;
     background-size: 25%;
 }
 

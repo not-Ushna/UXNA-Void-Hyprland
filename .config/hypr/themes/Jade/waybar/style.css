@@ -14,11 +14,11 @@
 window#waybar {
     background-color: #111C18;
     color: #C1C497;
-    border-bottom: 2px solid #23372B;
+    border-bottom: 2px solid #021D22;
 }
 
 tooltip {
-    background-color: #23372B;
+    background-color: #021D22;
     color: #C1C497;
     border: 1px solid #509475;
     border-radius: 0;
@@ -44,7 +44,7 @@ tooltip label {
 }
 
 #workspaces button.empty {
-    color: #23372B;
+    color: #021D22;
 }
 
 #workspaces button.active {
@@ -53,8 +53,8 @@ tooltip label {
 }
 
 #workspaces button.urgent {
-    color: #FF5345;
-    border-bottom: 2px solid #FF5345;
+    color: #044F38;
+    border-bottom: 2px solid #044F38;
 }
 
 #workspaces button:hover {
@@ -76,11 +76,27 @@ tooltip label {
 #tray,
 #custom-power,
 #custom-powermenu,
-#custom-weather {
+#custom-weather,
+#custom-cava,
+#idle_inhibitor {
     padding: 0 10px;
     margin: 0 2px;
     color: #C1C497;
     transition: all 0.2s ease;
+}
+
+#custom-cava {
+    color: #509475;
+    font-size: 14px;
+    padding: 0 6px;
+}
+
+#idle_inhibitor {
+    color: #0B8D59; /* Jade from palette */
+}
+
+#idle_inhibitor.activated {
+    color: #54C088; /* Emerald from palette */
 }
 
 #clock {
@@ -93,24 +109,24 @@ tooltip label {
 }
 
 #battery.warning {
-    color: #E5C736;
+    color: #DBE8C3;
 }
 
 #battery.critical {
-    color: #FF5345;
+    color: #044F38;
     animation: blink 1s linear infinite;
 }
 
 #battery.charging {
-    color: #2DD5B7;
+    color: #54C088;
 }
 
 #cpu {
-    color: #75BBB3;
+    color: #0B8D59;
 }
 
 #memory {
-    color: #ACD4CF;
+    color: #54C088;
 }
 
 #network {
@@ -122,7 +138,7 @@ tooltip label {
 }
 
 #pulseaudio {
-    color: #D2689C;
+    color: #0B8D59;
 }
 
 #pulseaudio.muted {
@@ -130,7 +146,7 @@ tooltip label {
 }
 
 #bluetooth {
-    color: #8CD3CB;
+    color: #DBE8C3;
 }
 
 #bluetooth.off,
@@ -139,7 +155,7 @@ tooltip label {
 }
 
 #backlight {
-    color: #E5C736;
+    color: #DBE8C3;
 }
 
 #tray {
@@ -152,18 +168,18 @@ tooltip label {
 
 #custom-power,
 #custom-powermenu {
-    color: #FF5345;
+    color: #044F38;
     padding: 0 12px;
 }
 
 /* Separator styling */
 #custom-separator {
-    color: #23372B;
+    color: #021D22;
     padding: 0 4px;
 }
 
 @keyframes blink {
     to {
-        color: #F6F5DD;
+        color: #DBE8C3;
     }
 }

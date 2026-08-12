@@ -194,7 +194,7 @@ def load_config() -> dict:
 def save_config(config: dict):
     if WAYBAR_CONFIG.exists():
         shutil.copy2(WAYBAR_CONFIG, WAYBAR_CONFIG_BACKUP)
-    output = json.dumps(config, indent=2)
+    output = json.dumps(config, indent=2, ensure_ascii=False)
     WAYBAR_CONFIG.write_text(output + "\n")
 
 

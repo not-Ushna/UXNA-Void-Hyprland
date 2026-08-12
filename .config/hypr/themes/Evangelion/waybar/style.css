@@ -43,7 +43,7 @@ window#waybar {
     color: #000000;
 }
 
-#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #bluetooth, #network, #pulseaudio, #tray, #custom-powermenu, #custom-power {
+#clock, #battery, #cpu, #memory, #disk, #temperature, #backlight, #bluetooth, #network, #pulseaudio, #tray, #custom-powermenu, #custom-power, #idle_inhibitor, #custom-cava {
     padding: 0 15px;
     background: #1A0808;
     color: #FFB300;

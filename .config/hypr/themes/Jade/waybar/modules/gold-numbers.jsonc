@@ -1,0 +1,70 @@
+{
+  "cpu": {
+    "format": " <span color='#D7C995'>{usage}%</span>",
+    "tooltip": false
+  },
+  "memory": {
+    "format": " <span color='#D7C995'>{}%</span>"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} <span color='#D7C995'>{temperatureC}°C</span>",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "backlight": {
+    "format": "{icon} <span color='#D7C995'>{percent}%</span>",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} <span color='#D7C995'>{volume}%</span>",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": " <span color='#D7C995'>{essid}</span>",
+    "format-ethernet": " <span color='#D7C995'>{ipaddr}</span>",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": " <span color='#D7C995'>{ifname} (No IP)</span>",
+    "format-disconnected": "<span color='#D7C995'>⚠ Disconnected</span>",
+    "format-alt": "<span color='#D7C995'>{ifname}: {ipaddr}/{cidr}</span>"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} <span color='#D7C995'>{capacity}%</span>",
+    "format-charging": " <span color='#D7C995'>{capacity}%</span>",
+    "format-plugged": " <span color='#D7C995'>{capacity}%</span>",
+    "format-alt": "{icon} <span color='#D7C995'>{time}</span>",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}

@@ -17,7 +17,8 @@
     "orientation": "inherit",
     "modules": [
       "wlr/taskbar",
-      "mpris"
+      "mpris",
+      "custom/cava"
     ]
   },
   "modules-center": [
@@ -56,7 +57,7 @@
     ]
   },
   "custom/power": {
-    "format": "\u23fb",
+    "format": "⏻",
     "tooltip": true,
     "tooltip-format": " Logout menu",
     "on-click": "/usr/bin/bash /home/uxna/.config/hypr/scripts/launch-wlogout.sh",

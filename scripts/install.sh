@@ -207,7 +207,22 @@ if [[ -f "$REPO_DIR/home/.p10k.zsh" ]]; then
 fi
 ok "Shell configs linked"
 
-# ---- Step 9: Make scripts executable ----
+# ---- Step 9: Deploy Custom Assets (Anifetch & GIFs) ----
+info "Deploying custom binaries and GIFs..."
+BIN_DIR="$HOME/.local/bin"
+mkdir -p "$BIN_DIR"
+cp -f "$REPO_DIR/bin/anifetch" "$BIN_DIR/"
+cp -f "$REPO_DIR/bin/brrtfetch" "$BIN_DIR/"
+chmod +x "$BIN_DIR/anifetch"
+chmod +x "$BIN_DIR/brrtfetch"
+ok "Installed anifetch and brrtfetch to $BIN_DIR"
+
+GIF_DIR="$HOME/Pictures/brrtfetch"
+mkdir -p "$GIF_DIR"
+cp -rf "$REPO_DIR/assets/gifs" "$GIF_DIR/"
+ok "Deployed custom GIFs to $GIF_DIR"
+
+# ---- Step 10: Make scripts executable ----
 info "Setting script permissions..."
 chmod +x "$HYPR_DIR/scripts/"*.sh 2>/dev/null || true
 chmod +x "$REPO_DIR/scripts/"*.sh 2>/dev/null || true
@@ -216,7 +231,7 @@ chmod +x "$REPO_DIR/scripts/"*.sh 2>/dev/null || true
 find "$THEMES_DIR" -name "settings.sh" -exec chmod +x {} \;
 ok "Scripts are executable"
 
-# ---- Step 10: Enable services ----
+# ---- Step 11: Enable services ----
 info "Checking PipeWire services..."
 if command -v pipewire >/dev/null 2>&1; then
     # PipeWire is typically started via the session

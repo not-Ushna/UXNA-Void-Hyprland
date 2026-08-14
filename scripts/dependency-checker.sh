@@ -42,7 +42,7 @@ CATEGORY_LABELS[utilities]="Utilities"
 CATEGORIES[theming]="wal:pywal nwg-look kvantummanager:kvantum qt5ct qt6ct papirus-icon-theme"
 CATEGORY_LABELS[theming]="Theming"
 
-CATEGORIES[shell]="zsh fastfetch eza bat zoxide playerctl git curl wget unzip make gcc"
+CATEGORIES[shell]="zsh fastfetch eza bat zoxide playerctl git curl wget unzip make gcc python3:python"
 CATEGORY_LABELS[shell]="Shell"
 
 CATEGORIES[system]="pipewire wireplumber polkit-gnome gsettings-desktop-schemas dconf"

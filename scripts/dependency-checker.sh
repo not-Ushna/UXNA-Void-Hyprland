@@ -33,7 +33,7 @@ ICON_WARN="!"
 declare -A CATEGORIES
 declare -A CATEGORY_LABELS
 
-CATEGORIES[core]="hyprland waybar dunst kitty thunar hyprlock wlogout swayidle"
+CATEGORIES[core]="hyprland waybar dunst kitty thunar hyprlock wlogout swayidle swww swww-daemon"
 CATEGORY_LABELS[core]="Core"
 
 CATEGORIES[utilities]="grim slurp wl-copy:wl-clipboard cliphist brightnessctl nmcli:NetworkManager blueman pavucontrol"
@@ -156,34 +156,7 @@ else
     echo -e "      ${RED}${ICON_FAIL}${RESET} $pkg"
   done
   echo ""
-  if [[ "${1:-}" == "--fix" ]]; then
-    echo -e "  ${CYAN}${BOLD}Detecting package manager...${RESET}"
-    PM=""
-    if command -v xbps-install &> /dev/null; then
-        PM="sudo xbps-install -y"
-    elif command -v pacman &> /dev/null; then
-        PM="sudo pacman -S --noconfirm"
-    elif command -v apt-get &> /dev/null; then
-        PM="sudo apt-get update && sudo apt-get install -y"
-    elif command -v dnf &> /dev/null; then
-        PM="sudo dnf install -y"
-    elif command -v zypper &> /dev/null; then
-        PM="sudo zypper install -y"
-    fi
-    
-    if [[ -n "$PM" ]]; then
-        echo -e "  ${CYAN}${BOLD}Installing missing packages via ${PM%% *}...${RESET}"
-        echo ""
-        eval "$PM ${MISSING_PKGS[*]}" && \
-          echo -e "  ${GREEN}${BOLD}${ICON_OK} Done! All missing packages installed.${RESET}" || \
-          echo -e "  ${RED}${BOLD}${ICON_FAIL} Some packages failed. Note: package names vary by distro. Please install remaining packages manually.${RESET}"
-    else
-        echo -e "  ${RED}${BOLD}${ICON_FAIL} Unknown package manager. Please install missing packages manually.${RESET}"
-    fi
-  else
-    echo -e "  ${DIM}Tip: Run with ${CYAN}--fix${RESET}${DIM} to auto-install missing packages:${RESET}"
-    echo -e "  ${DIM}  bash scripts/dependency-checker.sh --fix${RESET}"
-  fi
+  echo -e "  ${CYAN}${BOLD}Please install the missing packages using your system's package manager.${RESET}"
 fi
 
 echo -e "  ${DIM}$(printf '═%.0s' {1..60})${RESET}"

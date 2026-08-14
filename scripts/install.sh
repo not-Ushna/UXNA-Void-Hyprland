@@ -64,43 +64,13 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
     info "Verifying dependencies..."
     if ! bash "$REPO_DIR/scripts/dependency-checker.sh"; then
         echo ""
-        err "Missing dependencies detected! The installation will not proceed.\nPlease install them manually or run:\n  bash scripts/dependency-checker.sh --fix"
+        err "Missing dependencies detected! The installation will not proceed.\nPlease install them manually."
     fi
     ok "All dependencies are installed"
 fi
 
-# ---- Step 2: Build swww if not available ----
-if ! command -v swww >/dev/null 2>&1; then
-    info "swww not found — checking for pre-built binary..."
-    if [[ -x "$HOME/Projects/swww/target/release/swww" ]]; then
-        sudo cp "$HOME/Projects/swww/target/release/swww" /usr/local/bin/swww
-        sudo cp "$HOME/Projects/swww/target/release/swww-daemon" /usr/local/bin/swww-daemon
-        ok "Installed swww from pre-built binary"
-    elif [[ -x "$HOME/Projects/swww-0.11.2/target/release/swww" ]]; then
-        sudo cp "$HOME/Projects/swww-0.11.2/target/release/swww" /usr/local/bin/swww
-        sudo cp "$HOME/Projects/swww-0.11.2/target/release/swww-daemon" /usr/local/bin/swww-daemon
-        ok "Installed swww from pre-built binary"
-    else
-        info "Building swww from source (requires cargo)..."
-        if ! command -v cargo >/dev/null 2>&1; then
-            if command -v xbps-install &> /dev/null; then sudo xbps-install -y rust cargo; \
-            elif command -v pacman &> /dev/null; then sudo pacman -S --noconfirm rust cargo; \
-            elif command -v apt-get &> /dev/null; then sudo apt-get update && sudo apt-get install -y cargo rustc; \
-            elif command -v dnf &> /dev/null; then sudo dnf install -y cargo rust; \
-            elif command -v zypper &> /dev/null; then sudo zypper install -y cargo rust; \
-            else err "No package manager found to install rust/cargo. Install manually and rerun."; fi
-        fi
-        SWWW_BUILD_DIR="/tmp/swww-build"
-        git clone https://github.com/LGFae/swww.git "$SWWW_BUILD_DIR" 2>/dev/null || true
-        (cd "$SWWW_BUILD_DIR" && cargo build --release)
-        sudo cp "$SWWW_BUILD_DIR/target/release/swww" /usr/local/bin/
-        sudo cp "$SWWW_BUILD_DIR/target/release/swww-daemon" /usr/local/bin/
-        rm -rf "$SWWW_BUILD_DIR"
-        ok "Built and installed swww"
-    fi
-else
-    ok "swww already installed"
-fi
+# ---- Step 2: (Removed) ----
+# swww is now enforced by dependency-checker.sh
 
 # ---- Step 3: Set up shell ----
 if [[ "$SETUP_SHELL" == true ]]; then

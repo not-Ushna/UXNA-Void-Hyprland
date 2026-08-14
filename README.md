@@ -259,14 +259,14 @@ All scripts live in `.config/hypr/scripts/`.
 
 ## ✦ Dependencies
 
-Installed automatically by `install.sh`:
+Installed manually (strictly verified by `dependency-checker.sh`):
 
 | Category | Packages |
 |:---|:---|
-| **Core** | `hyprland` `waybar` `rofi-wayland` `dunst` `kitty` `thunar` `hyprlock` `wlogout` `swayidle` |
+| **Core** | `hyprland` `waybar` `rofi-wayland` `dunst` `kitty` `thunar` `hyprlock` `wlogout` `swayidle` `swww` `swww-daemon` |
 | **Utilities** | `grim` `slurp` `wl-clipboard` `cliphist` `brightnessctl` `NetworkManager` `blueman` `pavucontrol` |
 | **Theming** | `pywal` `nwg-look` `kvantum` `qt5ct` `qt6ct` `papirus-icon-theme` |
-| **Shell** | `zsh` `fastfetch` `eza` `bat` `zoxide` |
+| **Shell** | `zsh` `fastfetch` `eza` `bat` `zoxide` `python3` |
 | **Fonts** | `font-jetbrains-mono-nerd` `nerd-fonts` |
 
 ---

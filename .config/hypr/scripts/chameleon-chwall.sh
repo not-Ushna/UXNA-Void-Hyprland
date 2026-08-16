@@ -275,6 +275,7 @@ $color8  = rgba({strip_hash(colors.get('color8','444444'))}ff)
 
 $font      = "JetBrains Mono"
 $rounding  = 10
+$shadow_color = rgba({strip_hash(colors.get('color1','000000'))}44)
 $wallpaper = {wallpaper}
 """
 

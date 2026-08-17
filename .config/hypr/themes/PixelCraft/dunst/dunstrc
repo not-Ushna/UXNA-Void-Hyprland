@@ -1,6 +1,6 @@
 # ============================================================
-# Jade Theme — Dunst Notification Config
-# Sharp corners, jade green frame, dark background.
+# PixelCraft Theme — Dunst Notification Config
+# Pixel Village — woody brown, amber gold, forest green.
 # ============================================================
 
 [global]
@@ -14,13 +14,13 @@
     shrink = no
     transparency = 0
     separator_height = 2
-    separator_color = "#23372B"
+    separator_color = "#3d2b1a"
     padding = 12
     horizontal_padding = 12
     frame_width = 2
-    frame_color = "#509475"
+    frame_color = "#d4a020"
     sort = yes
-    font = "JetBrains Mono Nerd Font 11"
+    font = "Monocraft Nerd Font 11"
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -48,19 +48,19 @@
     mouse_right_click = close_current
 
 [urgency_low]
-    background = "#111C18"
-    foreground = "#C1C497"
-    frame_color = "#23372B"
+    background = "#1a1410"
+    foreground = "#b8a080"
+    frame_color = "#3d2b1a"
     timeout = 3
 
 [urgency_normal]
-    background = "#111C18"
-    foreground = "#C1C497"
-    frame_color = "#509475"
+    background = "#1a1410"
+    foreground = "#e8d5b0"
+    frame_color = "#d4a020"
     timeout = 5
 
 [urgency_critical]
-    background = "#111C18"
-    foreground = "#FF5345"
-    frame_color = "#FF5345"
+    background = "#1a1410"
+    foreground = "#d4782f"
+    frame_color = "#d4782f"
     timeout = 0

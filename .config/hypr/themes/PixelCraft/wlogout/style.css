@@ -1,23 +1,23 @@
 /* ============================================================
-   Jade Theme — Wlogout Style
-   Sharp, boxy, dark jade aesthetic.
+   PixelCraft Theme — Wlogout Style
+   Warm pixel RPG village aesthetic.
    ============================================================ */
 
 * {
     background-image: none;
-    font-family: "JetBrains Mono Nerd Font";
+    font-family: "Monocraft Nerd Font", "JetBrains Mono Nerd Font";
     font-size: 14px;
 }
 
 window {
-    background-color: rgba(17, 28, 24, 0.85);
+    background-color: rgba(26, 20, 16, 0.85);
 }
 
 button {
-    color: #C1C497;
-    background-color: #111C18;
+    color: #e8d5b0;
+    background-color: #1a1410;
     outline-style: none;
-    border: 2px solid #021D22;
+    border: 2px solid #3d2b1a;
     border-width: 2px;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,14 +29,14 @@ button {
 }
 
 button:focus {
-    background-color: #021D22;
+    background-color: #2a1f14;
     background-size: 25%;
 }
 
 button:hover {
-    background-color: #509475;
-    color: #111C18;
-    border-color: #509475;
+    background-color: #d4a020;
+    color: #1a1410;
+    border-color: #d4a020;
     background-size: 30%;
     transition: all 0.3s ease;
 }

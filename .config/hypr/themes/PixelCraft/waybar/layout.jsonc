@@ -20,6 +20,8 @@
     "clock"
   ],
   "modules-right": [
+    "cpu",
+    "memory",
     "backlight",
     "pulseaudio",
     "network",
@@ -29,60 +31,63 @@
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "on-click": "activate"
+    "on-click": "activate",
+    "format": "Lv.{id}"
   },
   "clock": {
-    "format": "{:%I:%M %p}",
+    "format": "⏱ {:%I:%M %p}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "cpu": {
-    "format": " {usage}%",
-    "tooltip": false
+    "format": "ATK {usage}%",
+    "tooltip": false,
+    "interval": 2
   },
   "memory": {
-    "format": " {}%"
+    "format": "MP {percentage}%",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
   },
   "temperature": {
     "critical-threshold": 80,
     "format": "{icon} {temperatureC}°C",
     "format-icons": [
-      "",
-      "",
-      ""
+      "",
+      "",
+      ""
     ]
   },
   "backlight": {
-    "format": "{icon} {percent}%",
+    "format": "☀ {percent}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "",
+    "format": "♪ {volume}%",
+    "format-muted": "♪ MUTE",
     "format-icons": {
       "default": [
-        "",
-        "",
-        ""
+        "",
+        "",
+        ""
       ]
     },
     "on-click": "pavucontrol"
   },
   "network": {
-    "format-wifi": " {essid}",
-    "format-ethernet": " {ipaddr}",
-    "tooltip-format": " {ifname} via {gwaddr}",
-    "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "⚠ Disconnected",
+    "format-wifi": "NET {essid}",
+    "format-ethernet": "NET {ipaddr}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": "NET {ifname} (?)",
+    "format-disconnected": "NET DOWN",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "battery": {
@@ -91,16 +96,16 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{icon} {time}",
+    "format": "HP {capacity}%",
+    "format-charging": "HP↑{capacity}%",
+    "format-plugged": "HP↑{capacity}%",
+    "format-alt": "HP {time}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
   "tray": {
@@ -124,8 +129,8 @@
       "deactivated": "󰛊"
     },
     "tooltip": true,
-    "tooltip-format-activated": "<span foreground='#98c379'>󰅶 Caffeine Mode Active</span>\nPrevents system from going to sleep",
-    "tooltip-format-deactivated": "<span foreground='#e06c75'>󰛊 Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
+    "tooltip-format-activated": "<span foreground='#6b8c42'>󰅶 Caffeine Mode Active</span>\nPrevents system from going to sleep",
+    "tooltip-format-deactivated": "<span foreground='#d4782f'>󰛊 Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
   },
   "cava": {
     "framerate": 60,

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GTK_THEME="Pixel-Dream"
+GTK_THEME="PixelCraft"
 ICON_THEME="pixel-dream"
 CURSOR_THEME="pixel-dream-cursor"
 FONT="Monocraft Nerd Font Book 10"

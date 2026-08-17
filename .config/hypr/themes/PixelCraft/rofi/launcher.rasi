@@ -1,35 +1,36 @@
 /* ============================================================
-   Jade Theme — Rofi Launcher
-   Sharp, boxy, dark jade aesthetic.
+   PixelCraft Theme — Rofi Launcher (Pokemon Battle Menu)
+   Pixel Village palette — woody browns, amber gold, forest green.
+   Monocraft Nerd Font for that chunky pixel look.
    ============================================================ */
 
 configuration {
     modi:                "drun,run,window";
     show-icons:          true;
-    display-drun:        " Apps";
-    display-run:         " Run";
-    display-window:      " Windows";
+    display-drun:        "▶ FIGHT";
+    display-run:         "▶ RUN";
+    display-window:      "▶ PARTY";
     drun-display-format: "{name}";
 }
 
 * {
     font:             "Monocraft Nerd Font 12";
-    background:       #1d2021;
-    background-alt:   #282828;
-    foreground:       #ebdbb2;
-    selected:         #d79921;
-    active:           #a9b665;
-    urgent:           #ea6962;
-    border-color:     #d79921;
+    background:       #1a1410;
+    background-alt:   #2a1f14;
+    foreground:       #e8d5b0;
+    selected:         #d4a020;
+    active:           #6b8c42;
+    urgent:           #d4782f;
+    border-color:     #d4a020;
 }
 
 window {
-    width:            680px;
+    width:            580px;
     transparency:     "real";
     location:         center;
     anchor:           center;
     fullscreen:       false;
-    border:           2px solid;
+    border:           3px solid;
     border-color:     @border-color;
     border-radius:    0px;
     background-color: @background;
@@ -46,9 +47,11 @@ mainbox {
 inputbar {
     enabled:          true;
     spacing:          8px;
-    padding:          12px 16px;
+    padding:          14px 18px;
     background-color: @background-alt;
     text-color:       @foreground;
+    border:           0 0 2px 0;
+    border-color:     @selected;
     children:         [ "prompt", "entry" ];
 }
 
@@ -63,8 +66,8 @@ entry {
     background-color: inherit;
     text-color:       @foreground;
     cursor:           text;
-    placeholder:      "Search...";
-    placeholder-color: #53685B;
+    placeholder:      "What will you do?";
+    placeholder-color: #7a7062;
 }
 
 listview {
@@ -84,7 +87,7 @@ listview {
 element {
     enabled:          true;
     spacing:          10px;
-    padding:          8px 16px;
+    padding:          8px 18px;
     background-color: transparent;
     text-color:       @foreground;
     cursor:           pointer;

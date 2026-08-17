@@ -267,6 +267,9 @@ function fastfetch() {
         command fastfetch -c "$HOME/.config/hypr/themes/Chameleon/fastfetch/config.jsonc" \
             --logo void --logo-color-1 cyan --logo-color-2 $'\e[38;2;93;129;152m' "$@"
         return
+    elif [[ "$theme_name" == "PixelCraft" ]]; then
+        command fastfetch -c "$HOME/.config/hypr/themes/PixelCraft/fastfetch/config.jsonc" "$@"
+        return
     fi
 
     # Fallback to default behavior if the theme isn't explicitly configured above
@@ -286,10 +289,10 @@ function fastfetch() {
 export PATH="$HOME/.local/bin:$PATH"
 alias pokemon='pokemon-colorscripts -r --no-title'
 
-# Run a random pokemon colorscript on startup ONLY if the active theme is Pixel-Dream
+# Run a random pokemon colorscript on startup ONLY if the active theme is PixelCraft
 if [[ -L ~/.config/hypr/themes/current ]]; then
     CURRENT_THEME=$(basename "$(readlink -f ~/.config/hypr/themes/current)")
-    if [[ "$CURRENT_THEME" == "Pixel-Dream" ]]; then
+    if [[ "$CURRENT_THEME" == "PixelCraft" ]]; then
         pokemon
     fi
 fi

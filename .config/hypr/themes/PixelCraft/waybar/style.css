@@ -1,0 +1,205 @@
+/* ============================================================
+   PixelCraft Theme — Waybar Style (Pixel Village RPG HUD)
+   Deep woody browns + amber gold + forest green.
+   Monocraft Nerd Font for that chunky pixel look.
+   ============================================================ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Monocraft Nerd Font", "Miracode", "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #1a1410;
+    color: #e8d5b0;
+    border-bottom: 2px solid #d4a020; /* Amber gold border */
+}
+
+tooltip {
+    background-color: #1a1410;
+    color: #e8d5b0;
+    border: 2px solid #d4a020;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: #e8d5b0;
+}
+
+/* ── Workspaces as RPG Levels ── */
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    all: initial;
+    padding: 0 6px;
+    margin: 0 1px;
+    color: #7a7062;
+    font-family: "Monocraft Nerd Font", "Miracode", "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.1s linear;
+}
+
+#workspaces button.empty {
+    color: #3d2b1a;
+}
+
+#workspaces button.active {
+    color: #1a1410;
+    background-color: #d4a020; /* Amber gold block */
+    border-bottom: 2px solid #6b8c42;
+}
+
+#workspaces button.urgent {
+    color: #1a1410;
+    background-color: #d4782f; /* Warm orange flash */
+    border-bottom: 2px solid #d4782f;
+}
+
+#workspaces button:hover {
+    color: #1a1410;
+    background-color: #c9952a; /* Muted gold on hover */
+    border-bottom: 2px solid #d4a020;
+}
+
+/* ── Shared module styling ── */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#tray,
+#custom-power,
+#custom-powermenu,
+#custom-weather,
+#custom-cava,
+#idle_inhibitor {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: #e8d5b0;
+    transition: all 0.1s linear;
+}
+
+/* ── Cava visualizer ── */
+#custom-cava {
+    color: #c9952a; /* Muted gold */
+    font-size: 14px;
+    padding: 0 6px;
+}
+
+/* ── Idle Inhibitor ── */
+#idle_inhibitor {
+    color: #c48db0; /* Mauve pink */
+}
+
+#idle_inhibitor.activated {
+    color: #6b8c42; /* Forest green */
+}
+
+/* ── Clock ── */
+#clock {
+    color: #8aad5e; /* Sky blue-green */
+    font-weight: bold;
+    background-color: #1a1410;
+}
+
+/* ── Battery = HP Bar ── */
+#battery {
+    color: #6b8c42; /* Forest green = full health */
+}
+
+#battery.warning {
+    color: #c9952a; /* Muted gold = low health warning */
+}
+
+#battery.critical {
+    color: #1a1410;
+    background-color: #d4782f; /* Burnt orange = critical! */
+    animation: blink 0.5s steps(2) infinite;
+}
+
+#battery.charging {
+    color: #8aad5e; /* Sky blue-green */
+}
+
+/* ── CPU = ATK ── */
+#cpu {
+    color: #d4782f; /* Warm orange */
+}
+
+/* ── Memory = MP ── */
+#memory {
+    color: #c48db0; /* Mauve pink */
+}
+
+/* ── Network ── */
+#network {
+    color: #7a9a4e; /* Sage green = connected */
+}
+
+#network.disconnected {
+    color: #d4782f; /* Orange = down */
+}
+
+/* ── Audio ── */
+#pulseaudio {
+    color: #d4a020; /* Amber gold */
+}
+
+#pulseaudio.muted {
+    color: #3d2b1a; /* Dark wood muted */
+}
+
+/* ── Bluetooth ── */
+#bluetooth {
+    color: #8aad5e;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #3d2b1a;
+}
+
+/* ── Backlight ── */
+#backlight {
+    color: #c9952a; /* Gold */
+}
+
+/* ── Tray ── */
+#tray {
+    margin-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+/* ── Power button ── */
+#custom-power,
+#custom-powermenu {
+    color: #d4782f; /* Warm orange */
+    padding: 0 12px;
+}
+
+/* ── Separator ── */
+#custom-separator {
+    color: #3d2b1a;
+    padding: 0 4px;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+        color: #d4782f;
+    }
+}

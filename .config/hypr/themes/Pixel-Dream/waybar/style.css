@@ -1,0 +1,191 @@
+/* ============================================================
+   Pixel-Dream Theme — Waybar Style
+   Ported from HyDE Pixel Dream theme. Gruvbox pixel aesthetic.
+   ============================================================ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Monocraft Nerd Font", "Miracode", "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #282828;
+    color: #ebdbb2;
+    border-bottom: 2px solid #d79921; /* Gold border */
+}
+
+tooltip {
+    background-color: #282828;
+    color: #ebdbb2;
+    border: 2px solid #d79921;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: #ebdbb2;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    all: initial;
+    padding: 0 8px;
+    margin: 0 2px;
+    color: #a89984;
+    font-family: "Monocraft Nerd Font", "Miracode", "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.1s linear;
+}
+
+#workspaces button.empty {
+    color: #665c54;
+}
+
+#workspaces button.active {
+    color: #282828;
+    background-color: #d79921; /* Gold block */
+    border-bottom: 2px solid #d79921;
+}
+
+#workspaces button.urgent {
+    color: #282828;
+    background-color: #ea6962; /* Red block */
+    border-bottom: 2px solid #ea6962;
+}
+
+#workspaces button:hover {
+    color: #282828;
+    background-color: #fabd2f; /* Bright Gold block on hover */
+    border-bottom: 2px solid #fabd2f;
+}
+
+/* Module styling using Gruvbox colors */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#tray,
+#custom-power,
+#custom-powermenu,
+#custom-weather,
+#custom-cava,
+#idle_inhibitor {
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #ebdbb2;
+    transition: all 0.1s linear;
+}
+
+#custom-cava {
+    color: #d8a657; /* Yellow */
+    font-size: 14px;
+    padding: 0 6px;
+}
+
+#idle_inhibitor {
+    color: #d3869b; /* Magenta */
+}
+
+#idle_inhibitor.activated {
+    color: #a9b665; /* Green */
+}
+
+#clock {
+    color: #89b482; /* Cyan */
+    font-weight: bold;
+    background-color: #282828;
+}
+
+#battery {
+    color: #a9b665; /* Green */
+}
+
+#battery.warning {
+    color: #d8a657; /* Yellow */
+}
+
+#battery.critical {
+    color: #282828;
+    background-color: #ea6962; /* Red */
+    animation: blink 0.5s steps(2) infinite;
+}
+
+#battery.charging {
+    color: #89b482; /* Cyan */
+}
+
+#cpu {
+    color: #d3869b; /* Magenta */
+}
+
+#memory {
+    color: #7daea3; /* Blue */
+}
+
+#network {
+    color: #a9b665; /* Green */
+}
+
+#network.disconnected {
+    color: #ea6962; /* Red */
+}
+
+#pulseaudio {
+    color: #d8a657; /* Yellow */
+}
+
+#pulseaudio.muted {
+    color: #665c54; /* Dark Grey */
+}
+
+#bluetooth {
+    color: #89b482; /* Cyan */
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #665c54;
+}
+
+#backlight {
+    color: #d3869b;
+}
+
+#tray {
+    margin-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#custom-power,
+#custom-powermenu {
+    color: #ea6962; /* Red */
+    padding: 0 12px;
+}
+
+/* Separator styling */
+#custom-separator {
+    color: #665c54;
+    padding: 0 4px;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+        color: #ea6962;
+    }
+}

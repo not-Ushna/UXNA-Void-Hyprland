@@ -6,7 +6,6 @@
 configuration {
     modi:                "drun,run,window";
     show-icons:          true;
-    icon-theme:          "pixel-dream";
     display-drun:        " Apps";
     display-run:         " Run";
     display-window:      " Windows";

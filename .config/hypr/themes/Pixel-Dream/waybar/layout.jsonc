@@ -16,7 +16,6 @@
     "custom/cava"
   ],
   "modules-center": [
-    "custom/pixel-anim",
     "idle_inhibitor",
     "clock"
   ],
@@ -153,11 +152,5 @@
       "▇",
       "█"
     ]
-  },
-  "custom/pixel-anim": {
-    "exec": "~/.config/hypr/themes/current/waybar/pixel-anim.sh",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": false
   }
 }

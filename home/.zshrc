@@ -280,4 +280,18 @@ function fastfetch() {
 # Run `p10k configure` in the terminal to visually rebuild this file.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║  09. POKEMON COLORSCRIPTS                                            ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+export PATH="$HOME/.local/bin:$PATH"
+alias pokemon='pokemon-colorscripts -r --no-title'
+
+# Run a random pokemon colorscript on startup ONLY if the active theme is Pixel-Dream
+if [[ -L ~/.config/hypr/themes/current ]]; then
+    CURRENT_THEME=$(basename "$(readlink -f ~/.config/hypr/themes/current)")
+    if [[ "$CURRENT_THEME" == "Pixel-Dream" ]]; then
+        pokemon
+    fi
+fi
+
 # End of ~/.zshrc

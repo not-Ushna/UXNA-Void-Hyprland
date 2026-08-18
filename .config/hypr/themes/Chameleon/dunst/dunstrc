@@ -13,7 +13,7 @@
     padding = 12
     horizontal_padding = 12
     frame_width = 2
-    frame_color = "#B49E89"
+    frame_color = "#0571A8"
     sort = yes
     font = "JetBrainsMono Nerd Font 11"
     line_height = 0
@@ -42,19 +42,19 @@
     mouse_right_click = close_current
 
 [urgency_low]
-    background = "#080203"
-    foreground = "#f5e5d8"
-    frame_color = "#aba097"
+    background = "#000313"
+    foreground = "#a3dbe6"
+    frame_color = "#7299a1"
     timeout = 3
 
 [urgency_normal]
-    background = "#080203"
-    foreground = "#f5e5d8"
-    frame_color = "#B49E89"
+    background = "#000313"
+    foreground = "#a3dbe6"
+    frame_color = "#0571A8"
     timeout = 5
 
 [urgency_critical]
-    background = "#BC6355"
-    foreground = "#080203"
-    frame_color = "#BC6355"
+    background = "#054283"
+    foreground = "#000313"
+    frame_color = "#054283"
     timeout = 0

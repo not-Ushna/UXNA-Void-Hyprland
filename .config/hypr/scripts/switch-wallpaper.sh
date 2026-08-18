@@ -24,7 +24,7 @@ fi
 
 # Get sorted list of image files
 mapfile -t wallpapers < <(
-    find "$WALLPAPERS_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" \) \
+    find "$WALLPAPERS_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" -o -iname "*.gif" \) \
         -printf "%f\n" | sort
 )
 

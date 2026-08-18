@@ -102,14 +102,14 @@ else
 
     # Find wallpaper (try main.jpg, main.png, or first image)
     WALLPAPER=""
-    for ext in jpg png jpeg webp; do
+    for ext in gif webp png jpg jpeg; do
         if [[ -f "$CURRENT_LINK/wallpapers/main.$ext" ]]; then
             WALLPAPER="$CURRENT_LINK/wallpapers/main.$ext"
             break
         fi
     done
     if [[ -z "$WALLPAPER" ]]; then
-        WALLPAPER=$(find "$CURRENT_LINK/wallpapers/" -type f -name "*.jpg" -o -name "*.png" | head -1)
+        WALLPAPER=$(find "$CURRENT_LINK/wallpapers/" -type f -name "*.gif" -o -name "*.webp" -o -name "*.jpg" -o -name "*.png" | head -1)
     fi
 
     if [[ -n "$WALLPAPER" ]]; then
@@ -182,6 +182,13 @@ fi
 # 7.8 Apply VS Code / Antigravity IDE theme dynamically based on colors.conf
 if [[ -f "$HOME/.config/hypr/scripts/update-vscode-theme.py" ]]; then
     python3 "$HOME/.config/hypr/scripts/update-vscode-theme.py" 2>/dev/null || true
+fi
+
+# 7.9 Apply btop theme
+if [[ -f "$CURRENT_LINK/btop/theme.theme" ]]; then
+    mkdir -p "$HOME/.config/btop/themes"
+    cp -f "$CURRENT_LINK/btop/theme.theme" "$HOME/.config/btop/themes/current.theme" 2>/dev/null || true
+    sed -i 's/^color_theme = .*/color_theme = "current"/' "$HOME/.config/btop/btop.conf" 2>/dev/null || true
 fi
 
 # Reload running kitty terminals to pick up the updated current symlink

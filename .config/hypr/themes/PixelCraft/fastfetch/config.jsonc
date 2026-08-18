@@ -20,49 +20,49 @@
         "break",
         {
             "type": "title",
-            "key": "      user  ",
+            "key": "      user   ",
             "keyColor": "38;2;212;120;47",
             "format": "{#38;2;232;160;80}{1}"
         },
         {
             "type": "host",
-            "key": "    󰒋  hname ",
+            "key": "    󰒋  hname  ",
             "keyColor": "38;2;138;173;94",
             "format": "{#38;2;158;193;114}{1}"
         },
         {
             "type": "os",
-            "key": "      distro",
+            "key": "      distro ",
             "keyColor": "38;2;100;160;200",
             "format": "{#38;2;130;180;220}{3}"
         },
         {
             "type": "kernel",
-            "key": "      kernel",
+            "key": "      kernel ",
             "keyColor": "38;2;196;141;176",
             "format": "{#38;2;216;161;196}{2}"
         },
         {
             "type": "uptime",
-            "key": "      uptime",
+            "key": "    󰅐  uptime ",
             "keyColor": "38;2;212;160;32",
             "format": "{#38;2;232;180;52}{1} {2}"
         },
         {
             "type": "shell",
-            "key": "      shell ",
+            "key": "      shell  ",
             "keyColor": "38;2;180;100;100",
             "format": "{#38;2;200;120;120}{1}"
         },
         {
             "type": "packages",
-            "key": "    󰏖  pkgs  ",
+            "key": "    󰏖  pkgs   ",
             "keyColor": "38;2;106;140;66",
             "format": "{#38;2;126;160;86}{1}"
         },
         {
             "type": "memory",
-            "key": "      memory",
+            "key": "    󰍛  memory ",
             "keyColor": "38;2;160;130;200",
             "format": "{#38;2;180;150;220}{1} / {2}"
         },
@@ -74,7 +74,7 @@
         },
         {
             "type": "colors",
-            "key": "  ║   colors║",
+            "key": "  ║  colors  ║",
             "symbol": "circle",
             "keyColor": "38;2;212;160;32"
         },

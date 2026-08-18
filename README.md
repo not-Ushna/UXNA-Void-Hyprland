@@ -23,7 +23,8 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 ### Key Highlights
 
 - **🌈 Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
-- **🎨 Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, and VS Code all update together on a single theme change.
+- **🎨 Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, Btop, Fastfetch, and VS Code all update together on a single theme change.
+- **🎞️ Live Wallpapers** — Native support for animated `.gif` wallpapers via `swww` built directly into the wallpaper switcher.
 - **🔧 Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
 - **💾 Smart Backup** — A `sync` + `push` workflow to effortlessly version-control your entire desktop config on GitHub.
 - **🎨 Custom GRUB Theme** — A personalized `Pochita_Pochita` GRUB bootloader theme backed up and installable from this repo.
@@ -39,6 +40,7 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 | **🏢 Lumon** | Deep slate background, pale cyan borders, muted corporate aesthetic. Inspired by *Severance*. | Dark · Modern |
 | **⚠️ Evangelion** | Absolute black background, emergency red borders, warning amber accents. Tactical alert layout. | Dark · Aggressive |
 | **✨ PromisedFuture** | Frutiger Aero: teal aurora, vibrant green, golden warmth. Classic glassy aesthetic with blur. | Glossy · Aero |
+| **⚔️ PixelCraft** | Cozy RPG village aesthetic. Warm woody browns, amber gold, Monocraft font, and Pokemon battle UI. | Retro · Pixel |
 
 > **💡 Tip:** Press `Super + Shift + T` to open the visual theme gallery, or `Super + Shift + W` for the wallpaper gallery.
 
@@ -103,11 +105,13 @@ UXNA-Hyprland/
 │   │   │   ├── Lumon/             #   Severance-inspired corporate theme
 │   │   │   ├── Evangelion/        #   Tactical red-on-black theme
 │   │   │   ├── PromisedFuture/    #   Frutiger Aero glassy theme
+│   │   │   ├── PixelCraft/        #   Cozy RPG pixel art theme
 │   │   │   └── current -> ...     #   Symlink to active theme
 │   │   ├── scripts/               # All desktop automation scripts
 │   │   └── waybar/                # Waybar configuration
 │   ├── kitty/                     # Kitty terminal configuration
-│   └── fastfetch/                 # System info configuration
+│   ├── fastfetch/                 # System info configuration
+│   └── btop/                      # Resource monitor configuration
 ├── home/
 │   ├── .zshrc                     # Zsh config (Powerlevel10k, aliases)
 │   └── .p10k.zsh                  # Powerlevel10k prompt configuration

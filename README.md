@@ -216,6 +216,7 @@ sudo bash ./scripts/install-pochita-grub.sh
 | `Super + Shift + T` | Open theme gallery |
 | `Super + Shift + W` | Open wallpaper gallery |
 | `Super + Alt + ←/→` | Cycle wallpapers |
+| `Super + Alt + ↑/↓` | Cycle themes |
 
 ### Window Management
 

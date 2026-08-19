@@ -38,7 +38,28 @@ if [[ ${#themes[@]} -eq 0 ]]; then
 fi
 
 # Select theme
-if [[ -n "$DIRECT_THEME" ]]; then
+if [[ "$DIRECT_THEME" == "next" ]] || [[ "$DIRECT_THEME" == "prev" ]]; then
+    current_theme=""
+    if [[ -L "$CURRENT_LINK" ]]; then
+        current_theme=$(basename "$(readlink -f "$CURRENT_LINK")")
+    fi
+    
+    current_index=0
+    for i in "${!themes[@]}"; do
+        if [[ "${themes[$i]}" == "$current_theme" ]]; then
+            current_index=$i
+            break
+        fi
+    done
+    
+    if [[ "$DIRECT_THEME" == "next" ]]; then
+        next_index=$(( (current_index + 1) % ${#themes[@]} ))
+        chosen="${themes[$next_index]}"
+    else
+        prev_index=$(( (current_index - 1 + ${#themes[@]}) % ${#themes[@]} ))
+        chosen="${themes[$prev_index]}"
+    fi
+elif [[ -n "$DIRECT_THEME" ]]; then
     chosen="$DIRECT_THEME"
     # Verify it exists
     if [[ ! -d "$THEMES_DIR/$chosen" ]]; then

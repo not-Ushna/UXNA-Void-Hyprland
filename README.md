@@ -265,11 +265,11 @@ All scripts live in `.config/hypr/scripts/`.
 
 ---
 
-## ✦ Shell Aliases
+## ✦ Shell Aliases & Custom Commands
 
-All custom aliases are defined in `home/.zshrc`.
+All custom aliases are defined in `home/.zshrc`, while custom command binaries are located in `~/.local/bin/`.
 
-| Alias | Description |
+| Alias / Command | Description |
 |:---|:---|
 | `ls` | Modern replacement for `ls` with icons and colors (powered by `eza`) |
 | `ll` | Detailed list view for `ls` with icons (powered by `eza -l`) |
@@ -279,6 +279,11 @@ All custom aliases are defined in `home/.zshrc`.
 | `sync` | Syncs your active configs to the local Git repository folder |
 | `push` | Commits and pushes your synced configs to GitHub |
 | `pokemon` | Displays a random Pokémon sprite in the terminal |
+| `barcraft` | Custom GUI module manager for Waybar |
+| `anifetch` | Displays an animated theme-based GIF alongside `fastfetch` |
+| `brrtfetch` | High-performance terminal fetch tool with native GIF support |
+| `uxna-shell` | A powerful wrapper shell for managing UXNA scripts, themes, and environments |
+| `curd` | CLI tool to manage anime playback with Discord Rich Presence and skipping features |
 
 ---
 

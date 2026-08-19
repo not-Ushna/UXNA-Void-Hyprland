@@ -120,8 +120,11 @@ UXNA-Hyprland/
 ├── boot/grub/themes/
 │   └── Pochita_Pochita/           # Custom GRUB bootloader theme
 ├── scripts/
-│   ├── install.sh                 # Full automated installer
-│   ├── dependency-checker.sh      # Verify all dependencies
+│   ├── universal-installer/       # Cross-distro universal package installer
+│   │   ├── install.sh             # Main installer entry point
+│   │   ├── lib/                   # Installer library modules (detection, etc.)
+│   │   └── packages/              # Distro-specific package mappings
+│   ├── install.sh                 # Legacy wrapper script (redirects to universal-installer)
 │   └── install-pochita-grub.sh    # GRUB theme installer
 └── setup.sh                       # One-liner bootstrap script
 ```
@@ -143,25 +146,26 @@ This will clone the repo, install all packages, set up Zsh with Oh-My-Zsh and Po
 ```bash
 git clone https://github.com/not-Ushna/UXNA-Hyprland.git ~/Projects/UXNA-Hyprland
 cd ~/Projects/UXNA-Hyprland
-./scripts/install.sh
+./scripts/universal-installer/install.sh
 ```
 
-**Flags:**
+**Common Flags:**
 | Flag | Description |
 |:---|:---|
-| `--no-packages` | Skip package installation (if already installed) |
-| `--no-shell` | Skip Zsh/Oh-My-Zsh setup |
+| `--dry-run` | Preview what will be installed without making any changes |
+| `--verify-only` | Verify installed packages instead of installing |
+| `--core` / `--theming` | Selectively install specific categories of packages |
+| `--skip <pkg>` | Skip specific packages or categories (e.g., `--skip fonts`) |
 
-### Dependency Checker
+### Package Verification
 
-Before installing, verify your system has every required dependency:
+Before or after installing, you can verify your system has every required dependency:
 
 ```bash
-./scripts/dependency-checker.sh         # Check status
-./scripts/dependency-checker.sh --fix   # Auto-install missing
+./scripts/universal-installer/install.sh --verify-only
 ```
 
-The checker scans across **6 categories** — Core, Utilities, Theming, Shell, Launcher, and Fonts — and prints a clean `✓ / ✗` status for each one.
+The installer verifies packages across **5 categories** — Core, Utilities, Theming, Shell, and Fonts — and prints a clean `✓ / ✗` status for each one based on the presence of binaries and fonts, not just package manager records.
 
 ### GRUB Theme (Optional)
 
@@ -263,7 +267,7 @@ All scripts live in `.config/hypr/scripts/`.
 
 ## ✦ Dependencies
 
-Installed manually (strictly verified by `dependency-checker.sh`):
+The Universal Installer handles the downloading and configuration of the following canonical packages:
 
 | Category | Packages |
 |:---|:---|

@@ -265,6 +265,21 @@ All scripts live in `.config/hypr/scripts/`.
 
 ---
 
+## ✦ Shell Aliases
+
+All custom aliases are defined in `home/.zshrc`.
+
+| Alias | Description |
+|:---|:---|
+| `ls`, `ll`, `la` | Modern replacements for `ls` with icons and colors (powered by `eza`) |
+| `cat` | Modern replacement for `cat` with syntax highlighting (powered by `bat`) |
+| `z` | Smarter, memory-based replacement for `cd` (powered by `zoxide`) |
+| `sync` | Syncs your active configs to the local Git repository folder |
+| `push` | Commits and pushes your synced configs to GitHub |
+| `pokemon` | Displays a random Pokémon sprite in the terminal |
+
+---
+
 ## ✦ Dependencies
 
 The Universal Installer handles the downloading and configuration of the following canonical packages:

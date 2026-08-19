@@ -1,6 +1,9 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  lock.sh
+#  ✦  Pause all media players
+# ─────────────────────────────────────────────────────────
 
-# Pause all media players
 playerctl pause -a 2>/dev/null
 
 # Mute default microphone

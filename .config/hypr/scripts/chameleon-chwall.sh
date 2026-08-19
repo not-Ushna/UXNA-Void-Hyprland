@@ -1,13 +1,8 @@
 #!/bin/bash
-# ============================================================
-# chameleon-chwall.sh — Chameleon Theme Wallpaper Changer
-# Picks a wallpaper, runs pywal, and reloads all components
-# with the freshly generated color palette.
-#
-# Usage:
-#   chameleon-chwall.sh              # Random wallpaper
-#   chameleon-chwall.sh /path/to/img # Specific wallpaper
-# ============================================================
+# ─────────────────────────────────────────────────────────
+#  ✦  chameleon-chwall.sh
+#  ✦  Picks a wallpaper, runs pywal, and reloads all components
+# ─────────────────────────────────────────────────────────
 
 set -eo pipefail
 

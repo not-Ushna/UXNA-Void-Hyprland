@@ -1,4 +1,8 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  install-grub-themes.sh
+#  ✦  Utility Script
+# ─────────────────────────────────────────────────────────
 
 echo "Creating Jade GRUB Theme..."
 mkdir -p /boot/grub/themes/Jade

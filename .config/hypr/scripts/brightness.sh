@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# brightness.sh — scroll-wheel brightness control for waybar
+# ─────────────────────────────────────────────────────────
+#  ✦  brightness.sh
+#  ✦  brightness.sh — scroll-wheel brightness control for waybar
+# ─────────────────────────────────────────────────────────
+
 DIRECTION="${1:-up}"
 STEP=5
 

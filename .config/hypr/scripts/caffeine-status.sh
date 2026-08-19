@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# caffeine-status.sh — Output current caffeine state for Waybar
-# Outputs JSON: {"text": "icon", "class": "on/off", "tooltip": "..."}
+# ─────────────────────────────────────────────────────────
+#  ✦  caffeine-status.sh
+#  ✦  Outputs JSON: {"text": "icon", "class": "on/off", "tooltip": "..."}
+# ─────────────────────────────────────────────────────────
 
 if pgrep -x swayidle > /dev/null; then
     # swayidle running = caffeine OFF (normal sleep mode)

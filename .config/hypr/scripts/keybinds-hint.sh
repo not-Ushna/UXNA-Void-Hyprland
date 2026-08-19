@@ -1,4 +1,8 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  keybinds-hint.sh
+#  ✦  Utility Script
+# ─────────────────────────────────────────────────────────
 
 README_PATH="$HOME/Projects/UXNA-Hyprland/README.md"
 

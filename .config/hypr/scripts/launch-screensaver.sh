@@ -1,6 +1,9 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  launch-screensaver.sh
+#  ✦  Prevent multiple instances
+# ─────────────────────────────────────────────────────────
 
-# Prevent multiple instances
 pgrep -f org.uxna.screensaver && exit 0
 
 # Launch Kitty with the screensaver class and script

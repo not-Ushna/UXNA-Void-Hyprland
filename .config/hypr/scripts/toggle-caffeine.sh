@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# toggle-caffeine.sh — Toggle swayidle on/off (caffeine mode)
-# Used by Waybar custom/caffeine module
+# ─────────────────────────────────────────────────────────
+#  ✦  toggle-caffeine.sh
+#  ✦  Used by Waybar custom/caffeine module
+# ─────────────────────────────────────────────────────────
 
 STATE_FILE="/tmp/caffeine-state"
 SWAYIDLE_CMD="swayidle -w \

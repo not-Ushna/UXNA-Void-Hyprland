@@ -1,14 +1,8 @@
 #!/bin/bash
-# ============================================================
-# switch-theme.sh — Theme Switcher
-# Lists themes via Rofi, updates the current symlink, and
-# reloads all visual components.
-#
-# Usage:
-#   switch-theme.sh           # Interactive Rofi menu
-#   switch-theme.sh Jade      # Direct switch (no menu)
-#   switch-theme.sh --grub    # Also update GRUB theme
-# ============================================================
+# ─────────────────────────────────────────────────────────
+#  ✦  switch-theme.sh
+#  ✦  Lists themes via Rofi, updates the current symlink, and
+# ─────────────────────────────────────────────────────────
 
 set -euo pipefail
 

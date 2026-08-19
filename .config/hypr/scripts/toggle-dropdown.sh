@@ -1,6 +1,9 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  toggle-dropdown.sh
+#  ✦  Check if a scratchpad terminal is already running
+# ─────────────────────────────────────────────────────────
 
-# Check if a scratchpad terminal is already running
 if ! hyprctl clients | grep -q "class: scratchpad"; then
     # Start kitty with the scratchpad class
     kitty --class scratchpad &

@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# ─────────────────────────────────────────────────────────
+#  ✦  update-vscode-theme.py
+#  ✦  ✦  Utility Script
+# ─────────────────────────────────────────────────────────
+
 import os
 import json
 import re

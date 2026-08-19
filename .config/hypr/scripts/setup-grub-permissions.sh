@@ -1,4 +1,9 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  setup-grub-permissions.sh
+#  ✦  Utility Script
+# ─────────────────────────────────────────────────────────
+
 set -e
 
 echo "Starting GRUB one-time setup..."

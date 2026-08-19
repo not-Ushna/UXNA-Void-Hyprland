@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+# ─────────────────────────────────────────────────────────
+#  ✦  launch-wlogout.sh
+#  ✦  Kill any existing instances first
+# ─────────────────────────────────────────────────────────
 
-# Kill any existing instances first
 pkill -x wlogout
 sleep 0.1
 

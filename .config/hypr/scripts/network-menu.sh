@@ -1,4 +1,8 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  network-menu.sh
+#  ✦  Utility Script
+# ─────────────────────────────────────────────────────────
 
 notify-send -t 2000 "Scanning Wi-Fi..." "Fetching available networks..."
 

@@ -1,6 +1,9 @@
 #!/bin/bash
+# ─────────────────────────────────────────────────────────
+#  ✦  screensaver.sh
+#  ✦  Function to check if screensaver is in focus
+# ─────────────────────────────────────────────────────────
 
-# Function to check if screensaver is in focus
 screensaver_in_focus() {
   if command -v jq >/dev/null 2>&1; then
     hyprctl activewindow -j | jq -e '.class == "org.uxna.screensaver"' >/dev/null 2>&1

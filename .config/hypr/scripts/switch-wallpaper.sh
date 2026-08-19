@@ -1,14 +1,8 @@
 #!/bin/bash
-# ============================================================
-# switch-wallpaper.sh — Wallpaper Switcher
-# Cycles through available wallpapers for the current theme,
-# or allows selecting one via Rofi.
-#
-# Usage:
-#   switch-wallpaper.sh         # Interactive Rofi menu
-#   switch-wallpaper.sh next    # Cycle to next wallpaper
-#   switch-wallpaper.sh prev    # Cycle to previous wallpaper
-# ============================================================
+# ─────────────────────────────────────────────────────────
+#  ✦  switch-wallpaper.sh
+#  ✦  Cycles through available wallpapers for the current theme,
+# ─────────────────────────────────────────────────────────
 
 set -euo pipefail
 

@@ -281,9 +281,6 @@ All custom aliases are defined in `home/.zshrc`, while custom command binaries a
 | `pokemon` | Displays a random Pokémon sprite in the terminal |
 | `barcraft` | Custom GUI module manager for Waybar |
 | `anifetch` | Displays an animated theme-based GIF alongside `fastfetch` |
-| `brrtfetch` | High-performance terminal fetch tool with native GIF support |
-| `uxna-shell` | A powerful wrapper shell for managing UXNA scripts, themes, and environments |
-| `curd` | CLI tool to manage anime playback with Discord Rich Presence and skipping features |
 
 ---
 

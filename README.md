@@ -271,7 +271,9 @@ All custom aliases are defined in `home/.zshrc`.
 
 | Alias | Description |
 |:---|:---|
-| `ls`, `ll`, `la` | Modern replacements for `ls` with icons and colors (powered by `eza`) |
+| `ls` | Modern replacement for `ls` with icons and colors (powered by `eza`) |
+| `ll` | Detailed list view for `ls` with icons (powered by `eza -l`) |
+| `la` | Detailed list view including hidden files (powered by `eza -la`) |
 | `cat` | Modern replacement for `cat` with syntax highlighting (powered by `bat`) |
 | `z` | Smarter, memory-based replacement for `cd` (powered by `zoxide`) |
 | `sync` | Syncs your active configs to the local Git repository folder |

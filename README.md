@@ -229,6 +229,8 @@ sudo bash ./scripts/install-pochita-grub.sh
 | `Super + Shift + Arrows` | Resize window |
 | `Super + 1-0` | Switch to workspace 1–10 |
 | `Super + Shift + 1-0` | Move window to workspace |
+| `Super + \`` | Toggle special scratchpad workspace |
+| `Super + Shift + P` | Pin active floating window |
 | `Super + Scroll` | Scroll through workspaces |
 | `Super + LMB / RMB` | Drag move / resize |
 
@@ -237,6 +239,8 @@ sudo bash ./scripts/install-pochita-grub.sh
 | Shortcut | Action |
 |:---|:---|
 | `Super + P` / `Print` | Screenshot |
+| `Super + Shift + C` | Open color picker (hyprpicker) |
+| `Super + Shift + B` | Toggle Waybar visibility |
 | `Super + F1/F2/F3` | Power profile (Saver / Balanced / Performance) |
 | Media Keys | Volume, playback, brightness |
 

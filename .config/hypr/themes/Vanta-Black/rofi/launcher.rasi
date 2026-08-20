@@ -7,10 +7,10 @@ configuration {
 
 * {
     font: "JetBrains Mono Nerd Font 12";
-    bg: #000000e6;
-    bg-alt: #0d0d0d;
-    fg: #f2f2f2;
-    primary: #e0e0e0;
+    bg: #090f15e6; /* Midnight with opacity */
+    bg-alt: #262e36; /* Mountainside */
+    fg: #b3b7ba; /* Slopes */
+    primary: #d3d1ce; /* Arctic */
     
     background-color: transparent;
     text-color: @fg;
@@ -23,7 +23,7 @@ window {
     height: 500px;
     background-color: @bg;
     border: 3px;
-    border-color: #e0e0e0;
+    border-color: #6c6d74; /* Apres Ski */
     border-radius: 0px;
 }
 
@@ -85,8 +85,8 @@ element {
 }
 
 element selected {
-    background-color: #e0e0e0;
-    text-color: #000000;
+    background-color: @bg-alt;
+    text-color: @primary;
 }
 
 element-icon {

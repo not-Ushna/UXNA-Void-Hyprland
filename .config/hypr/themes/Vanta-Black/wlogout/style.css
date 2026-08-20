@@ -5,14 +5,14 @@
 }
 
 window {
-    background-color: rgba(0, 0, 0, 0.90);
+    background-color: rgba(9, 15, 21, 0.90); /* Midnight */
 }
 
 button {
-    background-color: #000000;
-    border: 3px solid #e0e0e0;
+    background-color: #090f15; /* Midnight */
+    border: 3px solid #6c6d74; /* Apres Ski */
     border-radius: 0px;
-    color: #e0e0e0;
+    color: #b3b7ba; /* Slopes */
     margin: 20px;
     background-repeat: no-repeat;
     background-position: center;
@@ -22,16 +22,16 @@ button {
 }
 
 button:hover {
-    background-color: #e0e0e0;
-    border: 3px solid #ffffff;
-    color: #000000;
+    background-color: #262e36; /* Mountainside */
+    border: 3px solid #d3d1ce; /* Arctic */
+    color: #d3d1ce;
     outline: none;
 }
 
 button:active {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    color: #000000;
+    background-color: #6c6d74; /* Apres Ski */
+    border-color: #6c6d74;
+    color: #090f15; /* Midnight */
 }
 
 #lock { background-image: image(url("icons/lock.png")); }

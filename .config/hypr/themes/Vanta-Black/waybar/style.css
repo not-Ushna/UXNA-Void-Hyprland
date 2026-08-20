@@ -8,19 +8,19 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 1);
-    color: #d9d9d9;
+    background: rgba(9, 15, 21, 1); /* Midnight */
+    color: #d3d1ce; /* Arctic */
 }
 
 tooltip {
-    background: #000000;
-    border: 2px solid #333333;
-    color: #d9d9d9;
+    background: #090f15;
+    border: 2px solid #262e36;
+    color: #d3d1ce;
     border-radius: 0;
 }
 
 tooltip label {
-    color: #d9d9d9;
+    color: #d3d1ce;
 }
 
 #workspaces {
@@ -32,31 +32,31 @@ tooltip label {
 #workspaces button {
     padding: 0 10px;
     background: transparent;
-    color: #d9d9d9;
+    color: #b3b7ba; /* Slopes (inactive) */
     border-radius: 0;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 #workspaces button.active {
-    background: #d9d9d9;
-    color: #000000;
+    background: #262e36; /* Mountainside */
+    color: #d3d1ce; /* Arctic */
 }
 
 #workspaces button:hover {
-    background: #a6a6a6;
-    color: #000000;
+    background: #6c6d74; /* Apres Ski */
+    color: #090f15;
 }
 
 #clock, #battery, #cpu, #memory, #tray, #pulseaudio, #network, #bluetooth, #custom-power {
     padding: 0 12px;
     background: transparent;
-    color: #d9d9d9;
+    color: #d3d1ce;
     transition: all 0.3s ease;
 }
 
 #clock:hover, #battery:hover, #cpu:hover, #memory:hover, #pulseaudio:hover, #network:hover, #bluetooth:hover, #custom-power:hover {
-    background: #a6a6a6;
-    color: #000000;
+    background: #6c6d74; /* Apres Ski */
+    color: #090f15;
 }
 
 #custom-power {

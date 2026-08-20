@@ -139,3 +139,37 @@ tooltip label {
         color: #FF3B30;
     }
 }
+
+
+/* ── Universal Module Styling ── */
+#custom-updates,
+#custom-weather,
+#custom-cava,
+#custom-dunst,
+#custom-spotify,
+#custom-cliphist,
+#custom-swaync,
+#custom-display,
+#custom-hyprsunset,
+#custom-gamemode,
+#custom-clipboard,
+#custom-keybindhint,
+#custom-power,
+#custom-powermenu,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-app-launcher,
+#custom-workflows,
+#custom-wbar,
+#custom-sensorsinfo,
+#custom-mediaplayer,
+#taskbar,
+#window,
+#custom-wbar {
+    background-color: #0B1924;
+    padding: 0 15px;
+    margin: 5px 2px;
+    color: #9FDDF2;
+    border: 1px solid #9FDDF2;
+    border-radius: 4px;
+}

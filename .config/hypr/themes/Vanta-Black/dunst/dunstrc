@@ -1,0 +1,57 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 350
+    offset = 30x30
+    indicate_hidden = yes
+    shrink = no
+    transparency = 0
+    notification_height = 0
+    separator_height = 2
+    separator_color = "#3c3c3c"
+    padding = 20
+    horizontal_padding = 20
+    frame_width = 3
+    frame_color = "#e0e0e0"
+    font = "JetBrains Mono Nerd Font Bold 11"
+    line_height = 4
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    icon_position = left
+    max_icon_size = 48
+    sticky_history = yes
+    history_length = 20
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 0
+    mouse_left_click = close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+[urgency_low]
+    background = "#000000"
+    foreground = "#e5e5e5"
+    frame_color = "#3c3c3c"
+    timeout = 3
+
+[urgency_normal]
+    background = "#000000"
+    foreground = "#ffffff"
+    frame_color = "#e0e0e0"
+    timeout = 5
+
+[urgency_critical]
+    background = "#e0e0e0"
+    foreground = "#000000"
+    frame_color = "#ffffff"
+    timeout = 0

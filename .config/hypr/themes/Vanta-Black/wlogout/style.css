@@ -1,0 +1,49 @@
+* {
+    background: transparent;
+    font-family: "JetBrains Mono Nerd Font", monospace;
+    font-weight: 900;
+}
+
+window {
+    background-color: rgba(0, 0, 0, 0.90);
+}
+
+button {
+    background-color: #000000;
+    border: 3px solid #e0e0e0;
+    border-radius: 0px;
+    color: #e0e0e0;
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    font-size: 20px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+    border: 3px solid #ffffff;
+    color: #000000;
+    outline: none;
+}
+
+button:active {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+#lock { background-image: image(url("icons/lock.png")); }
+#logout { background-image: image(url("icons/logout.png")); }
+#suspend { background-image: image(url("icons/suspend.png")); }
+#hibernate { background-image: image(url("icons/hibernate.png")); }
+#reboot { background-image: image(url("icons/reboot.png")); }
+#shutdown { background-image: image(url("icons/shutdown.png")); }
+
+#lock:hover { background-image: image(url("icons/lock-hover.png")); }
+#logout:hover { background-image: image(url("icons/logout-hover.png")); }
+#suspend:hover { background-image: image(url("icons/suspend-hover.png")); }
+#hibernate:hover { background-image: image(url("icons/hibernate-hover.png")); }
+#reboot:hover { background-image: image(url("icons/reboot-hover.png")); }
+#shutdown:hover { background-image: image(url("icons/shutdown-hover.png")); }

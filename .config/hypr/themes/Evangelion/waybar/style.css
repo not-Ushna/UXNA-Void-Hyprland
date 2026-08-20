@@ -110,3 +110,35 @@ window#waybar {
     background: #FFB300;
     color: #000000;
 }
+
+
+/* ── Universal Module Styling ── */
+#custom-updates,
+#custom-weather,
+#custom-cava,
+#custom-dunst,
+#custom-spotify,
+#custom-cliphist,
+#custom-swaync,
+#custom-display,
+#custom-hyprsunset,
+#custom-gamemode,
+#custom-clipboard,
+#custom-keybindhint,
+#custom-power,
+#custom-powermenu,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-app-launcher,
+#custom-workflows,
+#custom-wbar,
+#custom-sensorsinfo,
+#custom-mediaplayer,
+#taskbar,
+#window,
+#custom-wbar {
+    padding: 0 15px;
+    background: #1A0808;
+    color: #FFB300;
+    border-left: 2px solid #000000;
+}

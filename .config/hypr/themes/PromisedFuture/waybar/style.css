@@ -103,3 +103,35 @@ tooltip label {
     from { opacity: 1; }
     to   { opacity: 0.6; }
 }
+
+
+/* ── Universal Module Styling ── */
+#custom-updates,
+#custom-weather,
+#custom-cava,
+#custom-dunst,
+#custom-spotify,
+#custom-cliphist,
+#custom-swaync,
+#custom-display,
+#custom-hyprsunset,
+#custom-gamemode,
+#custom-clipboard,
+#custom-keybindhint,
+#custom-power,
+#custom-powermenu,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-app-launcher,
+#custom-workflows,
+#custom-wbar,
+#custom-sensorsinfo,
+#custom-mediaplayer,
+#taskbar,
+#window,
+#custom-wbar {
+    padding: 0 8px;
+    margin: 0;
+    color: #FFFFFF;
+    background: transparent;
+}

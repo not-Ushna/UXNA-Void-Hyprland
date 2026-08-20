@@ -1,13 +1,13 @@
 #!/bin/bash
 # ============================================================
-# Vanta-Black Theme — GTK Settings
-# Apply dark GTK theme with monochrome Vanta-Black accents.
+# Midnight-Slate Theme — GTK Settings
+# Apply dark GTK theme with monochrome Midnight-Slate accents.
 # Also copies the GTK4 libadwaita colors for Nautilus etc.
 # ============================================================
 
-# Apply specific GTK and icon themes for Vanta-Black
+# Apply specific GTK and icon themes for Midnight-Slate
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-gsettings set org.gnome.desktop.wm.preferences theme "Vanta-Black"
+gsettings set org.gnome.desktop.wm.preferences theme "Midnight-Slate"
 gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-black"
 gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"
 

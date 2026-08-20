@@ -35,7 +35,7 @@ mainbox {
 imagebox {
     expand: false;
     width: 300px;
-    background-image: url("~/.config/hypr/themes/Vanta-Black/wallpapers/makima_is_listening.jpg", height);
+    background-image: url("~/.config/hypr/themes/Midnight-Slate/wallpapers/makima_is_listening.jpg", height);
     background-color: transparent;
 }
 

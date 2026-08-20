@@ -9,12 +9,12 @@ configuration {
 
 * {
     font:             "JetBrains Mono Nerd Font 11";
-    background:       #300f18E6;
-    background-alt:   #77869866;
-    foreground:       #abc0da;
-    selected:         #4D85B5;
-    active:           #99718F;
-    urgent:           #4C7AA8;
+    background:       #322226E6;
+    background-alt:   #a1a1a166;
+    foreground:       #e7e6e6;
+    selected:         #9FAECD;
+    active:           #5B89D0;
+    urgent:           #638FA8;
 }
 
 window {

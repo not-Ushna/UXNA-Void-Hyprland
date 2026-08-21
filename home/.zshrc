@@ -147,55 +147,10 @@ fi
 # Copies your live system configurations into your local UXNA-Hyprland repo folder.
 # NOTE: It does not push to GitHub! It only updates your local git folder.
 sync_repo() {
-  local repo_path="$HOME/Projects/UXNA-Hyprland"
   local text_color="\e[38;5;82m"
-  local file_color="\e[38;5;226m"
-  local err_color="\e[38;5;196m"
-  local reset_color="\e[0m"
-
-  # Animated typewriter output helper
-  type_out() {
-    local text="$1"
-    local delay=0.03
-    echo -ne "$2"
-    local i
-    for ((i=1; i<=${#text}; i++)); do
-      echo -n "${text[i]}"
-      sleep "$delay"
-    done
-    echo -e "$reset_color"
-  }
-
-  echo -n "Syncing configs to repository... "
-  local spin=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
-  local j; for ((j=1; j<=2; j++)); do
-    for i in {1..10}; do echo -en "\b${spin[$i]}"; sleep 0.05; done
-  done
-  echo -en "\b \b\n"
-
-  # Rsync active configs into repo folder and capture changes
-  local changed_files=""
-  changed_files+=$(rsync -ai --delete "$HOME/.config/hypr/"      "$repo_path/.config/hypr/"      2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai --delete "$HOME/.config/fastfetch/" "$repo_path/.config/fastfetch/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai --delete "$HOME/.config/kitty/" "$repo_path/.config/kitty/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai "$HOME/.var/app/com.visualstudio.code/config/Code/User/settings.json" "$repo_path/vscode/settings.json" 2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai --delete "/boot/grub/themes/Pochita_Pochita/" "$repo_path/boot/grub/themes/Pochita_Pochita/" 2>/dev/null | grep -E '^>|^cd|^\*deleting' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai "$HOME/.zshrc"    "$repo_path/home/.zshrc"    2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
-  changed_files+=$'\n'$(rsync -ai "$HOME/.p10k.zsh" "$repo_path/home/.p10k.zsh" 2>/dev/null | grep -E '^>|^cd' | awk '{print $2}')
-
-  # Remove blank lines from output
-  changed_files=$(echo "$changed_files" | grep -v '^$')
-
-  if [[ -n "$changed_files" ]]; then
-    type_out "Found updates in the following files:" "$text_color"
-    echo "$changed_files" | while IFS= read -r line; do
-      type_out "  $line" "$file_color"
-      sleep 0.05
-    done
-    type_out $'\nSuccessfully backed up updates to your local repo folder!' "$text_color"
-  else
-    type_out $'\nEverything is already up to date!' "$text_color"
-  fi
+  echo -e "${text_color}All your configurations are now perfectly symlinked directly to your Git repository!${reset_color}"
+  echo -e "You no longer need to run 'sync'. Any changes you make are instantly ready to be pushed."
+  echo -e "Just run \e[38;5;226mpush\e[0m to commit and push your changes to GitHub!"
 }
 alias sync='sync_repo'
 

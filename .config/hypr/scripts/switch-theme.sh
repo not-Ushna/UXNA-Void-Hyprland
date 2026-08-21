@@ -99,7 +99,7 @@ fi
 # ║  Apply the new theme                                                 ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 # 1. Update symlink
-ln -sfn "$THEMES_DIR/$chosen" "$CURRENT_LINK"
+ln -sfn "$chosen" "$CURRENT_LINK"
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  Component Updates                                                   ║
@@ -177,13 +177,13 @@ fi
 # 7.5 Apply fastfetch theme
 if [[ -f "$CURRENT_LINK/fastfetch/config.jsonc" ]]; then
     mkdir -p "$HOME/.config/fastfetch"
-    cp -f "$CURRENT_LINK/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc" 2>/dev/null || true
+    ln -sf "$CURRENT_LINK/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc" 2>/dev/null || true
 fi
 
 # 7.6 Apply cava theme
 if [[ -f "$CURRENT_LINK/cava/config" ]]; then
     mkdir -p "$HOME/.config/cava"
-    cp -f "$CURRENT_LINK/cava/config" "$HOME/.config/cava/config" 2>/dev/null || true
+    ln -sf "$CURRENT_LINK/cava/config" "$HOME/.config/cava/config" 2>/dev/null || true
     killall -USR2 cava 2>/dev/null || true
 fi
 
@@ -191,7 +191,7 @@ fi
 ZEN_CHROME="$HOME/.var/app/app.zen_browser.zen/.zen/peppvdil.Default (release)/chrome"
 if [[ -f "$CURRENT_LINK/zen/userChrome.css" ]]; then
     mkdir -p "$ZEN_CHROME"
-    cp -f "$CURRENT_LINK/zen/userChrome.css" "$ZEN_CHROME/userChrome.css" 2>/dev/null || true
+    ln -sf "$CURRENT_LINK/zen/userChrome.css" "$ZEN_CHROME/userChrome.css" 2>/dev/null || true
 fi
 
 # 7.8 Apply VS Code / Antigravity IDE theme dynamically based on colors.conf
@@ -202,7 +202,7 @@ fi
 # 7.9 Apply btop theme
 if [[ -f "$CURRENT_LINK/btop/theme.theme" ]]; then
     mkdir -p "$HOME/.config/btop/themes"
-    cp -f "$CURRENT_LINK/btop/theme.theme" "$HOME/.config/btop/themes/current.theme" 2>/dev/null || true
+    ln -sf "$CURRENT_LINK/btop/theme.theme" "$HOME/.config/btop/themes/current.theme" 2>/dev/null || true
     sed -i 's/^color_theme = .*/color_theme = "current"/' "$HOME/.config/btop/btop.conf" 2>/dev/null || true
 fi
 

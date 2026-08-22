@@ -58,7 +58,7 @@
             "type": "packages",
             "key": "    󰏖  pkgs   ",
             "keyColor": "38;2;106;140;66",
-            "format": "{#38;2;126;160;86}{1}"
+            "format": "{#38;2;126;160;86}{all}"
         },
         {
             "type": "memory",

@@ -1,0 +1,34 @@
+/* Nord Theme — Wlogout Style */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 24px;
+}
+
+window {
+    background-color: rgba(2e, 34, 40, 0.85);
+}
+
+button {
+    color: #eceff4;
+    background-color: #2e3440;
+    outline-style: none;
+    border: 2px solid #434c5e;
+    border-radius: 14px;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 20px;
+    padding: 20px;
+}
+
+button:focus {
+    background-color: #16161e;
+}
+
+button:hover {
+    background-color: #b48ead;
+    color: #2e3440;
+    border-color: #b48ead;
+    transition: all 0.3s ease;
+}

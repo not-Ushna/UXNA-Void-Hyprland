@@ -1,0 +1,34 @@
+/* Catppuccin Latte Theme — Wlogout Style */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 24px;
+}
+
+window {
+    background-color: rgba(ef, f1, f5, 0.85);
+}
+
+button {
+    color: #4c4f69;
+    background-color: #eff1f5;
+    outline-style: none;
+    border: 2px solid #bcc0cc;
+    border-radius: 14px;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 20px;
+    padding: 20px;
+}
+
+button:focus {
+    background-color: #16161e;
+}
+
+button:hover {
+    background-color: #8839ef;
+    color: #eff1f5;
+    border-color: #8839ef;
+    transition: all 0.3s ease;
+}

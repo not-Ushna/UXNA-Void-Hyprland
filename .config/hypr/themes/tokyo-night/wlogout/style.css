@@ -1,0 +1,34 @@
+/* Tokyo Night Theme — Wlogout Style */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 24px;
+}
+
+window {
+    background-color: rgba(1a, 1b, 26, 0.85);
+}
+
+button {
+    color: #c0caf5;
+    background-color: #1a1b26;
+    outline-style: none;
+    border: 2px solid #414868;
+    border-radius: 14px;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 20px;
+    padding: 20px;
+}
+
+button:focus {
+    background-color: #16161e;
+}
+
+button:hover {
+    background-color: #9d7cd8;
+    color: #1a1b26;
+    border-color: #9d7cd8;
+    transition: all 0.3s ease;
+}

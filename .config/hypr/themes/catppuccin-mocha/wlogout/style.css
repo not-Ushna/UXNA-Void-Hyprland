@@ -1,0 +1,34 @@
+/* Catppuccin Mocha Theme — Wlogout Style */
+
+* {
+    background-image: none;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 24px;
+}
+
+window {
+    background-color: rgba(1e, 1e, 2e, 0.85);
+}
+
+button {
+    color: #cdd6f4;
+    background-color: #1e1e2e;
+    outline-style: none;
+    border: 2px solid #45475a;
+    border-radius: 14px;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 20px;
+    padding: 20px;
+}
+
+button:focus {
+    background-color: #16161e;
+}
+
+button:hover {
+    background-color: #cba6f7;
+    color: #1e1e2e;
+    border-color: #cba6f7;
+    transition: all 0.3s ease;
+}

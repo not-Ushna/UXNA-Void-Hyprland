@@ -1,0 +1,41 @@
+{
+    "label": "lock",
+    "action": "hyprlock -c ~/.config/hypr/themes/current/hyprlock/hyprlock.conf",
+    "text": "\nLock",
+    "keybind": "l"
+}
+
+{
+    "label": "logout",
+    "action": "hyprctl dispatch exit",
+    "text": "󰍃\nLogout",
+    "keybind": "e"
+}
+
+{
+    "label": "suspend",
+    "action": "hyprlock -c ~/.config/hypr/themes/current/hyprlock/hyprlock.conf & disown && loginctl suspend",
+    "text": "󰒲\nSuspend",
+    "keybind": "u"
+}
+
+{
+    "label": "shutdown",
+    "action": "loginctl poweroff",
+    "text": "\nShutdown",
+    "keybind": "s"
+}
+
+{
+    "label": "hibernate",
+    "action": "loginctl hibernate",
+    "text": "󰤄\nHibernate",
+    "keybind": "h"
+}
+
+{
+    "label": "reboot",
+    "action": "loginctl reboot",
+    "text": "󰜉\nReboot",
+    "keybind": "r"
+}

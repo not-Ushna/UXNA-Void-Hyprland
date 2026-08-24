@@ -1,0 +1,32 @@
+{
+    "display": {
+        "separator": "  "
+    },
+    "logo": {
+        "type": "builtin",
+        "color": {
+            "1": "#d3869b",
+            "2": "#9ece6a"
+        }
+    },
+    "modules": [
+        "title",
+        "separator",
+        "os",
+        "host",
+        "kernel",
+        "uptime",
+        "packages",
+        "shell",
+        "display",
+        "de",
+        "wm",
+        "terminal",
+        "cpu",
+        "gpu",
+        "memory",
+        "disk",
+        "break",
+        "colors"
+    ]
+}

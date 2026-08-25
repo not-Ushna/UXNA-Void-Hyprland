@@ -13,7 +13,9 @@ THEME=$(readlink -f ~/.config/hypr/themes/current | awk -F/ '{print $NF}')
 exec > /tmp/wlogout_launch.log 2>&1
 echo "Launching wlogout for theme: $THEME"
 
-if [[ "$THEME" == "Chameleon" ]]; then
+if [[ -f ~/.config/hypr/themes/current/rofi/powermenu.sh ]]; then
+    exec bash ~/.config/hypr/themes/current/rofi/powermenu.sh
+elif [[ "$THEME" == "Chameleon" ]]; then
     # 3×2 compact grid
     exec wlogout --protocol layer-shell -b 3 -c 0 -r 0 -m 0 -L 330 -R 330 -T 140 -B 140 \
         --layout ~/.config/hypr/themes/current/wlogout/layout \

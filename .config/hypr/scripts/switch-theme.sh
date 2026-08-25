@@ -143,20 +143,18 @@ else
     sleep 0.3
     WAYBAR_LAYOUT="$HOME/.config/hypr/waybar/current-layout"
     if [[ -f "$CURRENT_LINK/waybar/layout.jsonc" ]]; then
-        WAYBAR_LAYOUT="$CURRENT_LINK/waybar/layout.jsonc"
+        ln -sf "$CURRENT_LINK/waybar/layout.jsonc" "$WAYBAR_LAYOUT"
+    else
+        ln -sf "$HOME/.config/hypr/waybar-layouts/layout-default.jsonc" "$WAYBAR_LAYOUT"
     fi
     if [[ -L "$WAYBAR_LAYOUT" ]] || [[ -f "$WAYBAR_LAYOUT" ]]; then
         nohup waybar -c "$WAYBAR_LAYOUT" -s "$CURRENT_LINK/waybar/style.css" >/dev/null 2>&1 &
         disown
     fi
 
-    # 5. Restart Dunst
-    pkill dunst 2>/dev/null || true
-    sleep 0.2
-    if [[ -f "$CURRENT_LINK/dunst/dunstrc" ]]; then
-        dunst -conf "$CURRENT_LINK/dunst/dunstrc" &
-        disown
-    fi
+    # 5. Restart Notification Daemon
+    "$HOME/.config/hypr/scripts/launch-notifications.sh" >/dev/null 2>&1 &
+    disown
 fi
 
 # 6. Apply GTK theme

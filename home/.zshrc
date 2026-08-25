@@ -17,8 +17,11 @@
 # ╚══════════════════════════════════════════════════════════════════════╝
 # NOTE: This must stay at the very top of .zshrc. 
 # It handles instant prompt rendering for blazing fast terminal startups.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+local _current_theme_path="$HOME/.config/hypr/themes/current"
+if [[ ! -f "$_current_theme_path/starship/palette.toml" ]]; then
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
 fi
 
 

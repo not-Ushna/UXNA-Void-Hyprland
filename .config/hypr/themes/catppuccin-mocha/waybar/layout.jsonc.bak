@@ -2,8 +2,7 @@
   "layer": "top",
   "height": 24,
   "modules-left": [
-    "custom/void",
-    "wlr/taskbar"
+    "custom/void"
   ],
   "modules-center": [
     "clock"

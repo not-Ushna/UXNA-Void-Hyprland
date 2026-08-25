@@ -197,3 +197,64 @@ tooltip label {
   border-radius: 8px;
   font-weight: 700;
 }
+
+
+/* --- HYPER-POLISH INJECTIONS --- */
+
+/* Unified Perfect Pill Shapes */
+#workspaces button,
+#workspaces,
+#clock,
+#custom-void,
+#custom-spotify,
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#custom-notification,
+#mode,
+tooltip {
+    border-radius: 100px;
+}
+
+/* Glassmorphism Depth */
+#workspaces,
+#clock,
+#custom-void,
+#custom-spotify,
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#custom-notification,
+#mode {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Smooth Transitions for Interactive Elements */
+#workspaces button,
+#clock,
+#custom-void,
+#custom-spotify,
+#pulseaudio,
+#network,
+#custom-notification,
+#mode {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hover Micro-Animations */
+#clock:hover,
+#custom-void:hover,
+#custom-spotify:hover,
+#pulseaudio:hover,
+#network:hover,
+#custom-notification:hover,
+#mode:hover {
+    opacity: 0.8;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+#workspaces button:hover {
+    opacity: 0.8;
+}

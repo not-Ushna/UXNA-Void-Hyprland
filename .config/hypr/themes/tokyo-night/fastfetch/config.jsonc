@@ -1,28 +1,60 @@
 {
     "logo": {
-        "type": "small"
+        "source": "/home/uxna/.config/hypr/themes/tokyo-night/fastfetch/logo.txt",
+        "type": "file",
+        "color": {
+            "1": "36"
+        },
+        "padding": {
+            "top": 0,
+            "left": 2,
+            "right": 3
+        }
     },
     "display": {
-        "separator": " → ",
+        "separator": "  ",
         "color": {
-            "keys": "38;2;125;207;255"
+            "keys": "38;2;125;207;255",
+            "title": "38;2;125;207;255"
         }
     },
     "modules": [
-        "title",
-        "separator",
-        "os",
-        "kernel",
-        "packages",
-        "shell",
-        "wm",
-        "terminal",
-        "cpu",
-        "gpu",
-        "memory",
-        "disk",
-        "uptime",
+        {
+            "type": "title",
+            "format": "{user-name}@{host-name}"
+        },
+        {
+            "type": "separator",
+            "string": "\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504"
+        },
+        {
+            "type": "os",
+            "key": "  "
+        },
+        {
+            "type": "kernel",
+            "key": "  "
+        },
+        {
+            "type": "wm",
+            "key": "  "
+        },
+        {
+            "type": "shell",
+            "key": "  "
+        },
+        {
+            "type": "terminal",
+            "key": "  "
+        },
+        {
+            "type": "uptime",
+            "key": " \udb80\udd50 "
+        },
         "break",
-        "colors"
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
     ]
 }

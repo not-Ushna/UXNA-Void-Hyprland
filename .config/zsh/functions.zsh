@@ -46,7 +46,7 @@ function fastfetch() {
         return
 
     elif [[ "$theme_name" == "dracula" || "$theme_name" == "gruvbox" || "$theme_name" == "nord" || "$theme_name" == "tokyo-night" || "$theme_name" == "one-dark" || "$theme_name" == "rose-pine" || "$theme_name" == "catppuccin-latte" || "$theme_name" == "catppuccin-mocha" ]]; then
-        command fastfetch -c "$HOME/.config/fastfetch/simple.jsonc" "$@"
+        command fastfetch -c "$HOME/.config/fastfetch/config.jsonc" "$@"
         return
     fi
 

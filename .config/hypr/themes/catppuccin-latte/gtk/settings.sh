@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 GTK_THEME="Adwaita"
-ICON_THEME="Papirus-Dark"
+ICON_THEME="Catppuccin-Latte"
 CURSOR_THEME="Bibata-Modern-Classic"
 FONT="JetBrains Mono Nerd Font Book 10"
 

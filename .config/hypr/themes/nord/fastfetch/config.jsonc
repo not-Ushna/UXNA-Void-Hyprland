@@ -1,31 +1,27 @@
 {
-    "display": {
-        "separator": "  "
-    },
     "logo": {
-        "type": "builtin",
+        "type": "small"
+    },
+    "display": {
+        "separator": " → ",
         "color": {
-            "1": "#b48ead",
-            "2": "#9ece6a"
+            "keys": "38;2;136;192;208"
         }
     },
     "modules": [
         "title",
         "separator",
         "os",
-        "host",
         "kernel",
-        "uptime",
         "packages",
         "shell",
-        "display",
-        "de",
         "wm",
         "terminal",
         "cpu",
         "gpu",
         "memory",
         "disk",
+        "uptime",
         "break",
         "colors"
     ]

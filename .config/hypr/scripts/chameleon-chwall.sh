@@ -268,6 +268,9 @@ $color6  = rgba({strip_hash(colors.get('color6','ffffff'))}ff)
 $color7  = rgba({strip_hash(colors.get('color7','ffffff'))}ff)
 $color8  = rgba({strip_hash(colors.get('color8','444444'))}ff)
 
+$active_border = rgba({strip_hash(colors.get('color1','ffffff'))}ff)
+$inactive_border = rgba({strip_hash(colors.get('color8','444444'))}ff)
+
 $font      = "JetBrains Mono"
 $rounding  = 10
 $shadow_color = rgba({strip_hash(colors.get('color1','000000'))}44)

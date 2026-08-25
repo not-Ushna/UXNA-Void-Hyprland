@@ -10,6 +10,9 @@ alias la="eza --icons=always --color=always --group-directories-first -la"
 # bat: A modern replacement for 'cat' with syntax highlighting
 alias cat="bat --style=plain"
 
+# zoxide: A smarter 'cd' that remembers your frequent folders
+eval "$(zoxide init zsh)"
+
 # Pokemon colorscripts
 alias pokemon='pokemon-colorscripts -r --no-title'
 

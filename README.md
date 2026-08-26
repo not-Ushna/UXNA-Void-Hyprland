@@ -43,13 +43,13 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 | **⚠️ Evangelion** | Absolute black background, emergency red borders, warning amber accents. Tactical alert layout. | Dark · Aggressive |
 | **✨ PromisedFuture** | Frutiger Aero: teal aurora, vibrant green, golden warmth. Classic glassy aesthetic with blur. | Glossy · Aero |
 | **⚔️ PixelCraft** | Cozy RPG village aesthetic. Warm woody browns, amber gold, Monocraft font, and Pokemon battle UI. | Retro · Pixel |
-| **🌸 Catppuccin** | Soft pastel theme (Latte/Mocha) with soothing, warm undertones. | Pastel · Soft |
-| **🧛 Dracula** | High-contrast dark theme with vibrant pink and purple accents. | Dark · Vibrant |
-| **🪵 Gruvbox** | Retro groove with earthy tones, warm yellows, and reddish browns. | Retro · Warm |
-| **❄️ Nord** | Arctic, north-bluish cold colors for a clean and elegant look. | Cold · Elegant |
-| **🌑 One Dark** | The iconic Atom dark theme with balanced, easy-on-the-eyes syntax colors. | Dark · Classic |
-| **🌹 Rosé Pine** | All natural pine, faux fur and a bit of soho vibes for the classy minimalist. | Classy · Muted |
-| **🏙️ Tokyo Night** | A clean, dark theme that celebrates the lights of Downtown Tokyo at night. | Dark · Neon |
+| **Catppuccin** | Soft pastel theme (Latte/Mocha) with soothing, warm undertones. | Pastel · Soft |
+| **Dracula** | High-contrast dark theme with vibrant pink and purple accents. | Dark · Vibrant |
+| **Gruvbox** | Retro groove with earthy tones, warm yellows, and reddish browns. | Retro · Warm |
+| **Nord** | Arctic, north-bluish cold colors for a clean and elegant look. | Cold · Elegant |
+| **One Dark** | The iconic Atom dark theme with balanced, easy-on-the-eyes syntax colors. | Dark · Classic |
+| **Rosé Pine** | All natural pine, faux fur and a bit of soho vibes for the classy minimalist. | Classy · Muted |
+| **Tokyo Night** | A clean, dark theme that celebrates the lights of Downtown Tokyo at night. | Dark · Neon |
 
 > **💡 Tip:** Press `Super + Shift + T` to open the visual theme gallery, or `Super + Shift + W` for the wallpaper gallery.
 

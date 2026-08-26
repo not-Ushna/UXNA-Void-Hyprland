@@ -4,12 +4,11 @@
         "source": "/home/uxna/.config/hypr/themes/one-dark/fastfetch/logo.txt",
         "type": "file",
         "color": {
-            "1": "38;2;97;175;239",
-            "2": "38;2;198;120;221",
-            "3": "38;2;152;195;121",
+            "1": "38;2;198;120;221",
+            "2": "38;2;224;108;117",
+            "3": "38;2;97;175;239",
             "4": "38;2;229;192;123",
-            "5": "38;2;62;68;81",
-            "6": "38;2;92;99;112"
+            "5": "38;2;62;68;81"
         },
         "padding": {
             "top": 0,
@@ -19,65 +18,68 @@
     },
     "display": {
         "separator": "  ",
-        "color": {
-            "separator": "38;2;62;68;81"
+        "key": {
+            "width": 11
         }
     },
     "modules": [
         {
             "type": "title",
-            "format": "\u001b[38;2;97;175;239m{user-name}\u001b[38;2;62;68;81m@\u001b[38;2;198;120;221m{host-name}\u001b[0m"
+            "key": "\u001b[38;2;229;192;123m  user\u001b[0m",
+            "format": "\u001b[38;2;171;178;191m{1}\u001b[0m"
         },
         {
-            "type": "custom",
-            "format": "\u001b[38;2;62;68;81m╶─────────────────────────╴"
+            "type": "title",
+            "key": "\u001b[38;2;152;195;121m  hname\u001b[0m",
+            "format": "\u001b[38;2;171;178;191m{2}\u001b[0m"
         },
-        "break",
         {
             "type": "os",
-            "key": "  \u001b[38;2;97;175;239m \u001b[38;2;171;178;191m os ",
-            "keyWidth": 1
+            "key": "\u001b[38;2;97;175;239m  distro\u001b[0m",
+            "format": "\u001b[38;2;171;178;191m{3}\u001b[0m"
         },
         {
             "type": "kernel",
-            "key": "  \u001b[38;2;97;175;239m \u001b[38;2;171;178;191m kr ",
-            "keyWidth": 1
-        },
-        {
-            "type": "wm",
-            "key": "  \u001b[38;2;97;175;239m \u001b[38;2;171;178;191m wm ",
-            "keyWidth": 1
-        },
-        {
-            "type": "shell",
-            "key": "  \u001b[38;2;97;175;239m \u001b[38;2;171;178;191m sh ",
-            "keyWidth": 1
-        },
-        {
-            "type": "terminal",
-            "key": "  \u001b[38;2;97;175;239m \u001b[38;2;171;178;191m tm ",
-            "keyWidth": 1
-        },
-        {
-            "type": "memory",
-            "key": "  \u001b[38;2;97;175;239m󰍛 \u001b[38;2;171;178;191m mm ",
-            "keyWidth": 1
+            "key": "\u001b[38;2;198;120;221m  kernel\u001b[0m",
+            "format": "\u001b[38;2;171;178;191m{2}\u001b[0m"
         },
         {
             "type": "uptime",
-            "key": "  \u001b[38;2;97;175;239m󰅐 \u001b[38;2;171;178;191m up ",
-            "keyWidth": 1
+            "key": "\u001b[38;2;229;192;123m  uptime\u001b[0m",
+            "keyColor": "38;2;171;178;191"
+        },
+        {
+            "type": "shell",
+            "key": "\u001b[38;2;224;108;117m  shell\u001b[0m",
+            "keyColor": "38;2;171;178;191"
+        },
+        {
+            "type": "packages",
+            "key": "\u001b[38;2;152;195;121m  pkgs\u001b[0m",
+            "keyColor": "38;2;171;178;191"
+        },
+        {
+            "type": "memory",
+            "key": "\u001b[38;2;198;120;221m  memory\u001b[0m",
+            "keyColor": "38;2;171;178;191"
         },
         "break",
         {
             "type": "custom",
-            "format": "\u001b[38;2;62;68;81m╶─────────────────────────╴"
+            "format": "\u001b[38;2;229;192;123m ╔══════════╗\u001b[0m"
         },
-        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[38;2;229;192;123m ║  colors  ║\u001b[0m"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[38;2;229;192;123m ╚══════════╝\u001b[0m"
+        },
         {
             "type": "colors",
             "symbol": "circle",
-            "paddingLeft": 4
+            "paddingLeft": 3
         }
     ]
 }

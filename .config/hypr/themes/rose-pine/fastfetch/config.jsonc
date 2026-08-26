@@ -1,60 +1,83 @@
 {
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
         "source": "/home/uxna/.config/hypr/themes/rose-pine/fastfetch/logo.txt",
         "type": "file",
         "color": {
-            "1": "35"
+            "1": "38;2;196;167;231",
+            "2": "38;2;235;188;186",
+            "3": "38;2;156;207;216",
+            "4": "38;2;246;193;119",
+            "5": "38;2;57;53;82",
+            "6": "38;2;110;106;134"
         },
         "padding": {
             "top": 0,
             "left": 2,
-            "right": 3
+            "right": 2
         }
     },
     "display": {
         "separator": "  ",
         "color": {
-            "keys": "38;2;196;167;231",
-            "title": "38;2;196;167;231"
+            "separator": "38;2;57;53;82"
         }
     },
     "modules": [
         {
             "type": "title",
-            "format": "{user-name}@{host-name}"
+            "format": "\u001b[38;2;196;167;231m{user-name}\u001b[38;2;57;53;82m@\u001b[38;2;235;188;186m{host-name}\u001b[0m"
         },
         {
-            "type": "separator",
-            "string": "\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504\u2504"
+            "type": "custom",
+            "format": "\u001b[38;2;57;53;82m╶─────────────────────────╴"
         },
+        "break",
         {
             "type": "os",
-            "key": "  "
+            "key": "  \u001b[38;2;196;167;231m \u001b[38;2;224;222;244m os ",
+            "keyWidth": 1
         },
         {
             "type": "kernel",
-            "key": "  "
+            "key": "  \u001b[38;2;196;167;231m \u001b[38;2;224;222;244m kr ",
+            "keyWidth": 1
         },
         {
             "type": "wm",
-            "key": "  "
+            "key": "  \u001b[38;2;196;167;231m \u001b[38;2;224;222;244m wm ",
+            "keyWidth": 1
         },
         {
             "type": "shell",
-            "key": "  "
+            "key": "  \u001b[38;2;196;167;231m \u001b[38;2;224;222;244m sh ",
+            "keyWidth": 1
         },
         {
             "type": "terminal",
-            "key": "  "
+            "key": "  \u001b[38;2;196;167;231m \u001b[38;2;224;222;244m tm ",
+            "keyWidth": 1
+        },
+        {
+            "type": "memory",
+            "key": "  \u001b[38;2;196;167;231m󰍛 \u001b[38;2;224;222;244m mm ",
+            "keyWidth": 1
         },
         {
             "type": "uptime",
-            "key": " \udb80\udd50 "
+            "key": "  \u001b[38;2;196;167;231m󰅐 \u001b[38;2;224;222;244m up ",
+            "keyWidth": 1
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[38;2;57;53;82m╶─────────────────────────╴"
         },
         "break",
         {
             "type": "colors",
-            "symbol": "circle"
+            "symbol": "circle",
+            "paddingLeft": 4
         }
     ]
 }

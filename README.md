@@ -24,6 +24,8 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 
 - **🌈 Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
 - **🎨 Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, Btop, Fastfetch, and VS Code all update together on a single theme change.
+- **✨ Kawaii Terminal** — A heavily customized `fastfetch` layout featuring beautiful multi-colored Neko ASCII art that changes color channels dynamically based on your active theme.
+- **🎯 Dock-style Taskbar** — Waybar is configured with a modern, glassmorphic dock-style taskbar (`wlr/taskbar`) featuring beautifully spaced app icons and hover animations across all themes.
 - **🎞️ Live Wallpapers** — Native support for animated `.gif` wallpapers via `swww` built directly into the wallpaper switcher.
 - **🔧 Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
 - **💾 Smart Backup** — A `sync` + `push` workflow to effortlessly version-control your entire desktop config on GitHub.

@@ -22,11 +22,14 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 
 ### Key Highlights
 
-- ** Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
-- ** Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, Btop, Fastfetch, and VS Code all update together on a single theme change.
-- ** Live Wallpapers** — Native support for animated `.gif` wallpapers via `swww` built directly into the wallpaper switcher.
-- ** Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
-- ** Custom GRUB Theme** — A personalized `Pochita_Pochita` GRUB bootloader theme backed up and installable from this repo.
+- **Chameleon Mode** — Dynamic wallpaper-driven theming powered by `pywal`. The entire UI extracts and adapts to your wallpaper's color palette in real-time.
+- **Unified Aesthetics** — GTK, Qt, Waybar, Kitty, Dunst, Rofi, Hyprlock, Btop, Fastfetch, and VS Code all update together on a single theme change.
+- **Kawaii Terminal** — A heavily customized `fastfetch` layout featuring beautiful multi-colored Neko ASCII art that changes color channels dynamically based on your active theme.
+- **Dock-style Taskbar** — Waybar is configured with a modern, glassmorphic dock-style taskbar (`wlr/taskbar`) featuring beautifully spaced app icons and hover animations across all themes.
+- **Live Wallpapers** — Native support for animated `.gif` wallpapers via `swww` built directly into the wallpaper switcher.
+- **Barcraft** — A custom GUI tool to enable/disable individual Waybar modules with live preview.
+- **Smart Backup** — A `sync` + `push` workflow to effortlessly version-control your entire desktop config on GitHub.
+- **Custom GRUB Theme** — A personalized `Pochita_Pochita` GRUB bootloader theme backed up and installable from this repo.
 
 ---
 
@@ -34,12 +37,12 @@ This is my personal Hyprland rice — a fully unified desktop where themes propa
 
 | Theme | Description | Style |
 |:---:|:---|:---|
-| ** Chameleon** | Dynamic wallpaper-extracted colors via `pywal`. The whole UI conforms to your background. | Adaptive |
-| ** Jade** | Forest-black background, active jade green borders, warm grey-green text. Boxy, square modules. | Dark · Minimal |
-| ** Lumon** | Deep slate background, pale cyan borders, muted corporate aesthetic. Inspired by *Severance*. | Dark · Modern |
-| ** Evangelion** | Absolute black background, emergency red borders, warning amber accents. Tactical alert layout. | Dark · Aggressive |
-| ** PromisedFuture** | Frutiger Aero: teal aurora, vibrant green, golden warmth. Classic glassy aesthetic with blur. | Glossy · Aero |
-| ** PixelCraft** | Cozy RPG village aesthetic. Warm woody browns, amber gold, Monocraft font, and Pokemon battle UI. | Retro · Pixel |
+| **Chameleon** | Dynamic wallpaper-extracted colors via `pywal`. The whole UI conforms to your background. | Adaptive |
+| **Jade** | Forest-black background, active jade green borders, warm grey-green text. Boxy, square modules. | Dark · Minimal |
+| **Lumon** | Deep slate background, pale cyan borders, muted corporate aesthetic. Inspired by *Severance*. | Dark · Modern |
+| **Evangelion** | Absolute black background, emergency red borders, warning amber accents. Tactical alert layout. | Dark · Aggressive |
+| **PromisedFuture** | Frutiger Aero: teal aurora, vibrant green, golden warmth. Classic glassy aesthetic with blur. | Glossy · Aero |
+| **PixelCraft** | Cozy RPG village aesthetic. Warm woody browns, amber gold, Monocraft font, and Pokemon battle UI. | Retro · Pixel |
 | **Catppuccin** | Soft pastel theme (Latte/Mocha) with soothing, warm undertones. | Pastel · Soft |
 | **Dracula** | High-contrast dark theme with vibrant pink and purple accents. | Dark · Vibrant |
 | **Gruvbox** | Retro groove with earthy tones, warm yellows, and reddish browns. | Retro · Warm |

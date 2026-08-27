@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UXNA · Start</title>
+  <!-- THEME-COLORS-START -->
+  <style>
+    :root {
+      --accent:   #b48ead;
+      --bg:       #1e1e2e;
+      --surface:  #434c5e;
+      --text:     #cdd6f4;
+      --subtext:  #a6adc8;
+      --red:      #f38ba8;
+      --green:    #a6e3a1;
+      --yellow:   #f9e2af;
+      --blue:     #89b4fa;
+    }
+  </style>
+  <!-- THEME-COLORS-END -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", "JetBrains Mono", monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      overflow: hidden;
+    }
+
+    /* Background subtle gradient */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 30%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+                  radial-gradient(ellipse at 80% 70%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+
+    /* ── Clock ── */
+    .clock-wrap { text-align: center; }
+    #clock {
+      font-size: clamp(64px, 10vw, 110px);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -4px;
+      line-height: 1;
+    }
+    #date {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--subtext);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── Search ── */
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 100px;
+      padding: 10px 20px;
+      width: min(480px, 90vw);
+      backdrop-filter: blur(12px);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .search-wrap:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .search-icon { color: var(--subtext); font-size: 16px; margin-right: 10px; }
+    #search {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      flex: 1;
+    }
+    #search::placeholder { color: var(--subtext); opacity: 0.6; }
+
+    /* ── Quick Links ── */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 560px;
+    }
+    .link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--subtext);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .link:hover { color: var(--accent); transform: translateY(-3px); }
+    .link-icon {
+      width: 52px; height: 52px;
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .link:hover .link-icon {
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      border-color: var(--accent);
+    }
+    .link-name { font-size: 11px; font-weight: 500; letter-spacing: 0.5px; }
+
+    /* ── Greeting ── */
+    .greeting {
+      font-size: 13px;
+      color: var(--subtext);
+      opacity: 0.5;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="clock-wrap">
+      <div id="clock">00:00</div>
+      <div id="date">Loading…</div>
+    </div>
+
+    <form class="search-wrap" id="search-form">
+      <span class="search-icon">🔍</span>
+      <input id="search" type="text" placeholder="Search the web…" autofocus autocomplete="off" />
+    </form>
+
+    <div class="links">
+      <a class="link" href="https://github.com" id="link-github">
+        <div class="link-icon">🐙</div>
+        <span class="link-name">GitHub</span>
+      </a>
+      <a class="link" href="https://youtube.com" id="link-youtube">
+        <div class="link-icon">▶</div>
+        <span class="link-name">YouTube</span>
+      </a>
+      <a class="link" href="https://reddit.com/r/unixporn" id="link-unixporn">
+        <div class="link-icon">🐧</div>
+        <span class="link-name">unixporn</span>
+      </a>
+      <a class="link" href="https://twitch.tv" id="link-twitch">
+        <div class="link-icon">🎮</div>
+        <span class="link-name">Twitch</span>
+      </a>
+      <a class="link" href="https://open.spotify.com" id="link-spotify">
+        <div class="link-icon">🎵</div>
+        <span class="link-name">Spotify</span>
+      </a>
+      <a class="link" href="https://mail.proton.me" id="link-mail">
+        <div class="link-icon">✉</div>
+        <span class="link-name">Mail</span>
+      </a>
+      <a class="link" href="https://hyprland.org" id="link-hyprland">
+        <div class="link-icon">🌊</div>
+        <span class="link-name">Hyprland</span>
+      </a>
+      <a class="link" href="https://archlinux.org" id="link-arch">
+        <div class="link-icon">🔷</div>
+        <span class="link-name">Arch Wiki</span>
+      </a>
+    </div>
+
+    <div class="greeting" id="greeting">Welcome back, uxna.</div>
+  </div>
+
+  <script>
+    // ── Clock ──
+    function tick() {
+      const now = new Date();
+      document.getElementById("clock").textContent =
+        now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+      document.getElementById("date").textContent =
+        now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }).toUpperCase();
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // ── Greeting ──
+    const h = new Date().getHours();
+    const greet = h < 5 ? "Good night" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+    document.getElementById("greeting").textContent = `${greet}, uxna.`;
+
+    // ── Search ──
+    document.getElementById("search-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const q = document.getElementById("search").value.trim();
+      if (!q) return;
+      const url = q.startsWith("http") ? q : `https://duckduckgo.com/?q=${encodeURIComponent(q)}`;
+      location.href = url;
+    });
+  </script>
+</body>
+</html>

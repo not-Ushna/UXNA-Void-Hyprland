@@ -210,21 +210,6 @@ if command -v swayosd-server >/dev/null 2>&1; then
     pkill -HUP swayosd-server 2>/dev/null || true
 fi
 
-# 7.11 Regenerate Eww theme variables and reload widgets
-if command -v eww >/dev/null 2>&1; then
-    python3 "$HOME/.config/hypr/scripts/generate-eww-theme.py" 2>/dev/null || true
-    eww reload 2>/dev/null || true
-fi
-
-# 7.12 Regenerate browser startpage colors
-python3 "$HOME/.config/hypr/themes/startpage/generate-colors.py" 2>/dev/null || true
-
-# 7.13 Update Hyprtrails accent color live (no full reload needed)
-ACCENT_HEX=$(grep -oP '(?<=active_border = rgb\()[\da-fA-F]{6}' "$CURRENT_LINK/colors.conf" 2>/dev/null | head -1)
-if [[ -n "$ACCENT_HEX" ]]; then
-    hyprctl keyword plugin:hyprtrails:color "rgba(${ACCENT_HEX}ff)" 2>/dev/null || true
-fi
-
 # Reload running kitty terminals to pick up the updated current symlink
 kill -SIGUSR1 $(pgrep kitty) 2>/dev/null || true
 # 8. Update GRUB seamlessly in the background (no sudo required)

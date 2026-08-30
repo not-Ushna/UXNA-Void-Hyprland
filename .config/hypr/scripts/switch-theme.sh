@@ -162,6 +162,22 @@ if [[ -f "$CURRENT_LINK/gtk/settings.sh" ]]; then
     bash "$CURRENT_LINK/gtk/settings.sh" 2>/dev/null || true
 fi
 
+# Ensure GTK4/libadwaita apps follow the theme's CSS, and prevent Chameleon color bleed
+if [[ -f "$CURRENT_LINK/gtk/gtk4.css" ]]; then
+    mkdir -p "$HOME/.config/gtk-4.0"
+    ln -sf "$CURRENT_LINK/gtk/gtk4.css" "$HOME/.config/gtk-4.0/gtk.css"
+else
+    rm -f "$HOME/.config/gtk-4.0/gtk.css"
+fi
+
+# Same for GTK3
+if [[ -f "$CURRENT_LINK/gtk/gtk3.css" ]]; then
+    mkdir -p "$HOME/.config/gtk-3.0"
+    ln -sf "$CURRENT_LINK/gtk/gtk3.css" "$HOME/.config/gtk-3.0/gtk.css"
+else
+    rm -f "$HOME/.config/gtk-3.0/gtk.css"
+fi
+
 # 7. Apply Qt/Kvantum theme
 if command -v kvantummanager >/dev/null 2>&1; then
     if [[ -f "$CURRENT_LINK/qt/theme.txt" ]]; then

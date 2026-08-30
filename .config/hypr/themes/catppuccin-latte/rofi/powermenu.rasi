@@ -4,14 +4,14 @@ configuration {
 
 * {
     bg:     #dce0e8e6;
-    bg-alt: #9ca0b0ff;
+    bg-alt: #ccd0daff;
     fg:     #4c4f69ff;
     accent: #dd7878ff;
     green:  #40a02b;
     red:    #d20f39;
     selected: #dd7878ff;
     background: #dce0e8e6;
-    background-alt: #9ca0b0ff;
+    background-alt: #ccd0daff;
     foreground: #4c4f69ff;
     urgent: #d20f39;
     active: #40a02b;

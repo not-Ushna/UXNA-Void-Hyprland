@@ -11,7 +11,7 @@
 /* --- Colors --- */
 * {
     background:     #dce0e8e6;
-    background-alt: #9ca0b0ff;
+    background-alt: #ccd0daff;
     foreground:     #4c4f69ff;
     selected:       #dd7878ff;
     active:         #40a02b;
@@ -149,7 +149,7 @@ element {
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            @background;
+    background-color:            transparent;
     text-color:                  @foreground;
 }
 element selected.normal {

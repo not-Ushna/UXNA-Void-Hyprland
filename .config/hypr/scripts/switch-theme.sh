@@ -223,5 +223,7 @@ fi
 # 9. Notify
 pkill dunst 2>/dev/null || true
 pkill swaync 2>/dev/null || true
+sleep 0.2
+~/.config/hypr/scripts/launch-notifications.sh
 sleep 0.5  # Wait for notification daemon to restart
 notify-send "Theme Switcher" "Switched to $chosen" -t 3000

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Kill any existing notification daemons
-killall -q dunst
-killall -q swaync
+pkill -x dunst
+pkill -x swaync
 
 # Wait for them to terminate
 while pgrep -x dunst >/dev/null; do sleep 0.1; done

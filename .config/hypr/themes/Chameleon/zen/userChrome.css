@@ -4,47 +4,47 @@
  * ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --cham-bg:        #0f1416;
-  --cham-surface:   #a29d93;
-  --cham-surface2:  #A1977F;
-  --cham-border:    #a29d93;
-  --cham-accent:    #B1AB96;
-  --cham-accent2:   #C5BCA3;
-  --cham-text:      #e8e1d2;
-  --cham-text-dim:  #e8e1d2;
+  --cham-bg:        #000202;
+  --cham-surface:   #74a3a6;
+  --cham-surface2:  #1596A8;
+  --cham-border:    #74a3a6;
+  --cham-accent:    #43B3C2;
+  --cham-accent2:   #07CBE4;
+  --cham-text:      #a7eaee;
+  --cham-text-dim:  #a7eaee;
 
   /* Zen overrides */
-  --zen-colors-primary: #B1AB96 !important;
-  --zen-primary-color: #B1AB96 !important;
-  --zen-colors-secondary: #C5BCA3 !important;
-  --zen-colors-tertiary: #D3C6AB !important;
-  --zen-colors-border: #a29d93 !important;
+  --zen-colors-primary: #43B3C2 !important;
+  --zen-primary-color: #43B3C2 !important;
+  --zen-colors-secondary: #07CBE4 !important;
+  --zen-colors-tertiary: #26D0E3 !important;
+  --zen-colors-border: #74a3a6 !important;
 
-  --toolbar-bgcolor: #0f1416 !important;
-  --toolbar-color: #e8e1d2 !important;
-  --lwt-toolbar-field-background-color: #a29d93 !important;
-  --lwt-toolbar-field-color: #e8e1d2 !important;
-  --lwt-toolbar-field-border-color: #a29d93 !important;
-  --lwt-toolbar-field-focus: #A1977F !important;
-  --lwt-toolbar-field-focus-color: #e8e1d2 !important;
+  --toolbar-bgcolor: #000202 !important;
+  --toolbar-color: #a7eaee !important;
+  --lwt-toolbar-field-background-color: #74a3a6 !important;
+  --lwt-toolbar-field-color: #a7eaee !important;
+  --lwt-toolbar-field-border-color: #74a3a6 !important;
+  --lwt-toolbar-field-focus: #1596A8 !important;
+  --lwt-toolbar-field-focus-color: #a7eaee !important;
 
-  --lwt-accent-color: #0f1416 !important;
-  --lwt-text-color: #e8e1d2 !important;
-  --arrowpanel-background: #a29d93 !important;
-  --arrowpanel-color: #e8e1d2 !important;
-  --arrowpanel-border-color: #a29d93 !important;
+  --lwt-accent-color: #000202 !important;
+  --lwt-text-color: #a7eaee !important;
+  --arrowpanel-background: #74a3a6 !important;
+  --arrowpanel-color: #a7eaee !important;
+  --arrowpanel-border-color: #74a3a6 !important;
 
-  --tab-selected-bgcolor: #B1AB96 !important;
-  --tab-selected-textcolor: #0f1416 !important;
+  --tab-selected-bgcolor: #43B3C2 !important;
+  --tab-selected-textcolor: #000202 !important;
 
-  --urlbar-box-bgcolor: #a29d93 !important;
-  --urlbar-box-hover-bgcolor: #A1977F !important;
-  --urlbar-box-active-bgcolor: #a29d93 !important;
-  --urlbar-box-text-color: #e8e1d2 !important;
+  --urlbar-box-bgcolor: #74a3a6 !important;
+  --urlbar-box-hover-bgcolor: #1596A8 !important;
+  --urlbar-box-active-bgcolor: #74a3a6 !important;
+  --urlbar-box-text-color: #a7eaee !important;
 
-  --sidebar-background-color: #0f1416 !important;
-  --sidebar-text-color: #e8e1d2 !important;
-  --sidebar-border-color: #a29d93 !important;
+  --sidebar-background-color: #000202 !important;
+  --sidebar-text-color: #a7eaee !important;
+  --sidebar-border-color: #74a3a6 !important;
 }
 
 /* ── Sidebar / vertical tabs ── */

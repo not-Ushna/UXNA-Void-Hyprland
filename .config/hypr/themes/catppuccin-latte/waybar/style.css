@@ -38,7 +38,7 @@
 }
 
 window#waybar {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.1);
   color: @text;
 }
 
@@ -72,9 +72,9 @@ tooltip label {
 
 #workspaces button.active {
   border-radius: 100px;
-  border: 1px solid @mauve;
-  color: @crust;
-  background: @mauve;
+  border: 1px solid #5c5f77;
+  color: #dce0e8;
+  background: #5c5f77;
   min-width: 47px;
   font-size: 12px;
 }

@@ -14,9 +14,9 @@ confirm_action() {
 }
 
 case "$chosen" in
-  "$shutdown") [[ "$(confirm_action)" == "Yes" ]] && systemctl poweroff ;;
-  "$reboot") [[ "$(confirm_action)" == "Yes" ]] && systemctl reboot ;;
-  "$sleep") systemctl suspend ;;
+  "$shutdown") [[ "$(confirm_action)" == "Yes" ]] && loginctl poweroff ;;
+  "$reboot") [[ "$(confirm_action)" == "Yes" ]] && loginctl reboot ;;
+  "$sleep") loginctl suspend ;;
   "$logout") [[ "$(confirm_action)" == "Yes" ]] && hyprctl dispatch exit ;;
   "$lock") hyprlock ;;
 esac

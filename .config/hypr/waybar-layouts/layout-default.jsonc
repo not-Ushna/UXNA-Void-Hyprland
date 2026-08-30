@@ -110,12 +110,12 @@
   "custom/power": {
     "format": "⏻",
     "tooltip": false,
-    "on-click": "wlogout"
+    "on-click": "~/.config/hypr/scripts/launch-wlogout.sh"
   },
   "custom/powermenu": {
     "format": "⏻",
     "tooltip": false,
-    "on-click": "wlogout"
+    "on-click": "~/.config/hypr/scripts/launch-wlogout.sh"
   },
   "idle_inhibitor": {
     "format": "{icon}",

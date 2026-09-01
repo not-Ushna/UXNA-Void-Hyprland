@@ -1,0 +1,24 @@
+/* Chameleon — GTK4 colors from pywal — Tue Sep  1 10:04:23 AM IST 2026 */
+@define-color accent_color #8C7769;
+@define-color accent_bg_color #8C7769;
+@define-color accent_fg_color #11100c;
+@define-color window_bg_color #11100c;
+@define-color window_fg_color #dcc8a3;
+@define-color view_bg_color #11100c;
+@define-color view_fg_color #dcc8a3;
+@define-color headerbar_bg_color #11100c;
+@define-color headerbar_fg_color #dcc8a3;
+@define-color headerbar_border_color #8C7769;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color card_bg_color rgba(255,255,255,0.05);
+@define-color card_fg_color #dcc8a3;
+@define-color card_border_color rgba(255,255,255,0.1);
+@define-color popover_bg_color #11100c;
+@define-color popover_fg_color #dcc8a3;
+@define-color dialog_bg_color #11100c;
+@define-color dialog_fg_color #dcc8a3;
+@define-color sidebar_bg_color #11100c;
+@define-color sidebar_fg_color #dcc8a3;
+@define-color sidebar_border_color #8C7769;
+selection { background-color: #8C7769; color: #11100c; }
+headerbar { background-color: @headerbar_bg_color; border-bottom: 1px solid @headerbar_border_color; box-shadow: none; }
